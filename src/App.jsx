@@ -6,7 +6,7 @@ import NavBar from './components/NavBar';
 import Home from './components/Home';
 import FetchGames from './components/fetchGames';
 import './App.css';
-import SelectedGame from './components/selectedGameRows';
+import SelectedGame from './components/selectedGameView';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

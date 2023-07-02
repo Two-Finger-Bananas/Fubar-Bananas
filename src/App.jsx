@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './components/login';
 import Register from './components/register';
 import NavBar from './components/NavBar';
 import Home from './components/Home';
-import FetchGames from './components/fetchGames';
+import FetchGames from './components/FetchGames';
 import './App.css';
 import SelectedGame from './components/selectedGameView';
 

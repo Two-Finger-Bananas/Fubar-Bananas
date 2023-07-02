@@ -4,7 +4,7 @@ import GameRows from "./fetchGameRows";
 
 
 
-export default function FetchGames(){
+export default function FetchGames({setSelectedGameId}){
     const[gameInfo, setGameInfo] = useState([]);
    
  
@@ -30,8 +30,8 @@ const filteredGames = gameInfo.filter((VG) =>
 VG.title.toLowerCase().includes(searchQuery.toLowerCase())
 );
 
-const gameDetailClick = () => {
-//setSelectedGameId(gameId);
+const gameDetailClick = (gameId) => {
+setSelectedGameId(gameId);
 };
 
 
@@ -67,13 +67,15 @@ const gameDetailClick = () => {
                 </tr>
                 
                 { filteredGames.map((VG) =>(
-                     <GameRows key={VG.id} VG={VG}  setGameInfo ={setGameInfo} 
-                    onClick={() => gameDetailClick(VG)} />
-                ))}
-                
-                
-
-                
+                    <GameRows
+                    key={VG.gameId}
+                    VG={VG}
+                    setSelectedGameId={setSelectedGameId}
+                    setGameInfo={setGameInfo}
+                    onClick={() => gameDetailClick(VG.gameId)}
+                  />
+                  
+                ))}  
             </tbody>
         </table>
         </div>

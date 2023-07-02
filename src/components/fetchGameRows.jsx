@@ -1,7 +1,7 @@
 import React from "react";
 
 
-export default function gameRows({VG, setselectedGameId}){
+export default function GameRows({VG, setselectedGameId}){
 return(
     <div id="contain-row">
     <tr 
@@ -13,7 +13,7 @@ return(
         <td>{VG.title}</td>
         <td>
             <img
-             src = {VG.imageUrl}
+             src = {VG.coverImg}
              id = "game-image"
              />
             </td>

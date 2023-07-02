@@ -1,6 +1,6 @@
 import React from "react";
 import { useState,useEffect } from "react";
-
+import GameRows from "./fetchGameRows";
 
 
 
@@ -31,7 +31,7 @@ VG.title.toLowerCase().includes(searchQuery.toLowerCase())
 );
 
 const gameDetailClick = () => {
-setSelectedGameId(gameId);
+//setSelectedGameId(gameId);
 };
 
 
@@ -63,18 +63,11 @@ setSelectedGameId(gameId);
                 </tr>
             </thead>
             <tbody>
-
-                
-            
-         
-
-                <tr>
-                
-                    
+                <tr>   
                 </tr>
                 
                 { filteredGames.map((VG) =>(
-                     <gameRow key={VG.id} VG={VG} setSelectedGameId={setSelectedGameId} setGameInfo ={setGameInfo} 
+                     <GameRows key={VG.id} VG={VG}  setGameInfo ={setGameInfo} 
                     onClick={() => gameDetailClick(VG)} />
                 ))}
                 

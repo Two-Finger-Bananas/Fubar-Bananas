@@ -1,0 +1,69 @@
+import React, {useState} from "react";
+import { loginUser } from "../api adapters";
+import {useNavigate} from "react-router-dom";
+
+const Login = (props) => {
+    const setIsLoggedIn = props.setIsLoggedIn;
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const navigate = useNavigate();
+
+    const navToRegister = () => {
+        navigate("/register");
+    };
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try{
+            const result = await loginUser(username,password);
+            console.log(result);
+
+            localStorage.setItem("username", username);
+            localStorage.setItem("token", result.token);
+            setIsLoggedIn(true);
+
+            navigate("/");
+        } catch (error){
+            console.log(error);
+        }
+    };
+    return(
+        <div className="login-form">
+            <div id="title-of-login-box">
+            <h2> Log Into Your Account</h2>
+            </div>
+            <form onSubmit={handleSubmit}>
+                <label>
+                    <input
+                    className="box-label"
+                    placeholder="username"
+                    type="text"
+                    value={username}
+                    onChange={(e)=>{
+                        setUsername(e.target.value);
+                    }}
+                    />
+                </label>
+                <br/>
+                <label>
+                    <input
+                    className="box-label"
+                    placeholder="password"
+                    type="password"
+                    value={password}
+                    onChange={(e)=>{
+                        setPassword(e.target.value);
+                    }}
+                    />
+                </label>
+                <br/>
+                <button id="submit-button" type="submit">
+                    <strong>Submit</strong>
+                </button>
+            </form>
+        </div>
+    )
+
+}
+
+export default Login;

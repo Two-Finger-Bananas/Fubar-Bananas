@@ -13,7 +13,7 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
           
           <button
             id="logout"
-            className="Navbar-link"
+            className="NavBar-link"
             onClick={() => {
               setIsLoggedIn(false);
               localStorage.removeItem("token");

@@ -3,9 +3,9 @@ export const BASE_URL='http://localhost:3000/games'
 
 export const registerUser = async (username, password) => {
     try{
-        const response = await fetch(`${BASE_URL}`,{
+        const response = await fetch(`${BASE_URL}/register`,{
             method: "POST",
-            hearders:{
+            headers:{
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
@@ -25,9 +25,9 @@ export const registerUser = async (username, password) => {
 
 export const loginUser = async (username, password) => {
     try{
-        const response = await fetch(`${BASE_URL}`,{
+        const response = await fetch(`${BASE_URL}/user`,{
             method: "POST",
-            hearders:{
+            headers:{
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({

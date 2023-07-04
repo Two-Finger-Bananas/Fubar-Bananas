@@ -9,15 +9,13 @@ export const registerUser = async (username, password) => {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                user:{
                     username: username,
                     password: password
-                },
             }),
         });
         const result = await response.json();
         console.log(result)
-        return result.data;
+        return result;
     }catch(error){
         console.log(error);
     }
@@ -32,14 +30,12 @@ export const loginUser = async (username, password) => {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                user:{
                     username: username,
                     password: password
-                },
             }),
         });
         const result = await response.json();
-        return result.data;
+        return result;
     }catch(error){
         console.log(error);
     }

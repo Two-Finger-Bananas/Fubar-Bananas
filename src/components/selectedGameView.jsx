@@ -28,13 +28,25 @@ export default function SelectedGame({ selectedGameId, setSelectedGameId }) {
           <table id="selected-game">
             <tbody>
               <tr>
+                <td>{indivGame.coverImg}</td>
+              </tr>
+              <tr>
                 <td>{indivGame.title}</td>
               </tr>
               <tr>
-                <td>{indivGame.description}</td>
+                <td>{indivGame.genre}</td>
               </tr>
               <tr>
-                <td></td>
+              <td>{indivGame.platforms}</td>
+              </tr>
+              <tr>
+                <td>{indivGame.gameDevelopers}</td>
+              </tr>
+              <tr>
+                <td>{indivGame.players}</td>
+              </tr>
+              <tr>
+                <td>Released on: {indivGame.publishDate}</td>
               </tr>
             </tbody>
           </table>

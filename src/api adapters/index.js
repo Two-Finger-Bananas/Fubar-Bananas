@@ -1,21 +1,22 @@
 
-export const BASE_URL='http://localhost:3000/games'
+export const BASE_URL='http://localhost:3000/user'
 
 export const registerUser = async (username, password) => {
     try{
         const response = await fetch(`${BASE_URL}/register`,{
             method: "POST",
             headers:{
-                "Content-Type": "application/json",
+                "Content-Type": "application/json"
             },
             body: JSON.stringify({
                 user:{
                     username: username,
-                    password: password,
+                    password: password
                 },
             }),
         });
         const result = await response.json();
+        console.log(result)
         return result.data;
     }catch(error){
         console.log(error);
@@ -25,15 +26,15 @@ export const registerUser = async (username, password) => {
 
 export const loginUser = async (username, password) => {
     try{
-        const response = await fetch(`${BASE_URL}/user`,{
+        const response = await fetch(`${BASE_URL}/login`,{
             method: "POST",
             headers:{
-                "Content-Type": "application/json",
+                "Content-Type": "application/json"
             },
             body: JSON.stringify({
                 user:{
                     username: username,
-                    password: password,
+                    password: password
                 },
             }),
         });

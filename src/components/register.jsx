@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 const Register = (props) => {
   const setIsLoggedIn = props.setIsLoggedIn;
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
   const navToLogin = () => {

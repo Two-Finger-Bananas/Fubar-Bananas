@@ -18,7 +18,7 @@ function App() {
         <SelectedGame selectedGameId={selectedGameId} setSelectedGameId={setSelectedGameId} />
       ) : (
         <>
-          <Router>
+          
             <div className="App">
               <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
               <Routes>
@@ -31,7 +31,7 @@ function App() {
                 />
               </Routes>
             </div>
-          </Router>
+          
         </>
       )}
     </>

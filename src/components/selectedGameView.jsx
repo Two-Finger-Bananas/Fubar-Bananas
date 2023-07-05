@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
-
+import DeleteGame from "./DeleteGame";
+import UpdateGame from "./UpdateGame";
 export const BASE_URL = 'http://localhost:3000/games';
 
-export default function SelectedGame({ selectedGameId, setSelectedGameId }) {
+export default function SelectedGame({ selectedGameId, setSelectedGameId}) {
+ 
   const [indivGame, setIndivGame] = useState(null);
 
   useEffect(() => {
@@ -13,6 +15,7 @@ export default function SelectedGame({ selectedGameId, setSelectedGameId }) {
         setIndivGame(data);
       } catch (error) {
         console.log(error);
+  
       }
     }
 
@@ -50,7 +53,11 @@ export default function SelectedGame({ selectedGameId, setSelectedGameId }) {
               </tr>
             </tbody>
           </table>
-          <button onClick={() => setSelectedGameId(null)}>Go Back</button>
+          <div className="Game-Actions">
+            <UpdateGame id={selectedGameId} />
+            <DeleteGame id="DeleteGameButton" gameId={selectedGameId} />
+            <button onClick={() => setSelectedGameId(null)}>Go Back</button>
+          </div>
         </div>
       ) : null}
     </div>

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useParams, useNavigate } from "react-router-dom";
 import { BASE_GAME_URL } from "../api adapters";
 import {useState} from 'react';

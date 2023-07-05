@@ -8,13 +8,8 @@ const Register = (props) => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const navToLogin = () => {
-    navigate("/login");
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       const result = await registerUser(username, password);
       console.log(result);

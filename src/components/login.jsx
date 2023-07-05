@@ -60,6 +60,7 @@ const Login = (props) => {
                 <button id="submit-button" type="submit">
                     <strong>Submit</strong>
                 </button>
+                <button onClick={navToRegister}>Need to register?</button>
             </form>
         </div>
     )

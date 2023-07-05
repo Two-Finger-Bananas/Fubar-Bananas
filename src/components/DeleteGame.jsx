@@ -17,5 +17,13 @@ export default function DeleteGame(props) {
         } catch (error) {
             console.log(error)
         }
-    }
+    };
+
+    const currentUser = localStorage.getItem("username");
+
+    return(
+        <button id="Delete-Button" type="button" onClick={deleteGame}>
+            Delete Game
+        </button>
+    );
 }

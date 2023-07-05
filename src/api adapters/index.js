@@ -1,6 +1,7 @@
 
-export const BASE_URL='http://localhost:3000/user'
-
+export const BASE_USER_URL = 'http://localhost:3000/user'
+export const BASE_GAME_URL = "localhost:3000/games"
+export const TOKEN = localStorage.getItem('token')
 export const registerUser = async (username, password) => {
     try{
         const response = await fetch(`${BASE_URL}/register`,{

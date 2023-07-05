@@ -1,46 +1,51 @@
-import { json } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { BASE_GAME_URL } from "../api adapters";
-import React, {useState} from 'react';
+import {useState} from 'react';
 import { TOKEN } from "../api adapters";
 
-export default function UpdateGame(props) {
-    const [title, setTitle] = useState(props.title);
-    const [publishDate, setPublishDate] = useState(props.publishDate);
-    const [genre,setGenre] = useState(props.genre);
-    const handleSubmit= async (e) => {
-        e.preventDefault();
-       
-    }
-    async function patchGame() {
+export default function UpdateGame() {
+    const { id } = useParams()
+    const navigate = useNavigate()
+    console.log(id)
+    const [title, setTitle] = useState('');
+    const [publishDate, setPublishDate] = useState('');
+    const [genre,setGenre] = useState([]);
+    const [gameDeveloper, setGameDeveloper] = useState('')
+    const [platforms, setPlatforms] = useState([])
+    const [players, setPlayers] = useState([])
+    const [coverImg, setCoverImg] = useState('')
+    async function patchGame(event) {
+        event.preventdefault()
         try {
-        const response = await fetch(`${BASE_GAME_URL}/${props.id}`, {
+        const response = await fetch(`${BASE_GAME_URL}/${id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'Application/json',
                 'Authorization': `Bearer ${TOKEN}`
             },
             body: JSON.stringify ({
-                title: props.title,
-                publishDate: props.publishDate,
-                gameDeveloper: props.gameDeveloper,
-                genre: props.genre,
-                platforms: props.platforms,
-                players: props.players,
-                coverImg: props.coverImg
+                title: title,
+                publishDate: publishDate,
+                gameDeveloper: gameDeveloper,
+                genre: genre,
+                platforms: platforms,
+                players: players,
+                coverImg: coverImg
             })
         })
         const result = await response.json()
         console.log(result)
+        navigate('/games')
         return result
         } catch (error) {
             console.log(error)
         }
+        
     }
-    
 
     return(
         <div>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={patchGame}>
             <label>
           Title:
           <input

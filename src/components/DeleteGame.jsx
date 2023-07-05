@@ -1,10 +1,10 @@
-import { BASE_USER_URL } from "../api adapters"
+import { BASE_GAME_URL } from "../api adapters"
 import { TOKEN } from "../api adapters"
 
 export default function DeleteGame(props) {
     async function deleteGame() {
         try {
-           const response = await fetch(`${BASE_USER_URL}/${props.id}`, {
+           const response = await fetch(`${BASE_GAME_URL}/${props.gameId}`, {
             method: "DELETE",
             headers: {
                 'Content-Type': 'application/json',
@@ -19,7 +19,7 @@ export default function DeleteGame(props) {
         }
     };
 
-    const currentUser = localStorage.getItem("username");
+    // const currentUser = localStorage.getItem("username");
 
     return(
         <button id="Delete-Button" type="button" onClick={deleteGame}>

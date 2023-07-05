@@ -1,10 +1,10 @@
 
 export const BASE_USER_URL = 'http://localhost:3000/user'
-export const BASE_GAME_URL = "localhost:3000/games"
+export const BASE_GAME_URL = 'http://localhost:3000/games'
 export const TOKEN = localStorage.getItem('token')
 export const registerUser = async (username, password) => {
     try{
-        const response = await fetch(`${BASE_URL}/register`,{
+        const response = await fetch(`${BASE_USER_URL}/register`,{
             method: "POST",
             headers:{
                 "Content-Type": "application/json"
@@ -16,7 +16,7 @@ export const registerUser = async (username, password) => {
         });
         const result = await response.json();
         console.log(result)
-        return result;
+        return result.userData;
     }catch(error){
         console.log(error);
     }
@@ -25,7 +25,7 @@ export const registerUser = async (username, password) => {
 
 export const loginUser = async (username, password) => {
     try{
-        const response = await fetch(`${BASE_URL}/login`,{
+        const response = await fetch(`${BASE_USER_URL}/login`,{
             method: "POST",
             headers:{
                 "Content-Type": "application/json"

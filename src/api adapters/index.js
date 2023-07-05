@@ -16,7 +16,7 @@ export const registerUser = async (username, password) => {
         });
         const result = await response.json();
         console.log(result)
-        return result.userData;
+        return result;
     }catch(error){
         console.log(error);
     }

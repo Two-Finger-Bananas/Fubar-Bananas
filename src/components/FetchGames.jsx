@@ -1,6 +1,6 @@
-import React from "react";
 import { useState,useEffect } from "react";
 import GameRows from "./fetchGameRows";
+import { BASE_GAME_URL } from "../api adapters";
 
 
 
@@ -13,7 +13,7 @@ export default function FetchGames({setSelectedGameId}){
     useEffect(() =>{
         async function fetchGame(){
             try{
-                const response = await fetch('http://localhost:3000/games');
+                const response = await fetch(`${BASE_GAME_URL}`);
                 const data = await response.json();
                 setGameInfo(data);
                 

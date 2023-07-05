@@ -11,7 +11,7 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
             Home
           </Link>
 
-          <Link className="Navbar-link" to="/FetchGames">
+          <Link className="Navbar-link" to="/games">
             Games
           </Link>
           
@@ -37,7 +37,7 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
           <Link className="Navbar-link" to="/login">
             Login
           </Link>
-          <Link className="Navbar-link" to="/FetchGames">
+          <Link className="Navbar-link" to="/games">
             Games
           </Link>
         </>

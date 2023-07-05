@@ -15,9 +15,9 @@ function App() {
 
   return (
     <>
-      {selectedGameId ? (
-        <SelectedGame selectedGameId={selectedGameId} setSelectedGameId={setSelectedGameId} />
-      ) : (
+      {/* {selectedGameId ? (
+        <SelectedGame  />
+      ) : ( */}
         <>
           
             <div className="App">
@@ -27,16 +27,16 @@ function App() {
                 <Route path="/register" element={<Register setIsLoggedIn={setIsLoggedIn} />} />
                 <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
                 <Route
-                  path="/fetchGames"
+                  path="/games"
                   element={<FetchGames setSelectedGameId={setSelectedGameId} />}
                 />
-                <Route path="/games/:id" element={SelectedGame} />
+                <Route path="/games/:id" element={<SelectedGame selectedGameId={selectedGameId} setSelectedGameId={setSelectedGameId} />} />
                 <Route path="/games/update/:id" element={<UpdateGame />} />
               </Routes>
             </div>
           
         </>
-      )}
+      {/* )} */}
     </>
   );
 }

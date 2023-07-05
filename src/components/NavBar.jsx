@@ -10,6 +10,10 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
           <Link className="NavBar-link" to="/">
             Home
           </Link>
+
+          <Link className="Navbar-link" to="/FetchGames">
+            Games
+          </Link>
           
           <button
             id="logout"

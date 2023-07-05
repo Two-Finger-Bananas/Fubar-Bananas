@@ -7,6 +7,7 @@ import Home from './components/Home';
 import FetchGames from './components/FetchGames';
 import './App.css';
 import SelectedGame from './components/selectedGameView';
+import UpdateGame from './components/UpdateGame';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -18,7 +19,7 @@ function App() {
         <SelectedGame selectedGameId={selectedGameId} setSelectedGameId={setSelectedGameId} />
       ) : (
         <>
-          <Router>
+          
             <div className="App">
               <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
               <Routes>
@@ -29,9 +30,11 @@ function App() {
                   path="/fetchGames"
                   element={<FetchGames setSelectedGameId={setSelectedGameId} />}
                 />
+                <Route path="/games/:id" element={SelectedGame} />
+                <Route path="/games/update/:id" element={<UpdateGame />} />
               </Routes>
             </div>
-          </Router>
+          
         </>
       )}
     </>

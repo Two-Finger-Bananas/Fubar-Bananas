@@ -23,7 +23,7 @@ function App() {
                 <Route  path="/games" element={<FetchGames setSelectedGameId={setSelectedGameId} />} />
                 <Route path="/games/:id" element={<SelectedGame selectedGameId={selectedGameId} setSelectedGameId={setSelectedGameId} />} />
                 <Route path="/games/update/:id" element={<UpdateGame />} />
-                <Route path="/games/create" element={<postGames />}
+                <Route path="/games/create" element={<PostGames />} />
               </Routes>
             </div>
     </>

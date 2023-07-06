@@ -16,7 +16,7 @@ export default function UpdateGame() {
     const [players, setPlayers] = useState([])
     const [coverImg, setCoverImg] = useState('')
     async function patchGame(event) {
-        event.preventdefault()
+        event.preventDefault()
         try {
         const response = await fetch(`${BASE_GAME_URL}/${id}`, {
             method: 'PATCH',

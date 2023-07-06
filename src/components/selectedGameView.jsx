@@ -12,6 +12,11 @@ export default function SelectedGame({ selectedGameId, setSelectedGameId}) {
     navigate(`/games/update/${selectedGameId}`)
   }
 
+  function goBack () {
+    setSelectedGameId(null)
+    navigate('/games')
+  }
+
   useEffect(() => {
     async function fetchSelectedGame() {
       try {
@@ -61,7 +66,7 @@ export default function SelectedGame({ selectedGameId, setSelectedGameId}) {
           <div className="Game-Actions">
             <button onClick={updateGame}>Update</button>
             <DeleteGame id="DeleteGameButton" gameId={selectedGameId} />
-            <button onClick={() => setSelectedGameId(null)}>Go Back</button>
+            <button onClick={goBack}>Go Back</button>
           </div>
         </div>
       ) : null}

@@ -64,8 +64,7 @@ setSelectedGameId(gameId);
                 </tr>
             </thead>
             <tbody>
-                <tr>   
-                </tr>
+                
                 
                 { filteredGames.map((VG) =>(
                     <GameRows

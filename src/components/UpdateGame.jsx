@@ -7,7 +7,6 @@ import { TOKEN } from "../api adapters";
 export default function UpdateGame() {
     const { id } = useParams()
     const navigate = useNavigate()
-    console.log(id)
     const [title, setTitle] = useState('');
     const [publishDate, setPublishDate] = useState('');
     const [genre,setGenre] = useState([]);
@@ -16,7 +15,7 @@ export default function UpdateGame() {
     const [players, setPlayers] = useState([])
     const [coverImg, setCoverImg] = useState('')
     async function patchGame(event) {
-        event.preventdefault()
+        event.preventDefault()
         try {
         const response = await fetch(`${BASE_GAME_URL}/${id}`, {
             method: 'PATCH',
@@ -71,6 +70,38 @@ export default function UpdateGame() {
             type="text"
             value={genre}
             onChange={(e) => setGenre(e.target.value)}
+          />
+        </label>
+        <label>
+          Game Developer:
+          <input
+            type="text"
+            value={gameDeveloper}
+            onChange={(e) => setGameDeveloper(e.target.value)}
+          />
+        </label>
+        <label>
+          Platforms:
+          <input
+            type="text"
+            value={platforms}
+            onChange={(e) => setPlatforms(e.target.value)}
+          />
+        </label>
+        <label>
+          Players:
+          <input
+            type="text"
+            value={players}
+            onChange={(e) => setPlayers(e.target.value)}
+          />
+        </label>
+        <label>
+          Cover Image:
+          <input
+            type="text"
+            value={coverImg}
+            onChange={(e) => setCoverImg(e.target.value)}
           />
         </label>
         <br />

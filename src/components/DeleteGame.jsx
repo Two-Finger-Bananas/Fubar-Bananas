@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { BASE_GAME_URL } from "../api adapters"
 import { TOKEN } from "../api adapters"
 
@@ -17,7 +18,7 @@ export default function DeleteGame(props) {
         } catch (error) {
             console.log(error)
         }
-    };
+    }
 
     // const currentUser = localStorage.getItem("username");
 

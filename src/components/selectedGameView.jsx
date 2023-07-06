@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import DeleteGame from "./DeleteGame";
 import { useNavigate } from "react-router-dom";
@@ -7,8 +8,13 @@ export default function SelectedGame({ selectedGameId, setSelectedGameId}) {
   const navigate = useNavigate()
   const [indivGame, setIndivGame] = useState(null);
 
-  function updatePage() {
+  function updateGame() {
     navigate(`/games/update/${selectedGameId}`)
+  }
+
+  function goBack () {
+    setSelectedGameId(null)
+    navigate('/games')
   }
 
   useEffect(() => {
@@ -58,9 +64,9 @@ export default function SelectedGame({ selectedGameId, setSelectedGameId}) {
             </tbody>
           </table>
           <div className="Game-Actions">
-            <button onClick={updatePage}>Update</button>
+            <button onClick={updateGame}>Update</button>
             <DeleteGame id="DeleteGameButton" gameId={selectedGameId} />
-            <button onClick={() => setSelectedGameId(null)}>Go Back</button>
+            <button onClick={goBack}>Go Back</button>
           </div>
         </div>
       ) : null}

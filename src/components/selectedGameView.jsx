@@ -1,7 +1,10 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import DeleteGame from "./DeleteGame";
+import FetchReviews from "./Reviews/fetchReviews";
+import FetchComments from "./comments/FetchComments";
 import { useNavigate } from "react-router-dom";
+
 const BASE_URL = 'http://localhost:3000/games';
 
 export default function SelectedGame({ selectedGameId, setSelectedGameId}) {
@@ -67,6 +70,8 @@ export default function SelectedGame({ selectedGameId, setSelectedGameId}) {
             <button onClick={updateGame}>Update</button>
             <DeleteGame id="DeleteGameButton" gameId={selectedGameId} />
             <button onClick={goBack}>Go Back</button>
+            <FetchReviews gameId={selectedGameId}/>
+            <FetchComments gameId={selectedGameId}/>
           </div>
         </div>
       ) : null}

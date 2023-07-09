@@ -4,7 +4,8 @@ export const BASE_GAME_URL = 'http://localhost:3000/games'
 export const BASE_REVIEWS_URL='http://localhost:3000/reviews'
 export const BASE_COMMENTS_URL='http://localhost:3000/comments'
 export const TOKEN = localStorage.getItem('token')
-export const registerUser = async (username, password) => {
+import jwtDecode from 'jwt-decode'
+export const registerUser = async (username, email, password) => {
     try{
         const response = await fetch(`${BASE_USER_URL}/register`,{
             method: "POST",
@@ -13,11 +14,12 @@ export const registerUser = async (username, password) => {
             },
             body: JSON.stringify({
                     username: username,
-                    password: password
+                    password: password,
+                    email: email,
+                    is_admin: false
             }),
         });
         const result = await response.json();
-        console.log(result)
         return result;
     }catch(error){
         console.log(error);
@@ -38,6 +40,9 @@ export const loginUser = async (username, password) => {
             }),
         });
         const result = await response.json();
+        const decodedToken = await jwtDecode(result.token)
+        console.log(result.userData.is_admin)
+        console.log(decodedToken)
         return result;
     }catch(error){
         console.log(error);

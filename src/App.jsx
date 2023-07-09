@@ -4,9 +4,10 @@ import Login from './components/login';
 import Register from './components/register';
 import NavBar from './components/NavBar';
 import Home from './components/Home';
-import FetchGames from './components/FetchGames';
-import SelectedGame from './components/selectedGameView';
-import UpdateGame from './components/UpdateGame';
+import FetchGames from './components/games/FetchGames';
+import SelectedGame from './components/games/selectedGameView';
+import UpdateGame from './components/games/UpdateGame';
+import PostGame from './components/games/postGames';
 import './App.css';
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
                 <Route  path="/games" element={<FetchGames setSelectedGameId={setSelectedGameId} />} />
                 <Route path="/games/:id" element={<SelectedGame selectedGameId={selectedGameId} setSelectedGameId={setSelectedGameId} />} />
                 <Route path="/games/update/:id" element={<UpdateGame />} />
+                <Route path="/games/create" element={<PostGame />} />
               </Routes>
             </div>
     </>

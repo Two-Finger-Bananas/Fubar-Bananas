@@ -7,6 +7,7 @@ const Register = (props) => {
   const setIsLoggedIn = props.setIsLoggedIn;
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('')
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -35,6 +36,18 @@ const Register = (props) => {
             value={username}
             onChange={(e) => {
               setUsername(e.target.value);
+            }}
+          />
+        </label>
+        <br />
+        <label>
+          <input
+            className="reg-label"
+            placeholder="email"
+            type="text"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
             }}
           />
         </label>

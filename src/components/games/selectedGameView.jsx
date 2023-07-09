@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import DeleteGame from "./DeleteGame";
-import FetchReviews from "./Reviews/fetchReviews";
-import FetchComments from "./comments/FetchComments";
+import FetchReviews from "../reviews/fetchReviews";
+import FetchComments from "../comments/FetchComments";
 import { useNavigate } from "react-router-dom";
 
 const BASE_URL = 'http://localhost:3000/games';

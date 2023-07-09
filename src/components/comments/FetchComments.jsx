@@ -1,21 +1,18 @@
 import React, { useEffect, useState} from 'react';
 import { BASE_COMMENTS_URL } from '../../api adapters';
 
-export default function FetchComments({}){
+export default function FetchComments(){
     const[theComments, setTheComments] = useState([]);
-   
- 
- const [searchQuery, setSearchQuery] = useState("")
-
     useEffect(() =>{
         async function fetchTheComments(){
             try{
                 const response = await fetch(`${BASE_COMMENTS_URL}`);
                 const data = await response.json();
+                console.log(data);
                 setTheComments(data);
                 
             } catch(error){
-                console.error(error);
+                console.log(error);
             }
         }
         fetchTheComments();
@@ -24,12 +21,12 @@ export default function FetchComments({}){
     return(
         <div><h2>Comments</h2>
             {theComments.map((comment)=>(
-                <div key={comment.CommentID}>
+                <div key={comment.commentId}>
                     
                     <p>Text: {comment.text}</p>
           <p>Username: {comment.username}</p>
           </div>
             ))}
         </div>
-    )
-}
+    );
+            }

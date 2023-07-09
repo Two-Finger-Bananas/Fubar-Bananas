@@ -1,11 +1,11 @@
 import React, { useEffect, useState} from 'react';
 import { BASE_REVIEWS_URL } from '../../api adapters';
+import DeleteReview from './deleteReviews';
+import EditReview from './editReviews';
+
 
 export default function FetchReviews({}){
     const[TheReviews, setTheReviews] = useState([]);
-   
- 
- const [searchQuery, setSearchQuery] = useState("")
 
     useEffect(() =>{
         async function fetchTheReviews(){
@@ -24,11 +24,13 @@ export default function FetchReviews({}){
     return(
         <div><h2>Reviews</h2>
             {TheReviews.map((review)=>(
-                <div key={review.reviewID}>
+                <div key={review.reviewId}>
                     
                     <p>Text: {review.text}</p>
           <p>Rating: {review.rating}</p>
           <p>Username: {review.username}</p>
+          <DeleteReview />
+          <EditReview/>
           </div>
             ))}
         </div>

@@ -4,10 +4,10 @@ import Login from './components/login';
 import Register from './components/register';
 import NavBar from './components/NavBar';
 import Home from './components/Home';
-import FetchGames from './components/FetchGames';
-import SelectedGame from './components/selectedGameView';
-import UpdateGame from './components/UpdateGame';
-import PostGame from './components/postGames';
+import FetchGames from './components/games/FetchGames';
+import SelectedGame from './components/games/selectedGameView';
+import UpdateGame from './components/games/UpdateGame';
+import PostGame from './components/games/postGames';
 import './App.css';
 
 function App() {

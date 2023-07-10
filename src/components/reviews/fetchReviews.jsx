@@ -1,12 +1,15 @@
-import React, { useEffect, useState} from 'react';
+import { useEffect, useState} from 'react';
 import { BASE_REVIEWS_URL } from '../../api adapters';
-import DeleteReview from './deleteReviews';
-import EditReview from './editReviews';
+import { useNavigate } from 'react-router-dom';
 
 
-export default function FetchReviews({}){
+export default function FetchReviews({setSelectedReviewId, selectedReviewId}){
     const[TheReviews, setTheReviews] = useState([]);
-
+    const navigate = useNavigate()
+    function reviewDetails(reviewId) {
+        navigate(`/reviews/${reviewId}`)
+    }
+    
     useEffect(() =>{
         async function fetchTheReviews(){
             try{
@@ -25,13 +28,11 @@ export default function FetchReviews({}){
         <div><h2>Reviews</h2>
             {TheReviews.map((review)=>(
                 <div key={review.reviewId}>
-                    
                     <p>Text: {review.text}</p>
-          <p>Rating: {review.rating}</p>
-          <p>Username: {review.username}</p>
-          <DeleteReview />
-          <EditReview/>
-          </div>
+                    <p>Rating: {review.rating}</p>
+                    <p>Username: {review.username}</p>
+                    <button onClick={() => reviewDetails(review.reviewId)}>Details</button>
+                </div>
             ))}
         </div>
     )

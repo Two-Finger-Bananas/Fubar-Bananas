@@ -5,23 +5,28 @@ import {useParams, useNavigate} from "react-router-dom";
 
 export default function EditReview(){
     const {id} = useParams()
-    const[text,setText] = useState(' ');
+    
+    const [text, setText] = useState('');
+    const [rating, setRating] = useState('')
+    const navigate = useNavigate()
+    console.log(rating)
     async function editAReview(event){
         event.preventDefault()
         try{
    
-            const response= await fetch(`${BASE_REVIEWS_URL}/${id}`,{
+            const response= await fetch(`${BASE_REVIEWS_URL}/update/${id}`,{
                 method:"PATCH",
                 headers:{
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${TOKEN}`
                 },
                 body: JSON.stringify({
-                    text: text
+                    text: text,
+                    rating: rating
                 })
             })
             const result = await response.json()
-            console.log(result)
+            navigate(`/reviews/${id}`)
             return result
         } catch(error){
             console.log(error)
@@ -38,9 +43,14 @@ export default function EditReview(){
             value={text}
             onChange={(e)=> setText(e.target.value)}/>
             </label>
-        <button id="edit-review-button" type="button" onClick={editAReview}>
-            Edit
-        </button>
+            <button onClick={() => setRating(1)}>1</button>
+            <button onClick={() => setRating(2)}>2</button>
+            <button onClick={() => setRating(3)}>3</button>
+            <button onClick={() => setRating(4)}>4</button>
+            <button onClick={() => setRating(5)}>5</button>
+            <button id="edit-review-button" type="submit">
+                Edit
+            </button>
         </form>
     );
 }

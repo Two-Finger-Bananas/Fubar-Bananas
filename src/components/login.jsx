@@ -20,6 +20,8 @@ const Login = (props) => {
             console.log(result);
 
             localStorage.setItem("username", result.userData.username);
+            localStorage.setItem("userId", result.userData.userId)
+            localStorage.setItem('is_admin', result.userData.is_admin)
             localStorage.setItem("token", result.token);
             setIsLoggedIn(true);
 

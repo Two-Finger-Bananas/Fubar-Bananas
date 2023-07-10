@@ -14,7 +14,8 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
       <Link className="Navbar-link" to="/games">Games</Link>
           
       {
-        isLoggedIn ? <button id="logout" className="NavBar-link" onClick={() => {setIsLoggedIn(false); localStorage.removeItem("token"); localStorage.removeItem("username")}}>Logout</button> : ""
+        isLoggedIn ? <button id="logout" className="NavBar-link" onClick={() => {setIsLoggedIn(false); localStorage.removeItem("token"); localStorage.removeItem("username"); localStorage.removeItem("userId");
+        localStorage.removeItem('is_admin')}}>Logout</button> : ""
       }
 
       {

@@ -13,6 +13,9 @@ export default function SelectedGame({ selectedGameId, setSelectedGameId, setSel
     navigate(`/games/update/${selectedGameId}`)
   }
 
+  function postReviewPage() {
+      navigate('/reviews')
+  }
   function goBack () {
     setSelectedGameId(null)
     navigate('/games')
@@ -68,6 +71,7 @@ export default function SelectedGame({ selectedGameId, setSelectedGameId, setSel
             <button onClick={updateGame}>Update</button>
             <DeleteGame id="DeleteGameButton" gameId={selectedGameId} />
             <button onClick={goBack}>Go Back</button>
+            <button onClick={postReviewPage}>Create Review</button>
             <FetchReviews gameId={selectedGameId} setSelectedReviewId={setSelectedReviewId} selectedReviewId={selectedReviewId}/>
           </div>
         </div>

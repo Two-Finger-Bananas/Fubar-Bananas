@@ -3,7 +3,7 @@ import { BASE_REVIEWS_URL } from "../../api adapters";
 import { useState } from "react";
 import { TOKEN } from "../../api adapters";
 
-export default function PostReview() {
+export default function PostReview({ selectedGameId }) {
     const {id} = useParams()
     const navigate = useNavigate()
     const [text, setText] = useState('');
@@ -12,21 +12,23 @@ export default function PostReview() {
     async function createReview(event){
         event.preventDefault()
         try{
-            const response = await fetch(`${BASE_REVIEWS_URL}/${id}`,{
+            const response = await fetch(`${BASE_REVIEWS_URL}`, {
                 method: 'POST',
                 headers:{
                     'Content-Type': 'Application/json',
                     'Authorization': `Bearer ${TOKEN}`
                 },
                 body: JSON.stringify({
-                    text:text,
-                    rating:rating,
-
+                    text: text,
+                    rating: rating,
+                    username: localStorage.getItem('username'),
+                    userId: localStorage.getItem('userId'),
+                    gameId: selectedGameId
                 })
             })
             const result = await response.json()
             console.log(result)
-            navigate('/comments')
+            navigate(`/games/${selectedGameId}`)
             return result
         }catch (error){
             console.log(error)

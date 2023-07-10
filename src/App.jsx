@@ -32,7 +32,7 @@ function App() {
                 <Route path="/games/create" element={<PostGame />} />
                 <Route path="/reviews/update/:id" element={<EditReview />} />
                 <Route path="/reviews/:id" element={<SelectedReview selectedReviewId={selectedReviewId} setSelectedReviewId={setSelectedReviewId} selectedGameId={selectedGameId} />} />
-                <Route path="/reviews" element={<PostReview />} />
+                <Route path="/reviews" element={<PostReview selectedGameId={selectedGameId} />} />
               </Routes>
             </div>
     </>

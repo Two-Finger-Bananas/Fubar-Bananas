@@ -1,8 +1,9 @@
-import React, { useEffect, useState} from 'react';
+import { useEffect, useState} from 'react';
 import { BASE_COMMENTS_URL } from '../../api adapters';
 
 export default function FetchComments(){
     const[theComments, setTheComments] = useState([]);
+
     useEffect(() =>{
         async function fetchTheComments(){
             try{

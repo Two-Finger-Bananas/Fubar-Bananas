@@ -19,7 +19,7 @@ const Login = (props) => {
             const result = await loginUser(username,password);
             console.log(result);
 
-            localStorage.setItem("username", username);
+            localStorage.setItem("username", result.userData.username);
             localStorage.setItem("token", result.token);
             setIsLoggedIn(true);
 

@@ -9,10 +9,11 @@ export default function FetchComments(){
             try{
                 const response = await fetch(`${BASE_COMMENTS_URL}`);
                 const data = await response.json();
+                console.log(data);
                 setTheComments(data);
                 
             } catch(error){
-                console.error(error);
+                console.log(error);
             }
         }
         fetchTheComments();
@@ -21,12 +22,12 @@ export default function FetchComments(){
     return(
         <div><h2>Comments</h2>
             {theComments.map((comment)=>(
-                <div key={comment.CommentID}>
+                <div key={comment.commentId}>
                     
                     <p>Text: {comment.text}</p>
           <p>Username: {comment.username}</p>
           </div>
             ))}
         </div>
-    )
-}
+    );
+            }

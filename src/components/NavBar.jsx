@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
+import './navBar.css';
 
 const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
   // console.log(isLoggedIn);

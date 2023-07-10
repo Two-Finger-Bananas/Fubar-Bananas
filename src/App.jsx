@@ -16,7 +16,8 @@ import './App.css';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [selectedGameId, setSelectedGameId] = useState(null);
-  const [selectedReviewId, setSelectedReviewId] = useState(null)
+  const [selectedReviewId, setSelectedReviewId] = useState(null);
+  const [selectedCommentId, setSelecetedCommentId]=useState(null);
   return (
     <>
             <div className="App">

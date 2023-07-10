@@ -1,5 +1,57 @@
-
+import { useParams, useNavigate } from "react-router-dom";
+import { BASE_REVIEWS_URL } from "../../api adapters";
+import { useState } from "react";
+import { TOKEN } from "../../api adapters";
 
 export default function PostReview() {
+    const {id} = useParams()
+    const navigate = useNavigate()
+    const [text, setText] = useState('');
+    const [rating, setRating] = useState('');
+
+    async function createReview(event){
+        event.preventDefault()
+        try{
+            const response = await fetch(`${BASE_REVIEWS_URL}/${id}`,{
+                method: 'POST',
+                headers:{
+                    'Content-Type': 'Application/json',
+                    'Authorization': `Bearer ${TOKEN}`
+                },
+                body: JSON.stringify({
+                    text:text,
+                    rating:rating,
+
+                })
+            })
+            const result = await response.json()
+            console.log(result)
+            navigate('/comments')
+            return result
+        }catch (error){
+            console.log(error)
+        }
+
+    }
+    return(
+        <div>
+            <h2>Create a New Review</h2>
+            <form onSubmit={createReview}>
+                <label>
+                    Text:
+                    <input type="text"
+                    value={text}
+                    onChange={(e)=> setText(e.target.value)}/> 
+                </label>
+                <br />
+             <button onClick={() => setRating(1)}>1</button>
+            <button onClick={() => setRating(2)}>2</button>
+            <button onClick={() => setRating(3)}>3</button>
+            <button onClick={() => setRating(4)}>4</button>
+            <button onClick={() => setRating(5)}>5</button>
+                <button type="submit">Create Review</button>
+            </form>
+        </div>
+    );
     
 }

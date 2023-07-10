@@ -1,8 +1,8 @@
 
 export const BASE_USER_URL = 'http://localhost:3000/user'
 export const BASE_GAME_URL = 'http://localhost:3000/games'
-export const BASE_REVIEWS_URL='http://localhost:3000/reviews'
-export const BASE_COMMENTS_URL='http://localhost:3000/comments'
+export const BASE_REVIEWS_URL ='http://localhost:3000/reviews'
+export const BASE_COMMENTS_URL ='http://localhost:3000/comments'
 export const TOKEN = localStorage.getItem('token')
 import jwtDecode from 'jwt-decode'
 export const registerUser = async (username, email, password) => {

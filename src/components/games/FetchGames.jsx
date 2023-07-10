@@ -35,7 +35,7 @@ VG.title.toLowerCase().includes(searchQuery.toLowerCase())
 );
 
 const gameDetailClick = (gameId) => {
-setSelectedGameId(gameId);
+        navigate(`/games/${gameId}`)
 };
 
 

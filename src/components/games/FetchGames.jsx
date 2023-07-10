@@ -22,7 +22,7 @@ export default function FetchGames({setSelectedGameId}){
                 setGameInfo(data);
                 
             } catch(error){
-                console.error(error);
+                console.log(error);
             }
         }
         fetchGame();
@@ -66,8 +66,7 @@ setSelectedGameId(gameId);
                     <th id="gl-title" colSpan = "3">Game List</th>
                 </tr>
             </thead>
-            <tbody>
-                    <button onClick={addGamePage}>Add Game</button>
+           <tbody>
                 { filteredGames.map((VG) =>(
                     <GameRows
                     key={VG.gameId}
@@ -75,11 +74,15 @@ setSelectedGameId(gameId);
                     setSelectedGameId={setSelectedGameId}
                     setGameInfo={setGameInfo}
                     onClick={() => gameDetailClick(VG.gameId)}
+                   
                   />
                   
                 ))}  
-            </tbody>
+           </tbody>  
         </table>
+        <div>
+        <button onClick={addGamePage}>Add Game</button>
+        </div>
         </div>
        
         </div>

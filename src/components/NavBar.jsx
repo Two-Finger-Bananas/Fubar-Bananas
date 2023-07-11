@@ -8,7 +8,7 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
     <div className="NavBar">
     
           
-      <Link className="NavBar-link" to="/">Home</Link>
+      <Link className="Navbar-link" to="/">Home</Link>
           
 
       <Link className="Navbar-link" to="/games">Games</Link>

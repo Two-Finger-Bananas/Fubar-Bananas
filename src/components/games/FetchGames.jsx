@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import './FGR.css';
 
 
-export default function FetchGames({setSelectedGameId}){
+export default function FetchGames({}){
     const[gameInfo, setGameInfo] = useState([]);
     const [searchQuery, setSearchQuery] = useState("")
     const navigate = useNavigate()
@@ -30,8 +30,8 @@ export default function FetchGames({setSelectedGameId}){
 //test code for search bar
 
 
-const filteredGames = gameInfo.filter((VG) =>
-VG.title.toLowerCase().includes(searchQuery.toLowerCase())
+const filteredGames = gameInfo.filter((game) =>
+game.title.toLowerCase().includes(searchQuery.toLowerCase())
 );
 
 const gameDetailClick = (gameId) => {
@@ -67,13 +67,12 @@ const gameDetailClick = (gameId) => {
                 </tr>
             </thead>
            <tbody>
-                { filteredGames.map((VG) =>(
+                { filteredGames.map((game, idx) =>(
                     <GameRows
-                    key={VG.gameId}
-                    VG={VG}
-                    setSelectedGameId={setSelectedGameId}
+                    key={idx}
+                    game={game}
                     setGameInfo={setGameInfo}
-                    onClick={() => gameDetailClick(VG.gameId)}
+                    onClick={() => gameDetailClick(game.gameId)}
                    
                   />
                   

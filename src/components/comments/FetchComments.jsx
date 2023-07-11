@@ -20,14 +20,14 @@ export default function FetchComments(){
     }, []);
 
     return(
-        <div><h2>Comments</h2>
+        <div>
+            <h2>Comments</h2>
             {theComments.map((comment)=>(
                 <div key={comment.commentId}>
-                    
-                    <p>Text: {comment.text}</p>
-          <p>Username: {comment.username}</p>
-          </div>
+                    <p>Username: {comment.username}</p>
+                    <p>Text: {comment.text}</p>   
+                </div>
             ))}
         </div>
     );
-            }
+}

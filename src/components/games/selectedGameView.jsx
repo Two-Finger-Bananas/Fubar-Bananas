@@ -1,30 +1,29 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import DeleteGame from "./DeleteGame";
-import FetchReviews from "../reviews/fetchReviews";
+import FetchReviewsByGame from "../reviews/fetchReviewsByGame";
 import { useNavigate } from "react-router-dom";
 import { BASE_GAME_URL } from "../../api adapters";
 
-export default function SelectedGame({ selectedGameId, setSelectedGameId, setSelectedReviewId, selectedReviewId}) {
+export default function SelectedGame(game) {
   const navigate = useNavigate()
   const [indivGame, setIndivGame] = useState(null);
 
   function updateGame() {
-    navigate(`/games/update/${selectedGameId}`)
+    navigate(`/games/update/${game.gameId}`)
   }
 
   function postReviewPage() {
       navigate('/reviews')
   }
   function goBack () {
-    setSelectedGameId(null)
     navigate('/games')
   }
 
   useEffect(() => {
     async function fetchSelectedGame() {
       try {
-        const response = await fetch(`${BASE_GAME_URL}/${selectedGameId}`);
+        const response = await fetch(`${BASE_GAME_URL}/${game.gameId}`);
         const data = await response.json();
         setIndivGame(data);
       } catch (error) {
@@ -33,10 +32,10 @@ export default function SelectedGame({ selectedGameId, setSelectedGameId, setSel
       }
     }
 
-    if (selectedGameId) {
+    if (game.gameId) {
       fetchSelectedGame();
     }
-  }, [selectedGameId]);
+  }, [game.gameId]);
 
   return (
     <div>
@@ -69,10 +68,10 @@ export default function SelectedGame({ selectedGameId, setSelectedGameId, setSel
           </table>
           <div className="Game-Actions">
             <button onClick={updateGame}>Update</button>
-            <DeleteGame id="DeleteGameButton" gameId={selectedGameId} />
+            <DeleteGame id="DeleteGameButton" gameId={game.gameId} />
             <button onClick={goBack}>Go Back</button>
             <button onClick={postReviewPage}>Create Review</button>
-            <FetchReviews gameId={selectedGameId} setSelectedReviewId={setSelectedReviewId} selectedReviewId={selectedReviewId}/>
+            <FetchReviewsByGame game={indivGame} />
           </div>
         </div>
       ) : null}

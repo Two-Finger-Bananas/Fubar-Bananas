@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
 import { useNavigate } from "react-router-dom";
-export default function GameRows({ prop }) {
+export default function GameRows({ game }) {
   const navigate = useNavigate()
-  console.log(prop)
+  console.log(game);
   return (
-    <tr>
-      <td>{prop.title}</td>
+   <tr>
+      <td>{game.title}</td>
       <td>
-        <img src={prop.coverImg} id="listed-game-image" alt="Game Cover" />
+        <img src={game.coverImg} id="listed-game-image" alt="Game Cover" />
       </td>
     </tr>
   );

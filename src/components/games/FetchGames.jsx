@@ -5,6 +5,7 @@ import { BASE_GAME_URL } from "../../api adapters";
 import { useNavigate } from "react-router-dom";
 import './FGR.css';
 
+
 export default function FetchGames(){
     const[gameInfo, setGameInfo] = useState([]);
     const [searchQuery, setSearchQuery] = useState("")
@@ -54,24 +55,31 @@ console.log(filteredGames)
         </form>
 
 
-        <div id= "game-card">
-            <table>
-                <thead>
-                    <tr>
-                            <th id="gl-title" colSpan = "3">Game List</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    { filteredGames.map((game, idx) => 
-                        <GameRows key={idx} game={game} onClick={() => gameDetailClick(game.gameId)} />
-                    )}  
-                </tbody>  
-            </table>
-            <div>
-                <button onClick={addGamePage}>Add Game</button>
-            </div>
+    <div id= "game-card">
+        <table>
+            <thead>
+                <tr>
+                    <th id="gl-title" colSpan = "3">Game List</th>
+                </tr>
+            </thead>
+           <tbody>
+                { filteredGames.map((game, idx) =>(
+                    <GameRows
+                    key={idx}
+                    game={game}
+                    setGameInfo={setGameInfo}
+                    onClick={() => gameDetailClick(game.gameId)}
+                   
+                  />
+                  
+                ))}  
+           </tbody>  
+        </table>
+        <div>
+        <button onClick={addGamePage}>Add Game</button>
         </div>
-        
+        </div>
+       
     </div>
         
     );

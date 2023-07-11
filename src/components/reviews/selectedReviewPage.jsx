@@ -27,7 +27,6 @@ export default function SelectedReview({ selectedReviewId, setSelectedReviewId, 
                 console.log(error)
             }
         }
-
         if (id) {
             fetchSelectedReview()
         }

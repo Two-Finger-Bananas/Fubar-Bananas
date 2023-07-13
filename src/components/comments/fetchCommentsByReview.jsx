@@ -1,17 +1,16 @@
+/* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { BASE_REVIEW_URL } from "../../api adapters";
+import { BASE_REVIEWS_URL } from "../../api adapters";
 
-export default function FetchCommentsByUser(review) {
+export default function FetchCommentsByReview({ review }) {
     const [comments, setComments] = useState([])
     const [searchQuery, setSearchQuery] = useState("")
-    const navigate = useNavigate()
-
+    console.log(comments)
     useEffect(() => {
         async function fetchComments() {
             try {
-                const response = await fetch(`${BASE_REVIEW_URL}/comments/${review.reviewId}`)
-                const data = response.json()
+                const response = await fetch(`${BASE_REVIEWS_URL}/comments/${review.reviewId}`)
+                const data = await response.json()
                 setComments(data) 
             } catch (error) {
                 console.log(error)
@@ -23,7 +22,7 @@ export default function FetchCommentsByUser(review) {
     const filteredComments = comments.filter((comment) =>
         comment.text.toLowerCase().includes(searchQuery.toLowerCase())
         );
-
+    console.log(filteredComments)
     return (
         <div>
             <h2>Comments</h2>

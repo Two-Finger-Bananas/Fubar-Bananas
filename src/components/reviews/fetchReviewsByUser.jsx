@@ -1,13 +1,13 @@
-/* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { BASE_USERS_URL } from "../../api adapters";
+import { BASE_USER_URL } from "../../api adapters";
 
-export default function FetchReviewsByUser({ userId }) {
+export default function FetchReviewsByUser(user) {
     const [reviews, setReviews] = useState([])
     const [searchQuery, setSearchQuery] = useState("")
     const navigate = useNavigate()
-    console.log(userId)
+    console.log(reviews)
+
     function reviewDetails(reviewId) {
         navigate(`/reviews/${reviewId}`)
     }
@@ -15,18 +15,18 @@ export default function FetchReviewsByUser({ userId }) {
     useEffect(() => {
         async function fetchReviews() {
             try {
-                const response = await fetch(`${BASE_USERS_URL}/reviews/${userId}`)
-                const data = await response.json()
+                const response = await fetch(`${BASE_USER_URL}/reviews/${user.userId}`)
+                const data = response.json()
                 setReviews(data) 
             } catch (error) {
                 console.log(error)
             }  
         }
         fetchReviews()
-    })
-    const filteredReviews = reviews.filter((review) =>
+    }, [])
+    const filteredReviews = reviews.length ? reviews.filter((review) =>
         review.text.toLowerCase().includes(searchQuery.toLowerCase())
-        );
+        ) : null
     return (
         <div>
             <h2>Reviews</h2>
@@ -40,14 +40,16 @@ export default function FetchReviewsByUser({ userId }) {
                 onChange={(event) => setSearchQuery(event.target.value)}
                 />
             </form>
-            {filteredReviews.map((review)=>(
+            {reviews.length ? filteredReviews.map((review)=>(
                 <div key={review.reviewId}>
                     <p>Text: {review.text}</p>
                     <p>Rating: {review.rating}</p>
                     <p>Username: {review.username}</p>
                     <button onClick={() => reviewDetails(review.reviewId)}>Details</button>
                 </div>
-            ))}
+            )):<p>{reviews.message}</p>
+            }
         </div>
+            
     )
 }

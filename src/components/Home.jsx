@@ -10,7 +10,7 @@
 
 
 import { useEffect } from "react";
-import './Home.css';
+import './home.css';
 import videoSource from '../imgs-and-vids/GS-Homepage.mp4';
 
 export default function Home() {

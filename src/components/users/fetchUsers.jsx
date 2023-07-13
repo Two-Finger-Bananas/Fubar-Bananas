@@ -34,7 +34,7 @@ export default function FetchUsers() {
           onChange={(event) => setSearchQuery(event.target.value)}
         />
         </form>
-
+        <h1>Users</h1>
         { 
         filteredUsers.map((user, idx) =>(<UserCard key={idx} user={user} />))
         }

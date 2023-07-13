@@ -9,12 +9,13 @@ export default function UserCard({ user }) {
     return (
         <>
         {
-            !details ? <h2 onClick={() => { setDetails(true)}}>Name: {user.username}</h2> :
+            !details ? <h2 onClick={() => { setDetails(true)}}>{user.username}</h2> :
             <div>
             <h1>User Info:</h1>
             <p onClick={() => {setDetails(false)}}>Close</p>
             <h2>Name: {user.username}</h2>
             <h3>Email:{user.email}</h3>
+            {user.is_admin ? <h3>Role: Admin</h3> : <h3>Role: User</h3>}
             <h3>User Id: {user.userId}</h3>
             <button>Edit</button>
             <button>Delete</button>

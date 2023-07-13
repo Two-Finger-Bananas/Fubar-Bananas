@@ -7,6 +7,8 @@ import './FGR.css';
 import './FG.css';
 
 
+
+
 export default function FetchGames({ selectedGameId, setSelectedGameId }){
     const[gameInfo, setGameInfo] = useState([]);
     const [searchQuery, setSearchQuery] = useState("")
@@ -42,6 +44,7 @@ game.title.toLowerCase().includes(searchQuery.toLowerCase())
     return (
         
     <div>
+        
         <form id="search-bar-form">
             <label htmlFor="search-query">Search: </label>
             <input

@@ -1,30 +1,31 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { BASE_GAME_URL } from "../../api adapters";
 
-export default function FetchReviewsByGame(game) {
+export default function FetchReviewsByGame() {
     const [reviews, setReviews] = useState([])
     const [searchQuery, setSearchQuery] = useState("")
     const navigate = useNavigate()
+    const { id } = useParams()
     function reviewDetails(reviewId) {
         navigate(`/reviews/${reviewId}`)
     }
-
     useEffect(() => {
         async function fetchReviews() {
             try {
-                const response = await fetch(`${BASE_GAME_URL}/reviews/${game.gameId}`)
-                const data = response.json()
+                const response = await fetch(`${BASE_GAME_URL}/reviews/${id}`)
+                const data = await response.json()
                 setReviews(data) 
             } catch (error) {
                 console.log(error)
             }  
         }
         fetchReviews()
-    })
+    }, [id])
     const filteredReviews = reviews.filter((review) =>
         review.text.toLowerCase().includes(searchQuery.toLowerCase())
         );
+        
     return (
         <div>
             <h2>Reviews</h2>

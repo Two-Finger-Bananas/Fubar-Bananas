@@ -2,15 +2,16 @@
 import { useState, useEffect } from "react";
 import DeleteGame from "./DeleteGame";
 import FetchReviewsByGame from "../reviews/fetchReviewsByGame";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { BASE_GAME_URL } from "../../api adapters";
 
-export default function SelectedGame(game) {
+export default function SelectedGame({ selectedGameId, setSelectedGameId }) {
   const navigate = useNavigate()
   const [indivGame, setIndivGame] = useState(null);
+  const { id } = useParams()
 
   function updateGame() {
-    navigate(`/games/update/${game.gameId}`)
+    navigate(`/games/update/${id}`)
   }
 
   function postReviewPage() {
@@ -23,7 +24,7 @@ export default function SelectedGame(game) {
   useEffect(() => {
     async function fetchSelectedGame() {
       try {
-        const response = await fetch(`${BASE_GAME_URL}/${game.gameId}`);
+        const response = await fetch(`${BASE_GAME_URL}/${id}`);
         const data = await response.json();
         setIndivGame(data);
       } catch (error) {
@@ -32,10 +33,10 @@ export default function SelectedGame(game) {
       }
     }
 
-    if (game.gameId) {
+    if (id) {
       fetchSelectedGame();
     }
-  }, [game.gameId]);
+  }, [id]);
 
   return (
     <div>
@@ -68,10 +69,10 @@ export default function SelectedGame(game) {
           </table>
           <div className="Game-Actions">
             <button onClick={updateGame}>Update</button>
-            <DeleteGame id="DeleteGameButton" gameId={game.gameId} />
+            <DeleteGame id="DeleteGameButton" gameId={id} />
             <button onClick={goBack}>Go Back</button>
             <button onClick={postReviewPage}>Create Review</button>
-            <FetchReviewsByGame game={indivGame} />
+            <FetchReviewsByGame game={indivGame} setSelectedGameId={setSelectedGameId} selectedGameId={selectedGameId} />
           </div>
         </div>
       ) : null}

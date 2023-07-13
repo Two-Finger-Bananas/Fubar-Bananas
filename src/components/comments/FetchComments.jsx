@@ -9,7 +9,6 @@ export default function FetchComments(){
             try{
                 const response = await fetch(`${BASE_COMMENTS_URL}`);
                 const data = await response.json();
-                console.log(data);
                 setTheComments(data);
                 
             } catch(error){

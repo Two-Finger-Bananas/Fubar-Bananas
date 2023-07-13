@@ -1,8 +1,9 @@
+/* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { BASE_USER_URL } from "../../api adapters";
+import { BASE_USERS_URL } from "../../api adapters";
 
-export default function FetchReviewsByUser(user) {
+export default function FetchReviewsByUser({ user }) {
     const [reviews, setReviews] = useState([])
     const [searchQuery, setSearchQuery] = useState("")
     const navigate = useNavigate()
@@ -14,8 +15,8 @@ export default function FetchReviewsByUser(user) {
     useEffect(() => {
         async function fetchReviews() {
             try {
-                const response = await fetch(`${BASE_USER_URL}/reviews/${user.userId}`)
-                const data = response.json()
+                const response = await fetch(`${BASE_USERS_URL}/reviews/${user.userId}`)
+                const data = await response.json()
                 setReviews(data) 
             } catch (error) {
                 console.log(error)

@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import './FGR.css';
 
 
-export default function FetchGames(){
+export default function FetchGames({ selectedGameId, setSelectedGameId }){
     const[gameInfo, setGameInfo] = useState([]);
     const [searchQuery, setSearchQuery] = useState("")
     const navigate = useNavigate()
@@ -16,7 +16,6 @@ export default function FetchGames(){
     function gameDetailClick(gameId) {
         navigate(`/games/${gameId}`)
     }
-    console.log(gameInfo)
     useEffect(() =>{
         async function fetchGame(){
             try{
@@ -36,7 +35,6 @@ const filteredGames = gameInfo.filter((game) =>
 game.title.toLowerCase().includes(searchQuery.toLowerCase())
 );
 
-console.log(filteredGames)
 //test end
 
 
@@ -69,7 +67,8 @@ console.log(filteredGames)
                     game={game}
                     setGameInfo={setGameInfo}
                     onClick={() => gameDetailClick(game.gameId)}
-                   
+                    setSelectedGameId={setSelectedGameId} 
+                    selectedGameId={selectedGameId}
                   />
                   
                 ))}  

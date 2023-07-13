@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import './navBar.css';
 
 const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
-  // console.log(isLoggedIn);
+  const is_admin = localStorage.getItem('is_admin')
   return (
     <div className="NavBar">
     
@@ -12,6 +12,14 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
           
 
       <Link className="Navbar-link" to="/games">Games</Link>
+
+      {
+        isLoggedIn && is_admin ? <Link className="Navbar-link" to="/admin">Admin Dashboard</Link> : ""
+      }
+
+      {
+        isLoggedIn && !is_admin ? <Link className="Navbar-link" to="/profile">Profile</Link> : ""
+      }
           
       {
         isLoggedIn ? <button id="logout" className="NavBar-link" onClick={() => {setIsLoggedIn(false); localStorage.removeItem("token"); localStorage.removeItem("username"); localStorage.removeItem("userId");

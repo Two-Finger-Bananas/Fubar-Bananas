@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { TOKEN } from "../../api adapters";
 import { BASE_COMMENTS_URL } from "../../api adapters";
-import { useParams,useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
-export default function editComment(){
+export default function EditComment(){
     const {id} = useParams();
     const [text, setText] = useState('');
     const navigate = useNavigate();
@@ -39,7 +39,7 @@ return(
            onChange={(e)=> setText(e.target.value)}/>
          </label>
            <button id="edit-comment-button" type="submit">
-                Edit comment </button>
+                Edit Comment </button>
     </form>
 )
 }

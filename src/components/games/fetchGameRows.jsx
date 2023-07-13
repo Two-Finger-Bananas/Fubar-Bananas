@@ -1,11 +1,14 @@
 /* eslint-disable react/prop-types */
 import { useNavigate } from "react-router-dom";
-export default function GameRows({ game }) {
+export default function GameRows({ game, setSelectedGameId }) {
   const navigate = useNavigate()
-  console.log(game);
+  function gameDetailClick(gameId) {
+    navigate(`/games/${gameId}`)
+    setSelectedGameId(gameId)
+}
   return (
    <tr>
-      <td>{game.title}</td>
+      <td onClick={() => gameDetailClick(game.gameId)}>{game.title}</td>
       <td>
         <img src={game.coverImg} id="listed-game-image" alt="Game Cover" />
       </td>

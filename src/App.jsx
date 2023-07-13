@@ -13,9 +13,12 @@ import PostReview from './components/reviews/PostReviews';
 import SelectedReview from './components/reviews/selectedReviewPage';
 import './App.css';
 import UserCard from './components/users/userCard';
+import AdminDashboard from './components/users/adminDash';
+import Profile from './components/users/profile';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [ isLoggedIn, setIsLoggedIn ] = useState(false);
+  const [ selectedGameId, setSelectedGameId ] = useState(null)
   return (
     <>
             <div className="App">
@@ -24,14 +27,16 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/register" element={<Register setIsLoggedIn={setIsLoggedIn} />} />
                 <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
-                <Route  path="/games" element={<FetchGames />} />
-                <Route path="/games/:id" element={<SelectedGame />} />
+                <Route  path="/games" element={<FetchGames setSelectedGameId={setSelectedGameId} selectedGameId={selectedGameId} />} />
+                <Route path="/games/:id" element={<SelectedGame setSelectedGameId={setSelectedGameId} selectedGameId={selectedGameId} />} />
                 <Route path="/games/update/:id" element={<UpdateGame />} />
                 <Route path="/games/create" element={<PostGame />} />
                 <Route path="/reviews/update/:id" element={<EditReview />} />
-                <Route path="/reviews/:id" element={<SelectedReview />} />
+                <Route path="/reviews/:id" element={<SelectedReview setSelectedGameId={setSelectedGameId} selectedGameId={selectedGameId} />} />
                 <Route path="/reviews" element={<PostReview />} />
                 <Route path="/user/:id" element={<UserCard />} />
+                <Route path="/admin" element={<AdminDashboard />} />
+                <Route path="/profile" element={<Profile />} />
               </Routes>
             </div>
     </>

@@ -1,17 +1,16 @@
+/* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { BASE_USER_URL } from "../../api adapters";
+import { BASE_USERS_URL } from "../../api adapters";
 
-export default function FetchCommentsByUser(user) {
+export default function FetchCommentsByUser({ user }) {
     const [comments, setComments] = useState([])
     const [searchQuery, setSearchQuery] = useState("")
-    const navigate = useNavigate()
 
     useEffect(() => {
         async function fetchComments() {
             try {
-                const response = await fetch(`${BASE_USER_URL}/comments/${user.userId}`)
-                const data = response.json()
+                const response = await fetch(`${BASE_USERS_URL}/comments/${user.userId}`)
+                const data = await response.json()
                 setComments(data) 
             } catch (error) {
                 console.log(error)

@@ -1,15 +1,14 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
-import FetchComments from "../comments/FetchComments";
 import { useNavigate, useParams } from "react-router-dom";
 import { BASE_REVIEWS_URL } from "../../api adapters";
 import DeleteReview from "./deleteReviews";
+import FetchCommentsByReview from "../comments/fetchCommentsByReview";
 
-export default function SelectedReview({ selectedReviewId, setSelectedReviewId, selectedGameId }) {
+export default function SelectedReview({ selectedGameId }) {
     const navigate = useNavigate()
     const [indivReview, setIndivReview] = useState(null);
     const { id } = useParams()
-    // console.log(id)
     function goBack () {
         navigate(`/games/${selectedGameId}`)
       }
@@ -54,7 +53,7 @@ export default function SelectedReview({ selectedReviewId, setSelectedReviewId, 
                             <button onClick={updateReview}>Edit</button>
                             <DeleteReview id="DeleteReviewButton" reviewId={id} />
                             <button onClick={goBack}>Go Back</button>
-                            <FetchComments />
+                            <FetchCommentsByReview review={indivReview} />
                         </div>
                     </div>
                 ) : null

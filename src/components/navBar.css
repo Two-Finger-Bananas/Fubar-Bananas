@@ -7,16 +7,27 @@
         display: flex;
         justify-content:space-around;
         align-items: center;
-        background-color: #f5f5f5;
+        background-color: #151415;
         z-index: 2;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
       
       }
       
       .Navbar-link {
-        color: black;
+        color: rgb(11, 5, 5);
+        text-shadow:-1px -1px 0 lightblue, 1px -1px 0 lightblue, -1px 1px 0 lightblue, 1px 1px 0 lightblue;
+      
       }
+      
 
       .Navbar-link:hover{
-        color:red;
-      }
+        color:rgb(4, 4, 4);
+        text-shadow: -1px -1px 0 magenta, 1px -1px 0 magenta, -1px 1px 0 magenta, 1px 1px 0 magenta; }
+      
+
+    
+
+      
+
+      
       

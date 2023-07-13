@@ -10,10 +10,12 @@
 
 
 import { useEffect } from "react";
-import './home.css';
+import './Home.css';
+import { useNavigate } from "react-router-dom";
 import videoSource from '../imgs-and-vids/GS-Homepage.mp4';
 
 export default function Home() {
+  const navigate = useNavigate()
   useEffect(() => {
     const videoBackground = document.getElementById("video-background");
     if (videoBackground) {
@@ -29,7 +31,7 @@ export default function Home() {
       </video>
       <div className="content">
         <h1>Level up your gaming experience with the ultimate game review destination! Explore, discover, and conquer the best games out there. Join our community of passionate gamers and dive into expert reviews that will guide you to your next epic adventure. Get ready to level up your gaming journey with us!</h1>
-        <button id="getStarted">Get Started</button>
+        
       </div>
     </div>
   );

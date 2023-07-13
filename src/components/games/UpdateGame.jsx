@@ -1,11 +1,10 @@
-/* eslint-disable no-unused-vars */
-import { useParams, useNavigate } from "react-router-dom";
+/* eslint-disable react/prop-types */
+import { useNavigate } from "react-router-dom";
 import { BASE_GAME_URL } from "../../api adapters";
 import {useState} from 'react';
 import { TOKEN } from "../../api adapters";
 
-export default function UpdateGame() {
-    const { id } = useParams()
+export default function UpdateGame({ game, setUpdateGame }) {
     const navigate = useNavigate()
     const [title, setTitle] = useState('');
     const [publishDate, setPublishDate] = useState('');
@@ -14,28 +13,29 @@ export default function UpdateGame() {
     const [platforms, setPlatforms] = useState([])
     const [players, setPlayers] = useState([])
     const [coverImg, setCoverImg] = useState('')
+    // console.log(game)
+    
     async function patchGame(event) {
         event.preventDefault()
         try {
-        const response = await fetch(`${BASE_GAME_URL}/${id}`, {
+        const response = await fetch(`${BASE_GAME_URL}/${game.gameId}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'Application/json',
                 'Authorization': `Bearer ${TOKEN}`
             },
             body: JSON.stringify ({
-                title: title,
-                publishDate: publishDate,
-                gameDeveloper: gameDeveloper,
-                genre: genre,
-                platforms: platforms,
-                players: players,
-                coverImg: coverImg
+                title: !title ? `${game.title}` : title,
+                publishDate: !publishDate ? `${game.publishDate}` : publishDate,
+                gameDeveloper: !gameDeveloper ? `${game.gameDeveloper}` : gameDeveloper,
+                genre: !genre.length ? `${game.genre}` : genre,
+                platforms: !platforms.length ? `${game.platforms}` : platforms,
+                players: !players.length ? `${game.players}` : players,
+                coverImg: !coverImg ? `${game.coverImg}` : coverImg
             })
         })
         const result = await response.json()
-        console.log(result)
-        navigate('/games')
+        setUpdateGame(false)
         return result
         } catch (error) {
             console.log(error)

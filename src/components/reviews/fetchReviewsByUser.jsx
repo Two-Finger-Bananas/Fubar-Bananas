@@ -16,7 +16,7 @@ export default function FetchReviewsByUser(user) {
         async function fetchReviews() {
             try {
                 const response = await fetch(`${BASE_USER_URL}/reviews/${user.userId}`)
-                const data = response.json()
+                const data = await response.json()
                 setReviews(data) 
             } catch (error) {
                 console.log(error)

@@ -14,8 +14,11 @@ const Register = (props) => {
     e.preventDefault();
     try {
       const result = await registerUser(username, email, password);
-      console.log(result);
+      // console.log(result);
 
+      
+      localStorage.setItem("userId", result.userData.userId)
+      localStorage.setItem('is_admin', result.userData.is_admin)
       localStorage.setItem("username", username);
       localStorage.setItem("token", result.token);
       setIsLoggedIn(true);

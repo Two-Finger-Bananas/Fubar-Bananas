@@ -5,7 +5,6 @@ import { BASE_REVIEWS_URL } from "../../api adapters";
 export default function FetchCommentsByReview({ review }) {
     const [comments, setComments] = useState([])
     const [searchQuery, setSearchQuery] = useState("")
-    console.log(comments)
     useEffect(() => {
         async function fetchComments() {
             try {
@@ -17,12 +16,11 @@ export default function FetchCommentsByReview({ review }) {
             }  
         }
         fetchComments()
-    })
+    }, [])
 
-    const filteredComments = comments.filter((comment) =>
+    const filteredComments = comments.length ? comments.filter((comment) =>
         comment.text.toLowerCase().includes(searchQuery.toLowerCase())
-        );
-    console.log(filteredComments)
+        ) : null
     return (
         <div>
             <h2>Comments</h2>
@@ -36,12 +34,12 @@ export default function FetchCommentsByReview({ review }) {
                 onChange={(event) => setSearchQuery(event.target.value)}
                 />
             </form>
-            {filteredComments.map((comment)=>(
+            {comments.length ? filteredComments.map((comment)=>(
                 <div key={comment.commentId}>
                     <p>Text: {comment.text}</p>
                     <p>Review: {comment.reviewId}</p>  
                 </div>
-            ))}
+            )) : <p>{comments.message}</p>}
         </div>
     )
 }

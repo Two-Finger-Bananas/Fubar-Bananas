@@ -21,10 +21,10 @@ export default function FetchReviewsByGame() {
             }  
         }
         fetchReviews()
-    }, [id])
-    const filteredReviews = reviews.filter((review) =>
+    }, [reviews])
+    const filteredReviews = reviews.length ? reviews.filter((review) =>
         review.text.toLowerCase().includes(searchQuery.toLowerCase())
-        );
+        ) : null
         
     return (
         <div>
@@ -39,14 +39,14 @@ export default function FetchReviewsByGame() {
                 onChange={(event) => setSearchQuery(event.target.value)}
                 />
             </form>
-            {filteredReviews.map((review)=>(
+            {filteredReviews ? filteredReviews.map((review)=>(
                 <div key={review.reviewId}>
                     <p>Text: {review.text}</p>
                     <p>Rating: {review.rating}</p>
                     <p>Username: {review.username}</p>
                     <button onClick={() => reviewDetails(review.reviewId)}>Details</button>
                 </div>
-            ))}
+            )) : <p>{reviews.message}</p>}
         </div>
     )
 }

@@ -1,17 +1,18 @@
+/* eslint-disable react/prop-types */
 import { useParams, useNavigate } from "react-router-dom";
 import { BASE_REVIEWS_URL } from "../../api adapters";
 import { useState } from "react";
-import { TOKEN } from "../../api adapters";
 
-export default function PostReview({ selectedGameId }) {
-    const {id} = useParams()
-    const navigate = useNavigate()
+export default function PostReview({ game, setNewReview }) {
     const [text, setText] = useState('');
     const [rating, setRating] = useState('');
+    // console.log(game)
+    // console.log(setNewReview)
 
     async function createReview(event){
         event.preventDefault()
         try{
+            const TOKEN = localStorage.getItem('token')
             const response = await fetch(`${BASE_REVIEWS_URL}`, {
                 method: 'POST',
                 headers:{
@@ -23,14 +24,12 @@ export default function PostReview({ selectedGameId }) {
                     rating: rating,
                     username: localStorage.getItem('username'),
                     userId: localStorage.getItem('userId'),
-                    gameId: selectedGameId
+                    gameId: game.gameId
                 })
             })
             const result = await response.json()
-            console.log(result)
-            navigate(`/games/${selectedGameId}`)
             return result
-        }catch (error){
+        }   catch (error){
             console.log(error)
         }
 
@@ -46,12 +45,13 @@ export default function PostReview({ selectedGameId }) {
                     onChange={(e)=> setText(e.target.value)}/> 
                 </label>
                 <br />
-             <button onClick={() => setRating(1)}>1</button>
-            <button onClick={() => setRating(2)}>2</button>
-            <button onClick={() => setRating(3)}>3</button>
-            <button onClick={() => setRating(4)}>4</button>
-            <button onClick={() => setRating(5)}>5</button>
-                <button type="submit">Create Review</button>
+            <button type="button" onClick={() => {setRating(1)}}>1</button>
+            <button type="button" onClick={() => {setRating(2)}}>2</button>
+            <button type="button" onClick={() => {setRating(3)}}>3</button>
+            <button type="button" onClick={() => {setRating(4)}}>4</button>
+            <button type="button" onClick={() => {setRating(5)}}>5</button>
+            <button type="submit">Create Review</button>
+            <button type="button" onClick={() => setNewReview(false)}>Cancel</button>
             </form>
         </div>
     );

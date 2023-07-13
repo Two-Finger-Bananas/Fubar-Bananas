@@ -42,8 +42,6 @@ export const loginUser = async (username, password) => {
         });
         const result = await response.json();
         const decodedToken = await jwtDecode(result.token)
-        console.log(result.userData.is_admin)
-        console.log(decodedToken)
         return result;
     }catch(error){
         console.log(error);

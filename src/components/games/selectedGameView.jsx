@@ -4,15 +4,18 @@ import DeleteGame from "./DeleteGame";
 import FetchReviewsByGame from "../reviews/fetchReviewsByGame";
 import { useNavigate, useParams } from "react-router-dom";
 import { BASE_GAME_URL } from "../../api adapters";
+import PostReview from "../reviews/PostReviews";
+import UpdateGame from "./UpdateGame";
 
 export default function SelectedGame({ selectedGameId, setSelectedGameId }) {
   const navigate = useNavigate()
   const [indivGame, setIndivGame] = useState(null);
+  const [newReview, setNewReview] = useState(false)
+  const [updateGame, setUpdateGame] = useState(false)
   const { id } = useParams()
-
-  function updateGame() {
-    navigate(`/games/update/${id}`)
-  }
+  // function updateGame() {
+  //   navigate(`/games/update/${id}`)
+  // }
 
   function postReviewPage() {
       navigate('/reviews')
@@ -36,7 +39,7 @@ export default function SelectedGame({ selectedGameId, setSelectedGameId }) {
     if (id) {
       fetchSelectedGame();
     }
-  }, [id]);
+  }, [updateGame]);
 
   return (
     <div>
@@ -57,7 +60,7 @@ export default function SelectedGame({ selectedGameId, setSelectedGameId }) {
               <td>{indivGame.platforms}</td>
               </tr>
               <tr>
-                <td>{indivGame.gameDevelopers}</td>
+                <td>{indivGame.gameDeveloper}</td>
               </tr>
               <tr>
                 <td>{indivGame.players}</td>
@@ -68,10 +71,15 @@ export default function SelectedGame({ selectedGameId, setSelectedGameId }) {
             </tbody>
           </table>
           <div className="Game-Actions">
-            <button onClick={updateGame}>Update</button>
+            { !updateGame ? <button onClick={() => setUpdateGame(true)}>Update</button> 
+              : <UpdateGame game={indivGame} setUpdateGame={setUpdateGame} />
+            }
             <DeleteGame id="DeleteGameButton" gameId={id} />
             <button onClick={goBack}>Go Back</button>
-            <button onClick={postReviewPage}>Create Review</button>
+            {
+              !newReview ? <button onClick={() => {setNewReview(true)}}>Create Review</button> :
+              <PostReview game={indivGame} setNewReview={setNewReview} />
+            }
             <FetchReviewsByGame game={indivGame} setSelectedGameId={setSelectedGameId} selectedGameId={selectedGameId} />
           </div>
         </div>

@@ -4,6 +4,7 @@ import GameRows from "./fetchGameRows";
 import { BASE_GAME_URL } from "../../api adapters";
 import { useNavigate } from "react-router-dom";
 import './FGR.css';
+import './FG.css';
 
 
 export default function FetchGames({ selectedGameId, setSelectedGameId }){

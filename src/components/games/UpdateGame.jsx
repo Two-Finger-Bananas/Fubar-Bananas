@@ -5,7 +5,6 @@ import {useState} from 'react';
 import { TOKEN } from "../../api adapters";
 
 export default function UpdateGame({ game, setUpdateGame }) {
-    const navigate = useNavigate()
     const [title, setTitle] = useState('');
     const [publishDate, setPublishDate] = useState('');
     const [genre,setGenre] = useState([]);

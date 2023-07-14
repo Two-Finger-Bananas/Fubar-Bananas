@@ -8,7 +8,7 @@
         justify-content:space-around;
         align-items: center;
         background-color: #151415;
-        z-index: 2;
+        z-index: 1000;
         box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
       
       }

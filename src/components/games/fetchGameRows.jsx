@@ -7,8 +7,8 @@ export default function GameRows({ game, setSelectedGameId }) {
     setSelectedGameId(gameId)
 }
   return (
-   <tr>
-      <td onClick={() => gameDetailClick(game.gameId)}>{game.title}</td>
+   <tr id="game-row">
+      <td id="game-items" onClick={() => gameDetailClick(game.gameId)}>{game.title}</td>
       <td>
         <img src={game.coverImg} id="listed-game-image" alt="Game Cover" />
       </td>

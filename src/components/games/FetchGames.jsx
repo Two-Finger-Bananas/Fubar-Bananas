@@ -13,6 +13,7 @@ export default function FetchGames({ selectedGameId, setSelectedGameId }){
     const[gameInfo, setGameInfo] = useState([]);
     const [searchQuery, setSearchQuery] = useState("")
     const navigate = useNavigate()
+    const is_admin = localStorage.getItem('is_admin')
     function addGamePage() {
         navigate('/games/create')
     }
@@ -79,7 +80,9 @@ game.title.toLowerCase().includes(searchQuery.toLowerCase())
            </tbody>  
         </table>
         <div>
-        <button onClick={addGamePage}>Add Game</button>
+        {
+            is_admin === "true" ? <button onClick={addGamePage}>Add Game</button> : ""
+        }
         </div>
         </div>
        

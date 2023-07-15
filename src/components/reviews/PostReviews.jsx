@@ -28,6 +28,7 @@ export default function PostReview({ game, setNewReview }) {
                 })
             })
             const result = await response.json()
+            setNewReview(false)
             return result
         }   catch (error){
             console.log(error)

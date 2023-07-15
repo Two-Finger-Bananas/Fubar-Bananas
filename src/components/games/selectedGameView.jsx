@@ -12,14 +12,12 @@ export default function SelectedGame({ selectedGameId, setSelectedGameId }) {
   const [indivGame, setIndivGame] = useState(null);
   const [newReview, setNewReview] = useState(false)
   const [updateGame, setUpdateGame] = useState(false)
+  const [reviewLimit, setReviewLimit] = useState(false)
   const { id } = useParams()
   // function updateGame() {
   //   navigate(`/games/update/${id}`)
   // }
 
-  function postReviewPage() {
-      navigate('/reviews')
-  }
   function goBack () {
     navigate('/games')
   }
@@ -71,16 +69,22 @@ export default function SelectedGame({ selectedGameId, setSelectedGameId }) {
             </tbody>
           </table>
           <div className="Game-Actions">
-            { !updateGame ? <button onClick={() => setUpdateGame(true)}>Update</button> 
+            {
+             !updateGame ? <button onClick={() => setUpdateGame(true)}>Update</button> 
               : <UpdateGame game={indivGame} setUpdateGame={setUpdateGame} />
             }
             <DeleteGame id="DeleteGameButton" gameId={id} />
             <button onClick={goBack}>Go Back</button>
             {
-              !newReview ? <button onClick={() => {setNewReview(true)}}>Create Review</button> :
-              <PostReview game={indivGame} setNewReview={setNewReview} />
+              reviewLimit === false ?
+              <>
+              {
+                !newReview ? <button onClick={() => {setNewReview(true)}}>Create Review</button> :
+                <PostReview game={indivGame} setNewReview={setNewReview} />
+              } 
+              </>: null
             }
-            <FetchReviewsByGame game={indivGame} setSelectedGameId={setSelectedGameId} selectedGameId={selectedGameId} />
+            <FetchReviewsByGame setReviewLimit={setReviewLimit} />
           </div>
         </div>
       ) : null}

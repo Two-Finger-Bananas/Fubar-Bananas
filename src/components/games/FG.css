@@ -2,7 +2,7 @@
 
 #game-card {
   display: flex;
-  flex-direction: column;
+  flex-flow: row wrap;
   background-color: rgb(142, 142, 142);
   min-height: 90vh;
   width: 70vw;

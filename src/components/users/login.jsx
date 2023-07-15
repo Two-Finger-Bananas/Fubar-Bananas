@@ -2,6 +2,7 @@
 import {useState} from "react";
 import { loginUser } from "../../api adapters";
 import {useNavigate} from "react-router-dom";
+import './login.css'
 
 const Login = (props) => {
     const setIsLoggedIn = props.setIsLoggedIn;

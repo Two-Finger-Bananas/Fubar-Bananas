@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { registerUser } from "../../api adapters";
 import { useNavigate } from "react-router-dom";
+import './register.css';
 
 const Register = (props) => {
   const setIsLoggedIn = props.setIsLoggedIn;
@@ -31,6 +32,7 @@ const Register = (props) => {
 
   return (
     <div className="register-form">
+      <h1>Register</h1>
       <form onSubmit={handleSubmit}>
         <label>
           <input

@@ -12,6 +12,7 @@ export default function UpdateGame({ game, setUpdateGame }) {
     const [platforms, setPlatforms] = useState([])
     const [players, setPlayers] = useState([])
     const [coverImg, setCoverImg] = useState('')
+    
     // console.log(game)
     
     async function patchGame(event) {
@@ -104,8 +105,10 @@ export default function UpdateGame({ game, setUpdateGame }) {
           />
         </label>
         <br />
-        <button type="submit">Update</button>
-      </form>
+       
+       <button type="submit">Update</button> 
+
+</form>
     </div>
   );
 }

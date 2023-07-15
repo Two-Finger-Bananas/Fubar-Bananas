@@ -13,6 +13,7 @@ export default function SelectedGame({ selectedGameId, setSelectedGameId }) {
   const [newReview, setNewReview] = useState(false)
   const [updateGame, setUpdateGame] = useState(false)
   const { id } = useParams()
+  const is_admin = localStorage.getItem('is_admin')
   // function updateGame() {
   //   navigate(`/games/update/${id}`)
   // }
@@ -71,11 +72,20 @@ export default function SelectedGame({ selectedGameId, setSelectedGameId }) {
             </tbody>
           </table>
           <div className="Game-Actions">
+            {
+              is_admin ==='true' ? 
+              <>
             { !updateGame ? <button onClick={() => setUpdateGame(true)}>Update</button> 
               : <UpdateGame game={indivGame} setUpdateGame={setUpdateGame} />
             }
+            
             <DeleteGame id="DeleteGameButton" gameId={id} />
+            </>
+              :null
+          }
+
             <button onClick={goBack}>Go Back</button>
+
             {
               !newReview ? <button onClick={() => {setNewReview(true)}}>Create Review</button> :
               <PostReview game={indivGame} setNewReview={setNewReview} />

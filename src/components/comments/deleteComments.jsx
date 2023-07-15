@@ -18,6 +18,7 @@ export default function DeleteComment(props){
         } catch(error){
             console.log(error)
         }
+        
     }
 
     return(

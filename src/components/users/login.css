@@ -10,9 +10,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-left: auto;
-    position: absolute;
-    transform: translate( 0, -45%);
     animation: glow 4s infinite alternate;
 }
 

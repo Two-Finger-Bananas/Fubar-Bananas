@@ -9,6 +9,7 @@ export default function SelectedReview({ selectedGameId }) {
     const navigate = useNavigate()
     const [indivReview, setIndivReview] = useState(null);
     const { id } = useParams()
+    const username = localStorage.getItem('username')
     function goBack () {
         navigate(`/games/${selectedGameId}`)
       }
@@ -50,8 +51,13 @@ export default function SelectedReview({ selectedGameId }) {
                         </tbody> 
                         </table>
                         <div className="Review-Actions">
+                            {
+                            username === indivReview.username ?
+                            <> 
                             <button onClick={updateReview}>Edit</button>
-                            <DeleteReview id="DeleteReviewButton" reviewId={id} />
+                            <DeleteReview id="DeleteReviewButton" reviewId={id} /> 
+                            </>: null
+                            }
                             <button onClick={goBack}>Go Back</button>
                             <FetchCommentsByReview review={indivReview} />
                         </div>

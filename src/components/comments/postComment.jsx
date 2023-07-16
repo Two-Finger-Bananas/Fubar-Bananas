@@ -3,7 +3,8 @@ import { BASE_COMMENTS_URL } from "../../api adapters";
 import { useState } from "react";
 import { TOKEN } from "../../api adapters";
 
-export default function postComment(){
+export default function PostComment({gameId,reviewId}){
+    console.log(gameId,reviewId)
     const {id} = useParams()
     const navigate = useNavigate()
     const [text, setText] = useState('');
@@ -20,12 +21,14 @@ export default function postComment(){
                     text: text,
                     username: localStorage.getItem('username'),
                     userId: localStorage.getItem('userId'),
-                    reviewId: selectedReviewId
+                    gameId:gameId,
+                    reviewId:reviewId
                 })
             })
+        
             const result = await response.json()
             console.log(result)
-            navigate(`/reviews/${selectedreviewId}`)
+            navigate(`/reviews/${id}`)
             return result
         }catch (error){
             console.log(error)
@@ -34,11 +37,12 @@ export default function postComment(){
     }
     return(
         <div>
-            <h2>Create a New Review</h2>
+            <h2>Create a New Comment</h2>
             <form onSubmit={createComment}>
                 <label>
                     Text:
                     <input type="text"
+                    placeholder="Type comment here"
                     value={text}
                     onChange={(e)=> setText(e.target.value)}/> 
                 </label>

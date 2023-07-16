@@ -2,11 +2,12 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { BASE_GAME_URL } from "../../api adapters";
 
-export default function FetchReviewsByGame() {
+export default function FetchReviewsByGame({ setReviewLimit={setReviewLimit} }) {
     const [reviews, setReviews] = useState([])
     const [searchQuery, setSearchQuery] = useState("")
     const navigate = useNavigate()
     const { id } = useParams()
+    const username = localStorage.getItem('username')
     function reviewDetails(reviewId) {
         navigate(`/reviews/${reviewId}`)
     }
@@ -43,7 +44,14 @@ export default function FetchReviewsByGame() {
                 <div key={review.reviewId}>
                     <p>Text: {review.text}</p>
                     <p>Rating: {review.rating}</p>
+                    {
+                    username === !review.username ? 
+                    <>
+                    <script onLoad={() => setReviewLimit(true)}></script>
                     <p>Username: {review.username}</p>
+                    </>
+                    : <p>Username: {review.username}</p>
+                    }
                     <button onClick={() => reviewDetails(review.reviewId)}>Details</button>
                 </div>
             )) : <p>{reviews.message}</p>}

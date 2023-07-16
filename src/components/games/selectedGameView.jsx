@@ -12,15 +12,13 @@ export default function SelectedGame({ selectedGameId, setSelectedGameId }) {
   const [indivGame, setIndivGame] = useState(null);
   const [newReview, setNewReview] = useState(false)
   const [updateGame, setUpdateGame] = useState(false)
+  const [reviewLimit, setReviewLimit] = useState(false)
   const { id } = useParams()
   const is_admin = localStorage.getItem('is_admin')
   // function updateGame() {
   //   navigate(`/games/update/${id}`)
   // }
 
-  function postReviewPage() {
-      navigate('/reviews')
-  }
   function goBack () {
     navigate('/games')
   }
@@ -75,7 +73,8 @@ export default function SelectedGame({ selectedGameId, setSelectedGameId }) {
             {
               is_admin ==='true' ? 
               <>
-            { !updateGame ? <button onClick={() => setUpdateGame(true)}>Update</button> 
+            {
+             !updateGame ? <button onClick={() => setUpdateGame(true)}>Update</button> 
               : <UpdateGame game={indivGame} setUpdateGame={setUpdateGame} />
             }
             
@@ -85,12 +84,17 @@ export default function SelectedGame({ selectedGameId, setSelectedGameId }) {
           }
 
             <button onClick={goBack}>Go Back</button>
-
             {
-              !newReview ? <button onClick={() => {setNewReview(true)}}>Create Review</button> :
-              <PostReview game={indivGame} setNewReview={setNewReview} />
+              reviewLimit === false ?
+              <>
+  
+            {
+                !newReview ? <button onClick={() => {setNewReview(true)}}>Create Review</button> :
+                <PostReview game={indivGame} setNewReview={setNewReview} />
+              } 
+              </>: null
             }
-            <FetchReviewsByGame game={indivGame} setSelectedGameId={setSelectedGameId} selectedGameId={selectedGameId} />
+            <FetchReviewsByGame setReviewLimit={setReviewLimit} />
           </div>
         </div>
       ) : null}

@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { BASE_REVIEWS_URL } from "../../api adapters";
 import DeleteReview from "./deleteReviews";
 import FetchCommentsByReview from "../comments/fetchCommentsByReview";
+import PostComment from "../comments/postComment";
 
 export default function SelectedReview({ selectedGameId }) {
     const navigate = useNavigate()
@@ -31,7 +32,7 @@ export default function SelectedReview({ selectedGameId }) {
             fetchSelectedReview()
         }
     }, [id])
-
+console.log(indivReview);
     return (
         <div>
             {
@@ -59,6 +60,7 @@ export default function SelectedReview({ selectedGameId }) {
                             </>: null
                             }
                             <button onClick={goBack}>Go Back</button>
+                            <PostComment reviewId={id} gameId={id}/>
                             <FetchCommentsByReview review={indivReview} />
                         </div>
                     </div>

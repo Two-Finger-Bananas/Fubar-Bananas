@@ -11,7 +11,7 @@ export default function EditComment(){
     async function editAComment(event){
         event.preventDefault()
         try{
-            const response= await fetch(`${BASE_COMMENTS_URL}/update/${id}`,{
+            const response= await fetch(`${BASE_COMMENTS_URL}/${id}`,{
                 method:"PATCH",
                 headers:{
                     'Content-Type': 'application/json',

@@ -3,6 +3,7 @@ import { BASE_COMMENTS_URL } from "../../api adapters";
 import { TOKEN } from "../../api adapters";
 
 export default function DeleteComment(props){
+    
     async function deleteAComment(){
         try{
             const response = await fetch(`${BASE_COMMENTS_URL}/${props.commentId}`,{

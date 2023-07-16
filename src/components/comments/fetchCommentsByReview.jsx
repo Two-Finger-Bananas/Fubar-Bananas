@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import { BASE_REVIEWS_URL } from "../../api adapters";
+import DeleteComment from "./deleteComments";
+import EditComment from "./editComments";
 
 export default function FetchCommentsByReview({ review }) {
     const [comments, setComments] = useState([])
@@ -38,6 +40,10 @@ export default function FetchCommentsByReview({ review }) {
                 <div key={comment.commentId}>
                     <p>Text: {comment.text}</p>
                     <p>Review: {comment.reviewId}</p>  
+                    <p>user: {comment.username}</p>
+                    <DeleteComment/>
+                    <EditComment/>
+                    
                 </div>
             )) : <p>{comments.message}</p>}
         </div>

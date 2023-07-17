@@ -7,6 +7,7 @@ import { BASE_GAME_URL } from "../../api adapters";
 import PostReview from "../reviews/PostReviews";
 import UpdateGame from "./UpdateGame";
 
+
 export default function SelectedGame({ selectedGameId, setSelectedGameId }) {
   const navigate = useNavigate()
   const [indivGame, setIndivGame] = useState(null);
@@ -67,6 +68,7 @@ export default function SelectedGame({ selectedGameId, setSelectedGameId }) {
               <tr>
                 <td>Released on: {indivGame.publishDate}</td>
               </tr>
+              
             </tbody>
           </table>
           <div className="Game-Actions">

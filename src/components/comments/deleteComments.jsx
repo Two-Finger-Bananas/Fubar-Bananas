@@ -1,12 +1,11 @@
-import { useState, useEffect } from "react";
+/* eslint-disable react/prop-types */
 import { BASE_COMMENTS_URL } from "../../api adapters";
 import { TOKEN } from "../../api adapters";
 
-export default function DeleteComment(props){
-    
+export default function DeleteComment({ comment }){
     async function deleteAComment(){
         try{
-            const response = await fetch(`${BASE_COMMENTS_URL}/${props.commentId}`,{
+            const response = await fetch(`${BASE_COMMENTS_URL}/${comment.commentId}`,{
             method: "DELETE",
             headers:{
                 'Content-Type': 'application/json',

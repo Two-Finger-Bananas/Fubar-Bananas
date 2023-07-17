@@ -1,21 +1,18 @@
+/* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { BASE_USER_URL } from "../../api adapters";
+import { BASE_USERS_URL } from "../../api adapters";
 
-export default function FetchReviewsByUser(user) {
+export default function FetchReviewsByUser({ userId }) {
     const [reviews, setReviews] = useState([])
     const [searchQuery, setSearchQuery] = useState("")
     const navigate = useNavigate()
     console.log(reviews)
 
-    function reviewDetails(reviewId) {
-        navigate(`/reviews/${reviewId}`)
-    }
-
     useEffect(() => {
         async function fetchReviews() {
             try {
-                const response = await fetch(`${BASE_USER_URL}/reviews/${user.userId}`)
+                const response = await fetch(`${BASE_USERS_URL}/reviews/${userId}`)
                 const data = await response.json()
                 setReviews(data) 
             } catch (error) {
@@ -40,7 +37,8 @@ export default function FetchReviewsByUser(user) {
                 onChange={(event) => setSearchQuery(event.target.value)}
                 />
             </form>
-            {reviews.length ? filteredReviews.map((review)=>(
+            {
+            reviews.length ? filteredReviews.map((review)=>(
                 <div key={review.reviewId}>
                     <p>Text: {review.text}</p>
                     <p>Rating: {review.rating}</p>

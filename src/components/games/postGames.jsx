@@ -5,9 +5,7 @@ import {useState} from 'react';
 import { TOKEN } from "../../api adapters";
 
 export default function PostGame() {
-    const { id } = useParams()
     const navigate = useNavigate()
-    console.log(id)
     const [title, setTitle] = useState('');
     const [publishDate, setPublishDate] = useState('');
     const [genre,setGenre] = useState([]);
@@ -19,7 +17,7 @@ export default function PostGame() {
     async function createGame(event) {
         event.preventDefault()
         try {
-        const response = await fetch(`${BASE_GAME_URL}/${id}`, {
+        const response = await fetch(`${BASE_GAME_URL}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'Application/json',

@@ -6,9 +6,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import { BASE_GAME_URL } from "../../api adapters";
 import PostReview from "../reviews/PostReviews";
 import UpdateGame from "./UpdateGame";
+import AverageRating from "../reviews/AverageRating";
 
 
-export default function SelectedGame({ selectedGameId, setSelectedGameId }) {
+export default function SelectedGame() {
   const navigate = useNavigate()
   const [indivGame, setIndivGame] = useState(null);
   const [newReview, setNewReview] = useState(false)
@@ -67,6 +68,9 @@ export default function SelectedGame({ selectedGameId, setSelectedGameId }) {
               </tr>
               <tr>
                 <td>Released on: {indivGame.publishDate}</td>
+              </tr>
+              <tr>
+                <AverageRating game={indivGame} />
               </tr>
               
             </tbody>

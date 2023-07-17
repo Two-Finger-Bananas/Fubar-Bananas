@@ -18,27 +18,12 @@ export default function FetchCommentsByUser({ userId }) {
             }  
         }
         fetchComments()
-    }, [])
-
-    
-    const filteredComments = comments.length ?  comments.filter((comment) =>
-        comment.text.toLowerCase().includes(searchQuery.toLowerCase())
-        ) : null 
+    }, []) 
 
     return (
         <div>
             <h2>Comments</h2>
-            <form id="search-bar-form">
-                <label htmlFor="search-query">Search: </label>
-                <input
-                name="search-query"
-                type="text"
-                placeholder="Type Comment Here"
-                value={searchQuery}
-                onChange={(event) => setSearchQuery(event.target.value)}
-                />
-            </form>
-            { comments.length ? filteredComments.map((comment)=>(
+            { comments.length ? comments.map((comment)=>(
                 <div key={comment.commentId}>
                     <p>Text: {comment.text}</p>
                     <p>Review: {comment.reviewId}</p>  

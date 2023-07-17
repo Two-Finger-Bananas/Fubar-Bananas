@@ -21,29 +21,15 @@ export default function FetchReviewsByUser({ userId }) {
         }
         fetchReviews()
     }, [])
-    const filteredReviews = reviews.length ? reviews.filter((review) =>
-        review.text.toLowerCase().includes(searchQuery.toLowerCase())
-        ) : null
     return (
         <div>
             <h2>Reviews</h2>
-            <form id="search-bar-form">
-                <label htmlFor="search-query">Search:</label>
-                <input
-                name="search-query"
-                type="text"
-                placeholder="Type Review Here"
-                value={searchQuery}
-                onChange={(event) => setSearchQuery(event.target.value)}
-                />
-            </form>
             {
-            reviews.length ? filteredReviews.map((review)=>(
+            reviews.length ? reviews.map((review)=>(
                 <div key={review.reviewId}>
                     <p>Text: {review.text}</p>
                     <p>Rating: {review.rating}</p>
                     <p>Username: {review.username}</p>
-                    <button onClick={() => reviewDetails(review.reviewId)}>Details</button>
                 </div>
             )):<p>{reviews.message}</p>
             }

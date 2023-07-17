@@ -1,8 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import { BASE_REVIEWS_URL } from "../../api adapters";
-import DeleteComment from "./deleteComments";
-import EditComment from "./editComments";
+import SelectedComment from "./selectedCommentView";
 
 export default function FetchCommentsByReview({ review }) {
     const [comments, setComments] = useState([])
@@ -18,7 +17,7 @@ export default function FetchCommentsByReview({ review }) {
             }  
         }
         fetchComments()
-    }, [])
+    }, [comments])
 
     const filteredComments = comments.length ? comments.filter((comment) =>
         comment.text.toLowerCase().includes(searchQuery.toLowerCase())
@@ -36,15 +35,8 @@ export default function FetchCommentsByReview({ review }) {
                 onChange={(event) => setSearchQuery(event.target.value)}
                 />
             </form>
-            {comments.length ? filteredComments.map((comment)=>(
-                <div key={comment.commentId}>
-                    <p>Text: {comment.text}</p>
-                    <p>Review: {comment.reviewId}</p>  
-                    <p>user: {comment.username}</p>
-                    <DeleteComment/>
-                    <EditComment/>
-                    
-                </div>
+            {comments.length ? filteredComments.map((comment, idx)=>(
+                <SelectedComment key={idx} comment={comment} />
             )) : <p>{comments.message}</p>}
         </div>
     )

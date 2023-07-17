@@ -43,14 +43,12 @@ export default function EditReview(){
             value={text}
             onChange={(e)=> setText(e.target.value)}/>
             </label>
-            <button onClick={() => setRating(1)}>1</button>
-            <button onClick={() => setRating(2)}>2</button>
-            <button onClick={() => setRating(3)}>3</button>
-            <button onClick={() => setRating(4)}>4</button>
-            <button onClick={() => setRating(5)}>5</button>
-            <button id="edit-review-button" type="submit">
-                Edit
-            </button>
+            <button type="button" onClick={() => setRating(1)}>1</button>
+            <button type="button" onClick={() => setRating(2)}>2</button>
+            <button type="button" onClick={() => setRating(3)}>3</button>
+            <button type="button" onClick={() => setRating(4)}>4</button>
+            <button type="button" onClick={() => setRating(5)}>5</button>
+            <button id="edit-review-button" type="submit">Edit</button>
         </form>
     );
 }

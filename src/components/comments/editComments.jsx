@@ -1,17 +1,14 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import { TOKEN } from "../../api adapters";
 import { BASE_COMMENTS_URL } from "../../api adapters";
-import { useParams, useNavigate } from "react-router-dom";
 
-export default function EditComment(){
-    const {id} = useParams();
+export default function EditComment({ comment, setUpdateComment }){
     const [text, setText] = useState('');
-    const navigate = useNavigate();
-
     async function editAComment(event){
         event.preventDefault()
         try{
-            const response= await fetch(`${BASE_COMMENTS_URL}/${id}`,{
+            const response= await fetch(`${BASE_COMMENTS_URL}/${comment.commentId}`,{
                 method:"PATCH",
                 headers:{
                     'Content-Type': 'application/json',
@@ -22,7 +19,7 @@ export default function EditComment(){
             })
         })
         const result = await response.json()
-            navigate(`/comments/${id}`)
+        setUpdateComment(false)
             return result
     } catch(error){
         console.log(error)
@@ -30,6 +27,7 @@ export default function EditComment(){
 }
 
 return(
+    <>
     <form onSubmit={editAComment}>
         <label>
            Text
@@ -38,8 +36,11 @@ return(
            value={text}
            onChange={(e)=> setText(e.target.value)}/>
          </label>
-           <button id="edit-comment-button" type="submit">
-                Edit Comment </button>
+           <button id="edit-comment-button" type="submit">Submit</button>
+        <p>Review: {comment.reviewId}</p>  
+        <p>user: {comment.username}</p>       
     </form>
+    <button type="button" onClick={() => setUpdateComment(false)}>Cancel</button>
+    </>
 )
 }

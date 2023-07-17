@@ -14,7 +14,6 @@ export default function GameRows({ game, setSelectedGameId }) {
       <td>
         <img src={game.coverImg} id="listed-game-image" alt="Game Cover" />
       </td>
-    <td><AverageRating game={game} /></td>
     </tr>
   );
 }

@@ -15,6 +15,7 @@ export default function FetchGames({ selectedGameId, setSelectedGameId }){
     const navigate = useNavigate()
     const is_admin = localStorage.getItem('is_admin')
     const [bodyBackground, setBodyBackgorund] = useState(null)
+    const [currentImage, setCurrentImage] = useState(0);
     function addGamePage() {
         navigate('/games/create')
     }
@@ -42,6 +43,17 @@ export default function FetchGames({ selectedGameId, setSelectedGameId }){
             document.body.style.backgroundAttachment = 'fixed';
         }
     }, [bodyBackground]) 
+    //code for slideshow
+useEffect(()=> {
+    const imageShow = setInterval(()=>{
+        setCurrentImage((theIndex)=> theIndex ===gameInfo.length - 1 ? 0: theIndex +1)
+    }, 5000)
+return () => {
+    clearInterval(imageShow)
+  };
+}, [gameInfo]);
+
+//test code for search bar
 
 
 const filteredGames = gameInfo.filter((game) =>
@@ -53,7 +65,17 @@ game.title.toLowerCase().includes(searchQuery.toLowerCase())
 
     return (
         
-    <div>
+        <div>
+        <div className="slideshow-container">
+          {gameInfo.map((game, idx) => (
+            <div
+              key={idx}
+              className={`slideshow-image ${idx === currentImage ? 'active' : ''}`}
+              style={{ backgroundImage: `url(${game.coverImg})` }}
+            />
+          ))}
+        </div>
+    
         
         <form id="search-bar-form">
             <label htmlFor="search-query">Search: </label>

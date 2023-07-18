@@ -19,6 +19,33 @@
     background-color:rgb(65, 65, 65);
 }
 
-
+.slideshow-container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    border:solid black 6px;
+  }
+  
+  .slideshow-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .slideshow-image.active {
+    opacity: 1;
+  }
+  
+  .game-details {
+    margin-top: 20px;
+  }
+  
 
 

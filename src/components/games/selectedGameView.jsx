@@ -18,6 +18,7 @@ export default function SelectedGame() {
   const [switchPage, setSwitchPage] = useState(false)
   const { id } = useParams()
   const is_admin = localStorage.getItem('is_admin')
+  const [bodyBackground, setBodyBackgorund] = useState(null)
 
   function goBack () {
     navigate('/games')
@@ -36,6 +37,8 @@ export default function SelectedGame() {
     fetchSelectedGame();
   }, []);
 
+  
+  
   return (
     <div>
       {

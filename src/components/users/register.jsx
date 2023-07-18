@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { registerUser } from "../../api adapters";
 import { useNavigate } from "react-router-dom";
 import './register.css';
@@ -30,9 +30,19 @@ const Register = (props) => {
     }
   };
 
+  const [bodyBackground, setBodyBackgorund] = useState(null)
+    useEffect(() => {
+        if(bodyBackground === null) {
+            document.body.style.backgroundImage = 'url(https://res.cloudinary.com/dvto5eysb/image/upload/v1689700760/pexels-alena-darmel-7862491_ajjcwf.jpg)';
+            document.body.style.backgroundPosition = 'center';
+            document.body.style.backgroundSize = 'cover';
+            document.body.style.backgroundAttachment = 'fixed';
+        }
+    }, [bodyBackground])
+
   return (
     <div className="register-form">
-      <h1>Register</h1>
+      <h2>Register</h2>
       <form onSubmit={handleSubmit}>
         <label>
           <input

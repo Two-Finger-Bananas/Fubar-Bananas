@@ -14,6 +14,7 @@ export default function FetchGames({ selectedGameId, setSelectedGameId }){
     const [searchQuery, setSearchQuery] = useState("")
     const navigate = useNavigate()
     const is_admin = localStorage.getItem('is_admin')
+    const [bodyBackground, setBodyBackgorund] = useState(null)
     const [currentImage, setCurrentImage] = useState(0);
     function addGamePage() {
         navigate('/games/create')
@@ -34,6 +35,14 @@ export default function FetchGames({ selectedGameId, setSelectedGameId }){
         fetchGame();
     }, [])
 
+    useEffect(() => {
+        if(bodyBackground === null) {
+            document.body.style.backgroundImage = 'url(https://res.cloudinary.com/dvto5eysb/image/upload/v1689700318/pexels-lucie-liz-3165335_tvjsu1.jpg)';
+            document.body.style.backgroundPosition = 'center';
+            document.body.style.backgroundSize = 'cover';
+            document.body.style.backgroundAttachment = 'fixed';
+        }
+    }, [bodyBackground]) 
     //code for slideshow
 useEffect(()=> {
     const imageShow = setInterval(()=>{

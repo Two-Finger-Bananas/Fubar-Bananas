@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import { loginUser } from "../../api adapters";
 import {useNavigate} from "react-router-dom";
 import './login.css'
@@ -10,6 +10,7 @@ const Login = (props) => {
     const setIsLoggedIn = props.setIsLoggedIn;
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    
     const navigate = useNavigate();
 
     const navToRegister = () => {
@@ -32,6 +33,15 @@ const Login = (props) => {
             console.log(error);
         }
     };
+    const [bodyBackground, setBodyBackgorund] = useState(null)
+    useEffect(() => {
+        if(bodyBackground === null) {
+            document.body.style.backgroundImage = 'url(https://res.cloudinary.com/dvto5eysb/image/upload/v1689701726/stock-photo-joypad-hands-gaming-concept-computer_z1zzt6.jpg)';
+            document.body.style.backgroundPosition = 'center';
+            document.body.style.backgroundSize = 'cover';
+            document.body.style.backgroundAttachment = 'fixed';
+        }
+    }, [bodyBackground])
     return(
         
         <div className="login-page-background">

@@ -5,6 +5,7 @@ import {useNavigate} from "react-router-dom";
 import './login.css'
 
 
+
 const Login = (props) => {
     const setIsLoggedIn = props.setIsLoggedIn;
     const [username, setUsername] = useState("");
@@ -32,6 +33,7 @@ const Login = (props) => {
         }
     };
     return(
+        
         <div className="login-page-background">
         <div className="login-form">
             <div id="title-of-login-box">
@@ -69,6 +71,7 @@ const Login = (props) => {
             </form>
         </div>
         </div>
+       
     )
 
 }

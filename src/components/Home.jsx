@@ -12,7 +12,7 @@
 import { useEffect } from "react";
 import './home.css';
 import { useNavigate } from "react-router-dom";
-import videoSource from '../imgs-and-vids/GS-Homepage.mp4';
+import videoSource from '../media/GS-Homepage.mp4';
 import Footer from './Footer';
 
 export default function Home() {

@@ -21,3 +21,13 @@
         box-shadow: 0px 0px 20px lightblue;
       }
 }
+
+.login-page-background {
+background-image: url(./media/login.css);
+  background-size: cover;
+  color: black;
+  margin: 0;
+  padding: 0;
+  z-index: 1000;
+}
+

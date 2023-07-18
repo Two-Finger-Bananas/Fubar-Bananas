@@ -71,7 +71,7 @@ game.title.toLowerCase().includes(searchQuery.toLowerCase())
             <div
               key={idx}
               className={`slideshow-image ${idx === currentImage ? 'active' : ''}`}
-              style={{ backgroundImage: `url(${game.coverImg})` }}
+              style={{ backgroundImage: `url(${game.backgroundImg})`}}
             />
           ))}
         </div>

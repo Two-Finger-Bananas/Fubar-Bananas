@@ -1,13 +1,12 @@
 
 
-#game-card {
+#game-card-container {
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column wrap;
   background-color: rgb(142, 142, 142);
   min-height: 90vh;
   width: 70vw;
   border-radius: 25px;
-  justify-content: center;
   align-items: center;
   margin-bottom: 5px;
   border: solid black;
@@ -29,11 +28,11 @@ input[type="text"] {
   border-radius: 3px;
  
 }
-/* end of search bar*/
 
-td {
-  padding: 10px;
-  text-align: center;
-  border-bottom: 5px solid black;
+#game-card-rows {
+  display: flex;
+  width: 100%;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
 }
 

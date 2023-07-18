@@ -11,7 +11,6 @@ export default function AverageRating({ game }){
                 const response = await fetch(`${BASE_GAME_URL}/reviews/${game.gameId}`);
                 const data = await response.json();
                 const rating = data.map((indivRating)=>indivRating.rating)
-                console.log(rating)
             const sum = rating.reduce((SumSoFar, currNum)=> SumSoFar + currNum, 0)
            
                const avgData = sum / rating.length;

@@ -15,11 +15,9 @@ export default function SelectedGame() {
   const [newReview, setNewReview] = useState(false)
   const [updateGame, setUpdateGame] = useState(false)
   const [reviewLimit, setReviewLimit] = useState(false)
+  const [switchPage, setSwitchPage] = useState(false)
   const { id } = useParams()
   const is_admin = localStorage.getItem('is_admin')
-  // function updateGame() {
-  //   navigate(`/games/update/${id}`)
-  // }
 
   function goBack () {
     navigate('/games')
@@ -33,48 +31,35 @@ export default function SelectedGame() {
         setIndivGame(data);
       } catch (error) {
         console.log(error);
-  
       }
     }
-
-    if (id) {
-      fetchSelectedGame();
-    }
-  }, [updateGame]);
+    fetchSelectedGame();
+  }, []);
 
   return (
     <div>
-      {indivGame ? (
+      {
+        indivGame ?
         <div>
-          <table id="selected-game">
-            <tbody>
-              <tr>
-                <td>{indivGame.coverImg}</td>
-              </tr>
-              <tr>
-                <td>{indivGame.title}</td>
-              </tr>
-              <tr>
-                <td>{indivGame.genre}</td>
-              </tr>
-              <tr>
-              <td>{indivGame.platforms}</td>
-              </tr>
-              <tr>
-                <td>{indivGame.gameDeveloper}</td>
-              </tr>
-              <tr>
-                <td>{indivGame.players}</td>
-              </tr>
-              <tr>
-                <td>Released on: {indivGame.publishDate}</td>
-              </tr>
-              <tr>
-                <AverageRating game={indivGame} />
-              </tr>
-              
-            </tbody>
-          </table>
+          <div id="game-title">
+            <img src={indivGame.backgroundImg} style={{width: '1000px', height: '600px'}} />
+              <h1>{indivGame.title}</h1>
+          </div>
+          <div>
+            <h2 className='page-buttons' type='button' onClick={() => setSwitchPage(false)} >Details</h2>
+            <h2 className='page-buttons' type='button' onClick={() => setSwitchPage(true)} >Reviews</h2>
+          </div>
+        {
+          !switchPage ?
+          <>
+          <div id="game-details">
+            <h3>{indivGame.genre}</h3>
+            <h3>{indivGame.platforms}</h3>
+            <h3>{indivGame.gameDeveloper}</h3>
+            <h3>{indivGame.players}</h3>
+            <h3>Released on: {indivGame.publishDate}</h3>
+          </div>
+          
           <div className="Game-Actions">
             {
               is_admin ==='true' ? 
@@ -90,6 +75,10 @@ export default function SelectedGame() {
           }
 
             <button onClick={goBack}>Go Back</button>
+            
+          </div>
+          </> :
+          <>
             {
               reviewLimit === false ?
               <>
@@ -97,13 +86,17 @@ export default function SelectedGame() {
             {
                 !newReview ? <button onClick={() => {setNewReview(true)}}>Create Review</button> :
                 <PostReview game={indivGame} setNewReview={setNewReview} />
-              } 
+            } 
               </>: null
             }
-            <FetchReviewsByGame setReviewLimit={setReviewLimit} />
-          </div>
-        </div>
-      ) : null}
+            <div id='reviews'> 
+              <AverageRating game={indivGame} />
+              <FetchReviewsByGame setReviewLimit={setReviewLimit} />
+            </div>
+          </>
+        }
+        </div> : null
+        }
     </div>
   );
 }

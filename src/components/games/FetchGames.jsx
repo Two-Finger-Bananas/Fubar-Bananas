@@ -58,14 +58,11 @@ game.title.toLowerCase().includes(searchQuery.toLowerCase())
         </form>
 
 
-    <div id= "game-card">
-        <table>
-            <thead>
-                <tr>
-                    <th id="gl-title" colSpan = "3">Game List</th>
-                </tr>
-            </thead>
-           <tbody>
+    <div id="game-card-container">
+            
+            <h2 id="gl-title" colSpan = "3">Game List</h2>
+ 
+           <tbody id="game-card-rows">
                 { filteredGames.map((game, idx) =>(
                     <GameRows
                     key={idx}
@@ -75,10 +72,8 @@ game.title.toLowerCase().includes(searchQuery.toLowerCase())
                     setSelectedGameId={setSelectedGameId} 
                     selectedGameId={selectedGameId}
                   />
-                  
                 ))}  
-           </tbody>  
-        </table>
+           </tbody>
         <div>
         {
             is_admin === "true" ? <button onClick={addGamePage}>Add Game</button> : ""

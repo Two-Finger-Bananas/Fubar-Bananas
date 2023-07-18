@@ -1,20 +1,29 @@
 /* eslint-disable react/prop-types */
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import AverageRating from "../reviews/AverageRating";
 
 export default function GameRows({ game, setSelectedGameId }) {
+  const [isShown, setIsShown] = useState(false);
   const navigate = useNavigate()
   function gameDetailClick(gameId) {
     navigate(`/games/${gameId}`)
     setSelectedGameId(gameId)
 }
+  const backgroundImage = {
+      backgroundImage: `url(${game.coverImg})` 
+    }
+  
   return (
-   <tr id="game-row">
-      <td id="game-items" onClick={() => gameDetailClick(game.gameId)}>{game.title}</td>
-      <td>
-        <img src={game.coverImg} id="listed-game-image" alt="Game Cover" />
-      </td>
-    </tr>
+    <div  className='game-card' 
+          style={backgroundImage} 
+          onClick={() => gameDetailClick(game.gameId)}
+          onMouseEnter={() => setIsShown(true)}
+          onMouseLeave={() => setIsShown(false)}
+          >
+      {
+        isShown ? <td id="hover-title">{game.title}</td> : null
+      }
+    </div>
   );
 }
 

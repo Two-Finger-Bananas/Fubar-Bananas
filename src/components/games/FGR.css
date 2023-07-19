@@ -8,6 +8,8 @@
     align-items: end;
     justify-content: center;
     margin: 10px;
+    cursor: pointer;
+    
 }
 
 #hover-title {
@@ -17,6 +19,7 @@
     height: 75px;
     width: 200px;
     background-color:rgb(65, 65, 65);
+    cursor: pointer;
 }
 
 .slideshow-container {
@@ -26,6 +29,7 @@
     overflow: hidden;
     border:solid black 6px;
     margin: auto;
+  
   }
   
   .slideshow-image {

@@ -23,7 +23,7 @@ export default function FetchReviewsByGame({ setReviewLimit={setReviewLimit} }) 
             }  
         }
         fetchReviews()
-    }, [reviews])
+    }, [id])
     /*const filteredReviews = reviews.length ? reviews.filter((review) =>
         review.text.toLowerCase().includes(searchQuery.toLowerCase())
         ) : null*/

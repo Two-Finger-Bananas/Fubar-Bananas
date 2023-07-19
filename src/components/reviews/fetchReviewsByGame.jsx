@@ -2,13 +2,10 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { BASE_GAME_URL } from "../../api adapters";
 
-export default function FetchReviewsByGame({ setReviewLimit={setReviewLimit} }) {
+export default function FetchReviewsByGame() {
     const [reviews, setReviews] = useState([])
-    console.log(reviews)
-    const [searchQuery, setSearchQuery] = useState("")
     const navigate = useNavigate()
     const { id } = useParams()
-    const username = localStorage.getItem('username')
     function reviewDetails(reviewId) {
         navigate(`/reviews/${reviewId}`)
     }
@@ -23,30 +20,28 @@ export default function FetchReviewsByGame({ setReviewLimit={setReviewLimit} }) 
             }  
         }
         fetchReviews()
-    }, [id])
-    const filteredReviews = reviews.length ? reviews.filter((review) =>
-        review.text.toLowerCase().includes(searchQuery.toLowerCase())
-        ) : null
+    }, [reviews])
         
     return (
-        <div>
+        <div id="review-cards">
             <h2>Reviews</h2>
             
-            {reviews && reviews.length > 0? reviews.map((review)=>(
-                <div key={review.reviewId}>
-                    <p>Text: {review.text}</p>
-                    <p>Rating: {review.rating}</p>
-                    {
-                    username === !review.username ? 
-                    <>
-                    <script onLoad={() => setReviewLimit(true)}></script>
-                    <p>Username: {review.username}</p>
-                    </>
-                    : <p>Username: {review.username}</p>
-                    }
-                    <button onClick={() => reviewDetails(review.reviewId)}>Details</button>
+            {
+            reviews.length ? reviews.map((review)=>(
+                <div key={review.reviewId} className="review-items" onClick={() => reviewDetails(review.reviewId)}>
+                    <div className="name">
+                    <h2>{review.username}</h2>
+                    </div>
+                    <div className="text">
+                    <p>{review.text}</p>
+                    </div>
+                    <div className="rating">
+                    <p>Rating</p>
+                    <p className="rating-text">{review.rating}</p>
+                    </div>
                 </div>
-            )) : <p>{reviews.message}</p>}
+            )) : <p>{reviews.message}</p>
+            }
         </div>
     )
 }

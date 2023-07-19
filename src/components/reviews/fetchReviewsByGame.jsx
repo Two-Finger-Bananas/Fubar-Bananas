@@ -29,9 +29,9 @@ export default function FetchReviewsByGame({ setReviewLimit={setReviewLimit} }) 
         ) : null*/
         
     return (
-        <div >
+        <div className="review-items" >
             <h2>Reviews</h2>
-            <div className="className="review-items>
+            
             {reviews ? reviews.map((review)=>(
                 <div key={review.reviewId}>
                     <p>Text: {review.text}</p>
@@ -48,6 +48,6 @@ export default function FetchReviewsByGame({ setReviewLimit={setReviewLimit} }) 
                 </div>
             )) : <p>{reviews.message}</p>}
         </div>
-        </div>
+        
     )
 }

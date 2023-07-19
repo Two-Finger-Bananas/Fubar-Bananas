@@ -92,6 +92,7 @@ game.title.toLowerCase().includes(searchQuery.toLowerCase())
     <div id="game-card-container">
             
             <h2 id="gl-title" colSpan = "3">Game List</h2>
+            <table>
  
            <tbody id="game-card-rows">
                 { filteredGames.map((game, idx) =>(
@@ -105,6 +106,7 @@ game.title.toLowerCase().includes(searchQuery.toLowerCase())
                   />
                 ))}  
            </tbody>
+           </table>
         <div>
         {
             is_admin === "true" ? <button onClick={addGamePage}>Add Game</button> : ""

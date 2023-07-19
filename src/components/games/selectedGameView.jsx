@@ -162,7 +162,7 @@ export default function SelectedGame() {
             }
             <div id='reviews'> 
               <AverageRating game={indivGame} />
-              <FetchReviewsByGame setReviewLimit={setReviewLimit} />
+              <FetchReviewsByGame />
             </div>
           </>
         }

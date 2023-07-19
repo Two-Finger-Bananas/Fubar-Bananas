@@ -6,7 +6,6 @@ import { BASE_USERS_URL } from "../../api adapters";
 export default function FetchReviewsByUser({ userId }) {
     const [reviews, setReviews] = useState([])
     const [searchQuery, setSearchQuery] = useState("")
-    const navigate = useNavigate()
     console.log(reviews)
 
     useEffect(() => {
@@ -19,8 +18,11 @@ export default function FetchReviewsByUser({ userId }) {
                 console.log(error)
             }  
         }
-        fetchReviews()
-    }, [])
+        if(userId) {
+            fetchReviews()
+        }
+        
+    }, [userId])
     return (
         <div>
             <h2>Reviews</h2>

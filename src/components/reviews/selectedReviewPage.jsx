@@ -12,7 +12,7 @@ export default function SelectedReview({ selectedGameId }) {
     const { id } = useParams()
     const username = localStorage.getItem('username')
     function goBack () {
-        navigate(`/games/${selectedGameId}`)
+        navigate(`/games/${selectedGameId}`)  
       }
 
     function updateReview() {
@@ -32,38 +32,40 @@ export default function SelectedReview({ selectedGameId }) {
             fetchSelectedReview()
         }
     }, [id])
-console.log(indivReview);
     return (
-        <div>
+        <div id="comments">
             {
                 indivReview ? (
-                    <div>
-                        <table id="selected-review">
-                        <tbody>
-                            <tr>
-                                <td>Author: {indivReview.username}</td>
-                            </tr>
-                            <tr>
-                                <td>Rating: {indivReview.rating}</td>
-                            </tr>
-                            <tr>
-                                <td>{indivReview.text}</td>
-                            </tr>
-                        </tbody> 
-                        </table>
-                        <div className="Review-Actions">
-                            {
-                            username === indivReview.username ?
-                            <> 
-                            <button onClick={updateReview}>Edit</button>
-                            <DeleteReview id="DeleteReviewButton" reviewId={id} /> 
-                            </>: null
-                            }
-                            <button onClick={goBack}>Go Back</button>
-                            <PostComment reviewId={id} gameId={id}/>
-                            <FetchCommentsByReview review={indivReview} />
-                        </div>
+                    <>
+                    <div className="review-item">
+                    <div className="name-box">
+                    <h3>{indivReview.username}</h3>
                     </div>
+                    <div className="text-box">
+                    <p>{indivReview.text}</p>
+                    </div>
+                    <div className="rating-box">
+                    <p className="rating-title">Rating</p>
+                    <p className="rating-text">{indivReview.rating}</p>
+                    </div>
+                </div>
+                <div className="Review-Actions">
+                    {
+                    username === indivReview.username ?
+                    <> 
+                    <button onClick={updateReview}>Edit</button>
+                    <DeleteReview id="DeleteReviewButton" reviewId={id} selectedGameId={selectedGameId} /> 
+                    </>: null
+                    }
+                    <button onClick={goBack}>Go Back</button>
+                    {
+                    username ?
+                        <PostComment reviewId={id} gameId={id}/>
+                    : null
+                    }
+                    <FetchCommentsByReview review={indivReview} />
+                </div>
+                </>    
                 ) : null
             }
         </div>

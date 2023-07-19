@@ -9,7 +9,7 @@ import UpdateGame from "./UpdateGame";
 import AverageRating from "../reviews/AverageRating";
 
 
-export default function SelectedGame() {
+export default function SelectedGame({ setAvgRating, avgRating }) {
   const navigate = useNavigate()
   const [indivGame, setIndivGame] = useState([]);
   const [newReview, setNewReview] = useState(false)
@@ -18,6 +18,7 @@ export default function SelectedGame() {
   const [switchPage, setSwitchPage] = useState(false)
   const { id } = useParams()
   const is_admin = localStorage.getItem('is_admin')
+  const username = localStorage.getItem('username')
   const [bodyBackground, setBodyBackgorund] = useState(null)
   const [genreArr, setGenreArr] = useState([])
   const [platformsArr, setPlatformsArr] = useState([])
@@ -65,7 +66,7 @@ export default function SelectedGame() {
   }, [indivGame])
   
   return (
-    <div>
+    <div id="selected-game">
       {
         indivGame ?
         <div>
@@ -151,18 +152,17 @@ export default function SelectedGame() {
           </> :
           <>
             {
-              reviewLimit === false ?
+              username ?
               <>
-  
-            {
-                !newReview ? <button onClick={() => {setNewReview(true)}}>Create Review</button> :
-                <PostReview game={indivGame} setNewReview={setNewReview} />
-            } 
+              {
+                  !newReview ? <button onClick={() => {setNewReview(true)}}>Create Review</button> :
+                  <PostReview game={indivGame} setNewReview={setNewReview} setAvgRating={setAvgRating} />
+              } 
               </>: null
             }
-            <div id='reviews'> 
-              <AverageRating game={indivGame} />
-              <FetchReviewsByGame />
+            <div id='reviews'>
+              <AverageRating game={indivGame} avgRating={avgRating} setAvgRating={setAvgRating} /> 
+              <FetchReviewsByGame avgRating={avgRating} /> 
             </div>
           </>
         }

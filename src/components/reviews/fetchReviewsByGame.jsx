@@ -1,8 +1,11 @@
+/* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { BASE_GAME_URL } from "../../api adapters";
+import selectedReviewPage from './selectedReviewPage'
+import './fetchReviews.css'
 
-export default function FetchReviewsByGame() {
+export default function FetchReviewsByGame({ avgRating }) {
     const [reviews, setReviews] = useState([])
     const navigate = useNavigate()
     const { id } = useParams()
@@ -20,12 +23,10 @@ export default function FetchReviewsByGame() {
             }  
         }
         fetchReviews()
-    }, [reviews])
+    }, [avgRating])
         
     return (
         <div id="review-cards">
-            <h2>Reviews</h2>
-            
             {
             reviews.length ? reviews.map((review)=>(
                 <div key={review.reviewId} className="review-items" onClick={() => reviewDetails(review.reviewId)}>
@@ -36,7 +37,7 @@ export default function FetchReviewsByGame() {
                     <p>{review.text}</p>
                     </div>
                     <div className="rating">
-                    <p>Rating</p>
+                    <p className="rating-title">Rating</p>
                     <p className="rating-text">{review.rating}</p>
                     </div>
                 </div>

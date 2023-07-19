@@ -1,7 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { BASE_COMMENTS_URL } from "../../api adapters";
+import { useState } from "react";
 import DeleteComment from "./deleteComments";
 import EditComment from "./editComments";
 
@@ -16,8 +14,14 @@ export default function SelectedComment({ comment }) {
         {
             !updateComment ? 
             <>
-            <p>Text: {comment.text}</p>  
-            <p>user: {comment.username}</p>      
+            <div className="comment-box">
+            <div className='comment-user'>
+            <p>{comment.username}</p>
+            </div>
+            <div className='comment-text'>
+            <p>{comment.text}</p>  
+            </div>  
+            </div>
             <button type="button" onClick={() => setUpdateComment(true)}>Edit</button> 
             </>
             : <EditComment comment={comment} setUpdateComment={setUpdateComment} />
@@ -26,8 +30,14 @@ export default function SelectedComment({ comment }) {
         </>
         : 
         <>
-        <p>Text: {comment.text}</p>  
-        <p>user: {comment.username}</p>
+        <div className="comment-box">
+            <div className='comment-user'>
+            <p>{comment.username}</p>
+            </div>
+            <div className='comment-text'>
+            <p>{comment.text}</p>  
+            </div>
+        </div>
         </>
         }
             

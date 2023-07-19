@@ -1,11 +1,13 @@
-import { useState, useEffect } from "react";
+/* eslint-disable react/prop-types */
+import { useNavigate } from "react-router-dom";
 import { BASE_REVIEWS_URL } from "../../api adapters";
 import { TOKEN } from "../../api adapters";
 
-export default function DeleteReview(props){
-    async function deleteAReview(){
+export default function DeleteReview({ reviewId, selectedGameId }){
+    const navigate = useNavigate()
+    async function deleteAReview() {
         try{
-            const response = await fetch(`${BASE_REVIEWS_URL}/${props.reviewId}`,{
+            const response = await fetch(`${BASE_REVIEWS_URL}/${reviewId}`,{
             method: "DELETE",
             headers:{
                 'Content-Type': 'application/json',
@@ -13,7 +15,7 @@ export default function DeleteReview(props){
             }
             })
             const results = await response.json()
-            console.log(results)
+            navigate(`/games/${selectedGameId}`)
             return results
         } catch(error){
             console.log(error)

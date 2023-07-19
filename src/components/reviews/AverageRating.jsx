@@ -1,21 +1,17 @@
 /* eslint-disable react/prop-types */
-import { useState,useEffect } from "react";
+import { useEffect } from "react";
 import { BASE_GAME_URL } from "../../api adapters";
 
-export default function AverageRating({ game }){
-   
-    const [avgRating, setAvgRating]= useState([])
+export default function AverageRating({ setAvgRating, avgRating, game }){
     useEffect(() =>{
         async function fetchTheReviews(){
             try{
                 const response = await fetch(`${BASE_GAME_URL}/reviews/${game.gameId}`);
                 const data = await response.json();
                 const rating = data.map((indivRating)=>indivRating.rating)
-            const sum = rating.reduce((SumSoFar, currNum)=> SumSoFar + currNum, 0)
-           
-               const avgData = sum / rating.length;
-                setAvgRating(avgData)
-              console.log(avgData)
+                const sum = rating.reduce((SumSoFar, currNum)=> SumSoFar + currNum, 0)
+                const avgData = sum / rating.length;
+                setAvgRating(avgData.toFixed(1))
             } catch(error){
                 console.error(error);
             }
@@ -23,10 +19,10 @@ export default function AverageRating({ game }){
         fetchTheReviews();
     }, [avgRating]);
 return(
-    <div className="average-rating">
-        <h3>Average Score</h3>
+    <div id="average-rating">
+        <h3 id="score">Average Score</h3>
         
-        <p> {avgRating} </p>
+        <p id="rating"> {avgRating} </p>
 
     </div>
 )

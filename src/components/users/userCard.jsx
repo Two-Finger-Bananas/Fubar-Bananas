@@ -18,7 +18,7 @@ export default function UserCard({ user }) {
             {user.is_admin ? <h3>Role: Admin</h3> : <h3>Role: User</h3>}
             <h3>User Id: {user.userId}</h3>
             <h1>Reviews</h1>
-            <FetchReviewsByUser userId={user.userId} />
+            <FetchReviewsByUser userId={user.userId}/>
             <h1>Comments</h1>
             <FetchCommentsByUser userId={user.userId} />
             </div>

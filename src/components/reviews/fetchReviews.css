@@ -4,7 +4,7 @@
     justify-content: space-between;
     background-color: rgb(65, 65, 65);
     height: fit-content;
-    width: 70%;
+    width: 90%;
     text-align: center;
     margin-top: 10px; 
 }
@@ -14,12 +14,11 @@
     flex-direction: column;
     justify-content: center;
     background-color: rgb(55, 55, 55);
-    width: 15%;
+    width: 20%;
 }
 
 .text {
-    border: 2px white solid;
-    width: 15%;
+    width: 60%;
     margin: auto;
 }
 
@@ -28,15 +27,20 @@
     flex-direction: column;
     justify-content: center;
     /* border: 2px white solid; */
-    width: 15%;
+    width: 10%;
 }
 
 .rating-text {
-    font-size: x-large;
+    font-size: 30px;
+    margin: 0%;
 }
 
 #review-cards {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.rating-title {
+    margin: 0%;
 }

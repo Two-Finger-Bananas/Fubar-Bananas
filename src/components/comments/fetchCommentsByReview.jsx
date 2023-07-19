@@ -2,10 +2,10 @@
 import { useState, useEffect } from "react";
 import { BASE_REVIEWS_URL } from "../../api adapters";
 import SelectedComment from "./selectedCommentView";
+import './comments.css'
 
 export default function FetchCommentsByReview({ review }) {
     const [comments, setComments] = useState([])
-    const [searchQuery, setSearchQuery] = useState("")
     useEffect(() => {
         async function fetchComments() {
             try {
@@ -18,17 +18,15 @@ export default function FetchCommentsByReview({ review }) {
         }
         fetchComments()
     }, [comments])
-
-    /*const filteredComments = comments.length ? comments.filter((comment) =>
-        comment.text.toLowerCase().includes(searchQuery.toLowerCase())
-        ) : null*/
     return (
         <div>
             <h2>Comments</h2>
             
-            {comments.length > 0 ? comments.map((comment, idx)=>(
+            {
+            comments.length ? comments.map((comment, idx)=>(
                 <SelectedComment key={idx} comment={comment} />
-            )) : <p>{comments.message}</p>}
+            )) : <p>{comments.message}</p>
+            }
         </div>
     )
 }

@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { BASE_GAME_URL } from "../../api adapters";
-import './fetchReviews.css';
 
 export default function FetchReviewsByGame({ setReviewLimit={setReviewLimit} }) {
     const [reviews, setReviews] = useState([])
+    console.log(reviews)
     const [searchQuery, setSearchQuery] = useState("")
     const navigate = useNavigate()
     const { id } = useParams()
@@ -24,15 +24,15 @@ export default function FetchReviewsByGame({ setReviewLimit={setReviewLimit} }) 
         }
         fetchReviews()
     }, [id])
-    /*const filteredReviews = reviews.length ? reviews.filter((review) =>
+    const filteredReviews = reviews.length ? reviews.filter((review) =>
         review.text.toLowerCase().includes(searchQuery.toLowerCase())
-        ) : null*/
+        ) : null
         
     return (
-        <div className="review-items" >
+        <div>
             <h2>Reviews</h2>
             
-            {reviews ? reviews.map((review)=>(
+            {reviews && reviews.length > 0? reviews.map((review)=>(
                 <div key={review.reviewId}>
                     <p>Text: {review.text}</p>
                     <p>Rating: {review.rating}</p>
@@ -48,6 +48,5 @@ export default function FetchReviewsByGame({ setReviewLimit={setReviewLimit} }) 
                 </div>
             )) : <p>{reviews.message}</p>}
         </div>
-        
     )
 }

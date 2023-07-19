@@ -20,6 +20,10 @@ export default function SelectedGame() {
   const is_admin = localStorage.getItem('is_admin')
   const [bodyBackground, setBodyBackgorund] = useState(null)
   const [genreArr, setGenreArr] = useState([])
+  const [platformArr, setPlatformArr] = useState([])
+  const [developerArr, setDeveloperArr] = useState([])
+  const [playerArr, setPlayerArr] = useState([])
+
 
   function goBack () {
     navigate('/games')
@@ -51,6 +55,15 @@ export default function SelectedGame() {
     if(indivGame && indivGame.genre) {
     const genreArrData = indivGame.genre.split(', ')
     setGenreArr(genreArrData)
+  } if (indivGame && indivGame.platforms){
+  const platformArrData = indivGame.platforms.split(', ')
+  setPlatformArr(platformArrData)
+  } if(indivGame && indivGame.gameDeveloper){
+    const developerArrData = indivGame.gameDeveloper.split(', ')
+    setDeveloperArr(developerArrData)
+  } if (indivGame && indivGame.players){
+    const playerArrData = indivGame.players.split(', ')
+    setPlayerArr(playerArrData)
   }
   }, [indivGame])
   
@@ -88,9 +101,27 @@ export default function SelectedGame() {
               })
               : null
             }
-            <h3>{indivGame.platforms}</h3>
-            <h3>{indivGame.gameDeveloper}</h3>
-            <h3>{indivGame.players}</h3>
+            {
+              platformArr && platformArr.length ?
+              platformArr.map((system, idx)=>{
+                return <h3 key={idx}>{system}</h3>
+              })
+              :null
+            }
+            {
+              developerArr && developerArr.length ?
+              developerArr.map((developer, idx)=>{
+                return <h3 key={idx}>{developer}</h3>
+              })
+              :null
+            }
+            {
+              playerArr && playerArr.length ?
+              playerArr.map((people, idx)=> {
+                return <h3 key={idx}>{people}</h3>
+              })
+              :null
+            }
             <h3>Released on: {indivGame.publishDate}</h3>
           </div>
           

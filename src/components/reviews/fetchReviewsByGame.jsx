@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { BASE_GAME_URL } from "../../api adapters";
+import './fetchReviews.css';
 
 export default function FetchReviewsByGame({ setReviewLimit={setReviewLimit} }) {
     const [reviews, setReviews] = useState([])
@@ -23,24 +24,15 @@ export default function FetchReviewsByGame({ setReviewLimit={setReviewLimit} }) 
         }
         fetchReviews()
     }, [reviews])
-    const filteredReviews = reviews.length ? reviews.filter((review) =>
+    /*const filteredReviews = reviews.length ? reviews.filter((review) =>
         review.text.toLowerCase().includes(searchQuery.toLowerCase())
-        ) : null
+        ) : null*/
         
     return (
-        <div>
+        <div >
             <h2>Reviews</h2>
-            <form id="search-bar-form">
-                <label htmlFor="search-query">Search:</label>
-                <input
-                name="search-query"
-                type="text"
-                placeholder="Type Review Here"
-                value={searchQuery}
-                onChange={(event) => setSearchQuery(event.target.value)}
-                />
-            </form>
-            {filteredReviews ? filteredReviews.map((review)=>(
+            <div className="className="review-items>
+            {reviews ? reviews.map((review)=>(
                 <div key={review.reviewId}>
                     <p>Text: {review.text}</p>
                     <p>Rating: {review.rating}</p>
@@ -55,6 +47,7 @@ export default function FetchReviewsByGame({ setReviewLimit={setReviewLimit} }) 
                     <button onClick={() => reviewDetails(review.reviewId)}>Details</button>
                 </div>
             )) : <p>{reviews.message}</p>}
+        </div>
         </div>
     )
 }

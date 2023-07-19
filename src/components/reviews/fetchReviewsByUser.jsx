@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { BASE_USERS_URL } from "../../api adapters";
-
+import '../games/FGR.css';
 export default function FetchReviewsByUser({ userId }) {
     const [reviews, setReviews] = useState([])
     const [searchQuery, setSearchQuery] = useState("")
@@ -19,23 +19,30 @@ export default function FetchReviewsByUser({ userId }) {
             }  
         }
         if(userId) {
-            fetchReviews()
+        fetchReviews()
         }
         
     }, [userId])
     return (
-        <div>
+        <div id="review-cards">
             <h2>Reviews</h2>
+            
             {
             reviews.length ? reviews.map((review)=>(
-                <div key={review.reviewId}>
-                    <p>Text: {review.text}</p>
-                    <p>Rating: {review.rating}</p>
-                    <p>Username: {review.username}</p>
+                <div key={review.reviewId} className="review-items" onClick={() => reviewDetails(review.reviewId)}>
+                    <div className="name">
+                    <h2>{review.username}</h2>
+                    </div>
+                    <div className="text">
+                    <p>{review.text}</p>
+                    </div>
+                    <div className="rating">
+                    <p>Rating</p>
+                    <p className="rating-text">{review.rating}</p>
+                    </div>
                 </div>
-            )):<p>{reviews.message}</p>
+            )) : <p>{reviews.message}</p>
             }
         </div>
-            
     )
 }

@@ -17,8 +17,6 @@ export default function UserCard({ user }) {
             <h3>Email:{user.email}</h3>
             {user.is_admin ? <h3>Role: Admin</h3> : <h3>Role: User</h3>}
             <h3>User Id: {user.userId}</h3>
-            <button>Edit</button>
-            <button>Delete</button>
             <h1>Reviews</h1>
             <FetchReviewsByUser userId={user.userId} />
             <h1>Comments</h1>

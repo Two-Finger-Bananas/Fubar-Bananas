@@ -29,22 +29,21 @@ export default function FetchReviewsByGame({ setReviewLimit={setReviewLimit} }) 
         ) : null*/
         
     return (
-        <div className="review-items" >
+        <div id="review-cards">
             <h2>Reviews</h2>
             
             {reviews ? reviews.map((review)=>(
-                <div key={review.reviewId}>
-                    <p>Text: {review.text}</p>
-                    <p>Rating: {review.rating}</p>
-                    {
-                    username === !review.username ? 
-                    <>
-                    <script onLoad={() => setReviewLimit(true)}></script>
-                    <p>Username: {review.username}</p>
-                    </>
-                    : <p>Username: {review.username}</p>
-                    }
-                    <button onClick={() => reviewDetails(review.reviewId)}>Details</button>
+                <div key={review.reviewId} className="review-items" onClick={() => reviewDetails(review.reviewId)}>
+                    <div className="name">
+                    <h2>{review.username}</h2>
+                    </div>
+                    <div className="text">
+                    <p>{review.text}</p>
+                    </div>
+                    <div className="rating">
+                    <p>Rating</p>
+                    <p className="rating-text">{review.rating}</p>
+                    </div>
                 </div>
             )) : <p>{reviews.message}</p>}
         </div>

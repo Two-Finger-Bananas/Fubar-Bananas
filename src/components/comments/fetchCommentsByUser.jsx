@@ -4,7 +4,6 @@ import { BASE_USERS_URL } from "../../api adapters";
 
 export default function FetchCommentsByUser({ userId }) {
     const [comments, setComments] = useState([])
-    const [searchQuery, setSearchQuery] = useState("")
     console.log(comments)
 
     useEffect(() => {

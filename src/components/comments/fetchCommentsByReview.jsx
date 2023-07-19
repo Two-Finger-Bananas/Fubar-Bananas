@@ -26,7 +26,7 @@ export default function FetchCommentsByReview({ review }) {
         <div>
             <h2>Comments</h2>
             
-            {comments.length ? comments.map((comment, idx)=>(
+            {comments.length > 0 ? comments.map((comment, idx)=>(
                 <SelectedComment key={idx} comment={comment} />
             )) : <p>{comments.message}</p>}
         </div>

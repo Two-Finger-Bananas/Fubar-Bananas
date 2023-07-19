@@ -15,7 +15,7 @@ export default function AverageRating({ game }){
            
                const avgData = sum / rating.length;
                 setAvgRating(avgData)
-              
+              console.log(avgData)
             } catch(error){
                 console.error(error);
             }

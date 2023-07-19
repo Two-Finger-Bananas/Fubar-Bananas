@@ -19,6 +19,7 @@ import Profile from './components/users/profile';
 function App() {
   const [ isLoggedIn, setIsLoggedIn ] = useState(false);
   const [ selectedGameId, setSelectedGameId ] = useState(null)
+  const [avgRating, setAvgRating]= useState([])
   return (
     <>
             <div className="App">
@@ -28,7 +29,7 @@ function App() {
                 <Route path="/register" element={<Register setIsLoggedIn={setIsLoggedIn} />} />
                 <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
                 <Route  path="/games" element={<FetchGames setSelectedGameId={setSelectedGameId} selectedGameId={selectedGameId} />} />
-                <Route path="/games/:id" element={<SelectedGame setSelectedGameId={setSelectedGameId} selectedGameId={selectedGameId} />} />
+                <Route path="/games/:id" element={<SelectedGame setSelectedGameId={setSelectedGameId} selectedGameId={selectedGameId} avgRating={avgRating} setAvgRating={setAvgRating} />} />
                 <Route path="/games/update/:id" element={<UpdateGame />} />
                 <Route path="/games/create" element={<PostGame />} />
                 <Route path="/reviews/update/:id" element={<EditReview />} />

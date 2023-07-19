@@ -1,11 +1,9 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { BASE_USERS_URL } from "../../api adapters";
 
 export default function FetchReviewsByUser({ userId }) {
     const [reviews, setReviews] = useState([])
-    const [searchQuery, setSearchQuery] = useState("")
     console.log(reviews)
 
     useEffect(() => {
@@ -21,7 +19,6 @@ export default function FetchReviewsByUser({ userId }) {
         if(userId) {
             fetchReviews()
         }
-        
     }, [userId])
     return (
         <div>

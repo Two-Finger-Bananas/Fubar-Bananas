@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { BASE_REVIEWS_URL } from "../../api adapters";
 import { useState } from "react";
 
-export default function PostReview({ game, setNewReview }) {
+export default function PostReview({ game, setNewReview, setAvgRating }) {
     const [text, setText] = useState('');
     const [rating, setRating] = useState('');
     // console.log(game)
@@ -29,6 +29,7 @@ export default function PostReview({ game, setNewReview }) {
             })
             const result = await response.json()
             setNewReview(false)
+            setAvgRating(2)
             return result
         }   catch (error){
             console.log(error)

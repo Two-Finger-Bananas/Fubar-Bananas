@@ -90,3 +90,29 @@
     text-decoration: underline;
   }
 
+  #average-rating {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(65, 65, 65);
+    width: 15%;
+    height: 20%;
+    margin: auto;
+  }
+
+  #score {
+    margin-block-end: 0%;
+  }
+
+  #rating {
+    margin-block-start: 3%;
+    margin-block-end: 0%;
+    font-size: 6rem;
+  }
+
+  #reviews {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+  }
+
+  

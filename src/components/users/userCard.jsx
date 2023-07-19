@@ -20,7 +20,7 @@ export default function UserCard({ user }) {
             <button>Edit</button>
             <button>Delete</button>
             <h1>Reviews</h1>
-            <FetchReviewsByUser userId={user.userId} />
+            <FetchReviewsByUser userId={user.userId}/>
             <h1>Comments</h1>
             <FetchCommentsByUser userId={user.userId} />
             </div>

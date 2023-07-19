@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import { BASE_USERS_URL } from "../../api adapters";
+import './comments.css'
 
 export default function FetchCommentsByUser({ userId }) {
     const [comments, setComments] = useState([])
@@ -25,13 +26,14 @@ export default function FetchCommentsByUser({ userId }) {
     return (
         <div>
             <h2>Comments</h2>
-            { comments.length ? comments.map((comment)=>(
+            { 
+            comments.length ? comments.map((comment)=>(
                 <div key={comment.commentId}>
                     <p>Text: {comment.text}</p>
                     <p>Review: {comment.reviewId}</p>  
                 </div>
             )) : <p>{comments.message}</p>
-        }
+            }
         </div>
     )
 }

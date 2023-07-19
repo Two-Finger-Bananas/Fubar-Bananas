@@ -1,0 +1,59 @@
+
+
+.review-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: rgb(65, 65, 65);
+    height: fit-content;
+    text-align: center;
+    margin-top: 10px; 
+}
+
+.rating-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: fit-content;
+    padding-right: 2%;
+    padding-left: 2%;
+}
+
+.name-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgb(55, 55, 55);
+    width: fit-content;
+    padding-right: 2%;
+    padding-left: 2%;
+}
+
+.text-box {
+    width: fit-content;
+    margin: auto;
+}
+
+.comment-box {
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(65, 65, 65);
+    height: fit-content;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.comment-user {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgb(55, 55, 55);
+    width: fit-content;
+    padding-right: 2%;
+    padding-left: 2%;
+}
+
+.comment-text {
+    padding-left: 2%;
+    width: fit-content;
+}

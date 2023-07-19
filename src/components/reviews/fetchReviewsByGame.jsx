@@ -1,13 +1,11 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { BASE_GAME_URL } from "../../api adapters";
-import './fetchReviews.css';
 
 export default function FetchReviewsByGame() {
     const [reviews, setReviews] = useState([])
     const navigate = useNavigate()
     const { id } = useParams()
-    const username = localStorage.getItem('username')
     function reviewDetails(reviewId) {
         navigate(`/reviews/${reviewId}`)
     }
@@ -45,6 +43,5 @@ export default function FetchReviewsByGame() {
             )) : <p>{reviews.message}</p>
             }
         </div>
-        
     )
 }

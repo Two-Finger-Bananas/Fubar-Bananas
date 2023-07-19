@@ -20,6 +20,8 @@ export default function SelectedGame() {
   const is_admin = localStorage.getItem('is_admin')
   const [bodyBackground, setBodyBackgorund] = useState(null)
   const [genreArr, setGenreArr] = useState([])
+  const [platformsArr, setPlatformsArr] = useState([])
+  const [playersArr, setPlayersArr] = useState([])
 
   function goBack () {
     navigate('/games')
@@ -51,7 +53,15 @@ export default function SelectedGame() {
     if(indivGame && indivGame.genre) {
     const genreArrData = indivGame.genre.split(', ')
     setGenreArr(genreArrData)
-  }
+    }
+    if(indivGame && indivGame.platforms) {
+      const platformsArrData = indivGame.platforms.split(', ')
+      setPlatformsArr(platformsArrData)
+      }
+    if(indivGame && indivGame.players) {
+    const playersArrData = indivGame.players.split(', ')
+    setPlayersArr(playersArrData)
+    }
   }, [indivGame])
   
   return (
@@ -80,18 +90,45 @@ export default function SelectedGame() {
         {
           !switchPage ?
           <>
-          <div id="game-details">
+          <div id="details-card">
+            <div className="details-categories">
+              <h2 className="details-title">Genres</h2>
             {
               genreArr && genreArr.length ?
               genreArr.map((genre, idx) => {
-                return <h3 key={idx}>{genre}</h3>
+                return <h3 key={idx} className="details-text">{genre}</h3>
               })
               : null
             }
-            <h3>{indivGame.platforms}</h3>
-            <h3>{indivGame.gameDeveloper}</h3>
-            <h3>{indivGame.players}</h3>
-            <h3>Released on: {indivGame.publishDate}</h3>
+            </div>
+            <div className="details-categories">
+              <h2 className="details-title">Platforms</h2>
+            {
+              platformsArr && platformsArr.length ?
+              platformsArr.map((platform, idx) => {
+                return <h3 key={idx} className="details-text">{platform}</h3>
+              })
+              : null
+            }
+            </div>
+            <div className="details-categories">
+              <h2 className="details-title">Compatibility</h2>
+            {
+              playersArr && playersArr.length ?
+              playersArr.map((player, idx) => {
+                return <h3 key={idx} className="details-text">{player}</h3>
+              })
+              : null
+            }
+            </div>
+            <div className="details-categories">
+              <h2 className="details-title">Developer</h2>
+            <h3  className="details-text">{indivGame.gameDeveloper}</h3>
+            </div>
+            <div className="details-categories">
+              <h2 className="details-title">Release Date</h2>
+            <h3  className="details-text">{indivGame.publishDate}</h3>
+            </div>
           </div>
           
           <div className="Game-Actions">

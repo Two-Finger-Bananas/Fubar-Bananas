@@ -19,23 +19,14 @@ export default function FetchCommentsByReview({ review }) {
         fetchComments()
     }, [comments])
 
-    const filteredComments = comments.length ? comments.filter((comment) =>
+    /*const filteredComments = comments.length ? comments.filter((comment) =>
         comment.text.toLowerCase().includes(searchQuery.toLowerCase())
-        ) : null
+        ) : null*/
     return (
         <div>
             <h2>Comments</h2>
-            <form id="search-bar-form">
-                <label htmlFor="search-query">Search: </label>
-                <input
-                name="search-query"
-                type="text"
-                placeholder="Type Comment Here"
-                value={searchQuery}
-                onChange={(event) => setSearchQuery(event.target.value)}
-                />
-            </form>
-            {comments.length ? filteredComments.map((comment, idx)=>(
+            
+            {comments.length ? comments.map((comment, idx)=>(
                 <SelectedComment key={idx} comment={comment} />
             )) : <p>{comments.message}</p>}
         </div>

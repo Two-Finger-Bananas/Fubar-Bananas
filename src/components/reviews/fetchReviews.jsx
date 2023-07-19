@@ -1,7 +1,7 @@
 import { useEffect, useState} from 'react';
 import { BASE_REVIEWS_URL } from '../../api adapters';
 import { useNavigate } from 'react-router-dom';
-
+import './fetchReviews.css';
 
 export default function FetchReviews({setSelectedReviewId, selectedReviewId}){
     const[TheReviews, setTheReviews] = useState([]);

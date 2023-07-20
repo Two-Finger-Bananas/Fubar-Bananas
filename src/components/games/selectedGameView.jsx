@@ -14,7 +14,6 @@ export default function SelectedGame({ setAvgRating, avgRating }) {
   const [indivGame, setIndivGame] = useState([]);
   const [newReview, setNewReview] = useState(false)
   const [updateGame, setUpdateGame] = useState(false)
-  const [reviewLimit, setReviewLimit] = useState(false)
   const [switchPage, setSwitchPage] = useState(false)
   const { id } = useParams()
   const is_admin = localStorage.getItem('is_admin')
@@ -25,6 +24,7 @@ export default function SelectedGame({ setAvgRating, avgRating }) {
   const [playersArr, setPlayersArr] = useState([])
 
   function goBack () {
+    setAvgRating([])
     navigate('/games')
   }
 
@@ -160,10 +160,18 @@ export default function SelectedGame({ setAvgRating, avgRating }) {
               } 
               </>: null
             }
+            
+            {
+              avgRating.length ?
             <div id='reviews'>
               <AverageRating game={indivGame} avgRating={avgRating} setAvgRating={setAvgRating} /> 
               <FetchReviewsByGame avgRating={avgRating} /> 
+            </div> :
+            <div id='reviews-center'>
+            <AverageRating game={indivGame} avgRating={avgRating} setAvgRating={setAvgRating} /> 
+            <FetchReviewsByGame avgRating={avgRating} /> 
             </div>
+            }
           </>
         }
         </div> : null

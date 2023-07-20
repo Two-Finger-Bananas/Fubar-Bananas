@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { BASE_GAME_URL } from "../../api adapters";
 
 export default function AverageRating({ setAvgRating, avgRating, game }){
+    console.log(avgRating)
     useEffect(() =>{
         async function fetchTheReviews(){
             try{
@@ -19,11 +20,16 @@ export default function AverageRating({ setAvgRating, avgRating, game }){
         fetchTheReviews();
     }, [avgRating]);
 return(
-    <div id="average-rating">
+    <>
+    {
+        avgRating.length ?
+        <div id="average-rating">
         <h3 id="score">Average Score</h3>
         
         <p id="rating"> {avgRating} </p>
 
-    </div>
+        </div> : null
+    }
+    </>
 )
 }

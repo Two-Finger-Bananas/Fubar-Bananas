@@ -4,7 +4,7 @@ import { BASE_REVIEWS_URL } from "../../api adapters";
 import SelectedComment from "./selectedCommentView";
 import './comments.css'
 
-export default function FetchCommentsByReview({ review }) {
+export default function FetchCommentsByReview({ review, setFetch, Fetch }) {
     const [comments, setComments] = useState([])
     useEffect(() => {
         async function fetchComments() {
@@ -17,14 +17,14 @@ export default function FetchCommentsByReview({ review }) {
             }  
         }
         fetchComments()
-    }, [review])
+    }, [Fetch])
     return (
         <div>
             <h2>Comments</h2>
             
             {
             comments.length ? comments.map((comment, idx)=>(
-                <SelectedComment key={idx} comment={comment} />
+                <SelectedComment key={idx} comment={comment} setFetch={setFetch} />
             )) : <p>{comments.message}</p>
             }
         </div>

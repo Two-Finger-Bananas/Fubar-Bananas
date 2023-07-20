@@ -3,7 +3,7 @@ import { useState } from "react";
 import DeleteComment from "./deleteComments";
 import EditComment from "./editComments";
 
-export default function SelectedComment({ comment }) {
+export default function SelectedComment({ comment, setFetch }) {
     const [updateComment, setUpdateComment] = useState(false)
     const username = localStorage.getItem('username')
     return (
@@ -22,11 +22,12 @@ export default function SelectedComment({ comment }) {
             <p>{comment.text}</p>  
             </div>  
             </div>
-            <button type="button" onClick={() => setUpdateComment(true)}>Edit</button> 
+            <button type="button" 
+            onClick={() =>{setUpdateComment(true); setFetch(true)}}>Edit</button> 
             </>
-            : <EditComment comment={comment} setUpdateComment={setUpdateComment} />
+            : <EditComment comment={comment} setUpdateComment={setUpdateComment} setFetch={setFetch} />
         }
-        <DeleteComment comment={comment} /> 
+        <DeleteComment comment={comment} setFetch={setFetch} /> 
         </>
         : 
         <>

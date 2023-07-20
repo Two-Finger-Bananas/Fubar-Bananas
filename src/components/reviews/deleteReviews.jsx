@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { BASE_REVIEWS_URL } from "../../api adapters";
 import { TOKEN } from "../../api adapters";
 
-export default function DeleteReview({ reviewId, selectedGameId }){
+export default function DeleteReview({ reviewId, selectedGameId, setFetch }){
     const navigate = useNavigate()
     async function deleteAReview() {
         try{
@@ -16,6 +16,7 @@ export default function DeleteReview({ reviewId, selectedGameId }){
             })
             const results = await response.json()
             navigate(`/games/${selectedGameId}`)
+            setFetch(true)
             return results
         } catch(error){
             console.log(error)

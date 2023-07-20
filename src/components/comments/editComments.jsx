@@ -3,7 +3,7 @@ import { useState } from "react";
 import { TOKEN } from "../../api adapters";
 import { BASE_COMMENTS_URL } from "../../api adapters";
 
-export default function EditComment({ comment, setUpdateComment }){
+export default function EditComment({ comment, setUpdateComment, setFetch }){
     const [text, setText] = useState('');
     async function editAComment(event){
         event.preventDefault()
@@ -20,6 +20,7 @@ export default function EditComment({ comment, setUpdateComment }){
         })
         const result = await response.json()
         setUpdateComment(false)
+        setFetch(false)
             return result
     } catch(error){
         console.log(error)

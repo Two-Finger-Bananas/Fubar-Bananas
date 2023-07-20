@@ -2,7 +2,7 @@
 import { BASE_COMMENTS_URL } from "../../api adapters";
 import { TOKEN } from "../../api adapters";
 
-export default function DeleteComment({ comment }){
+export default function DeleteComment({ comment, setFetch }){
     async function deleteAComment(){
         try{
             const response = await fetch(`${BASE_COMMENTS_URL}/${comment.commentId}`,{
@@ -13,7 +13,7 @@ export default function DeleteComment({ comment }){
             }
             })
             const results = await response.json()
-            console.log(results)
+            setFetch(false)
             return results
         } catch(error){
             console.log(error)

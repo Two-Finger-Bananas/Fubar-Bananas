@@ -20,6 +20,7 @@ function App() {
   const [ isLoggedIn, setIsLoggedIn ] = useState(false);
   const [ selectedGameId, setSelectedGameId ] = useState(null)
   const [avgRating, setAvgRating]= useState([])
+  const [Fetch, setFetch] = useState(false)
   return (
     <>
             <div className="App">
@@ -29,11 +30,11 @@ function App() {
                 <Route path="/register" element={<Register setIsLoggedIn={setIsLoggedIn} />} />
                 <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
                 <Route  path="/games" element={<FetchGames setSelectedGameId={setSelectedGameId} selectedGameId={selectedGameId} />} />
-                <Route path="/games/:id" element={<SelectedGame setSelectedGameId={setSelectedGameId} selectedGameId={selectedGameId} avgRating={avgRating} setAvgRating={setAvgRating} />} />
+                <Route path="/games/:id" element={<SelectedGame setSelectedGameId={setSelectedGameId} selectedGameId={selectedGameId} avgRating={avgRating} setAvgRating={setAvgRating} setFetch={setFetch} Fetch={Fetch} />} />
                 <Route path="/games/update/:id" element={<UpdateGame />} />
                 <Route path="/games/create" element={<PostGame />} />
                 <Route path="/reviews/update/:id" element={<EditReview />} />
-                <Route path="/reviews/:id" element={<SelectedReview setSelectedGameId={setSelectedGameId} selectedGameId={selectedGameId} />} />
+                <Route path="/reviews/:id" element={<SelectedReview setSelectedGameId={setSelectedGameId} selectedGameId={selectedGameId} setFetch={setFetch} Fetch={Fetch} />} />
                 <Route path="/reviews" element={<PostReview />} />
                 <Route path="/user/:id" element={<UserCard />} />
                 <Route path="/admin" element={<AdminDashboard />} />

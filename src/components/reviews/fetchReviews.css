@@ -27,22 +27,27 @@
     flex-direction: column;
     justify-content: center;
     /* border: 2px white solid; */
-    width: 10%;
+    width: 15%;
 }
 
 .rating-text {
     font-size: 30px;
     margin: 0%;
+    padding-right: 2%;
+    padding-left: 2%;
 }
 
 #review-cards {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 90%;
 }
 
 .rating-title {
     margin: 0%;
+    padding-right: 2%;
+    padding-left: 2%;
 }
 
 #reviews-center {

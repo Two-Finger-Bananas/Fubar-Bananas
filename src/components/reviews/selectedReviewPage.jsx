@@ -6,7 +6,7 @@ import DeleteReview from "./deleteReviews";
 import FetchCommentsByReview from "../comments/fetchCommentsByReview";
 import PostComment from "../comments/postComment";
 
-export default function SelectedReview({ selectedGameId }) {
+export default function SelectedReview({ selectedGameId, Fetch, setFetch }) {
     const navigate = useNavigate()
     const [indivReview, setIndivReview] = useState(null);
     const { id } = useParams()
@@ -31,7 +31,7 @@ export default function SelectedReview({ selectedGameId }) {
         if (id) {
             fetchSelectedReview()
         }
-    }, [id])
+    }, [fetch])
     return (
         <div id="comments">
             {
@@ -60,10 +60,10 @@ export default function SelectedReview({ selectedGameId }) {
                     <button onClick={goBack}>Go Back</button>
                     {
                     username ?
-                        <PostComment reviewId={id} gameId={id}/>
+                        <PostComment reviewId={id} gameId={id} setFetch={setFetch} />
                     : null
                     }
-                    <FetchCommentsByReview review={indivReview} />
+                    <FetchCommentsByReview review={indivReview} setFetch={setFetch} Fetch={Fetch} />
                 </div>
                 </>    
                 ) : null

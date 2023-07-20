@@ -7,11 +7,12 @@ import { TOKEN } from "../../api adapters";
 export default function UpdateGame({ game, setUpdateGame }) {
     const [title, setTitle] = useState('');
     const [publishDate, setPublishDate] = useState('');
-    const [genre,setGenre] = useState([]);
+    const [genre,setGenre] = useState('');
     const [gameDeveloper, setGameDeveloper] = useState('')
-    const [platforms, setPlatforms] = useState([])
-    const [players, setPlayers] = useState([])
+    const [platforms, setPlatforms] = useState('')
+    const [players, setPlayers] = useState('')
     const [coverImg, setCoverImg] = useState('')
+    const [backgroundImg, setBackgroundImg] = useState('')
     
     // console.log(game)
     
@@ -31,7 +32,9 @@ export default function UpdateGame({ game, setUpdateGame }) {
                 genre: !genre.length ? `${game.genre}` : genre,
                 platforms: !platforms.length ? `${game.platforms}` : platforms,
                 players: !players.length ? `${game.players}` : players,
-                coverImg: !coverImg ? `${game.coverImg}` : coverImg
+                coverImg: !coverImg ? `${game.coverImg}` : coverImg,
+                backgroundImg: !backgroundImg ? `${game.backgroundImg}` : backgroundImg
+
             })
         })
         const result = await response.json()
@@ -102,6 +105,14 @@ export default function UpdateGame({ game, setUpdateGame }) {
             type="text"
             value={coverImg}
             onChange={(e) => setCoverImg(e.target.value)}
+          />
+        </label>
+        <label>
+          Background Image:
+          <input
+            type="text"
+            value={backgroundImg}
+            onChange={(e) => setBackgroundImg(e.target.value)}
           />
         </label>
         <br />

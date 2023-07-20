@@ -1,10 +1,10 @@
+/* eslint-disable react/prop-types */
 import { useParams, useNavigate } from "react-router-dom";
 import { BASE_COMMENTS_URL } from "../../api adapters";
 import { useState } from "react";
 import { TOKEN } from "../../api adapters";
 
-export default function PostComment({gameId,reviewId}){
-    console.log(gameId,reviewId)
+export default function PostComment({ gameId,reviewId, setFetch }){
     const {id} = useParams()
     const navigate = useNavigate()
     const [text, setText] = useState('');
@@ -27,8 +27,8 @@ export default function PostComment({gameId,reviewId}){
             })
         
             const result = await response.json()
-            console.log(result)
             navigate(`/reviews/${id}`)
+            setFetch(true)
             return result
         }catch (error){
             console.log(error)

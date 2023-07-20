@@ -8,11 +8,12 @@ export default function PostGame() {
     const navigate = useNavigate()
     const [title, setTitle] = useState('');
     const [publishDate, setPublishDate] = useState('');
-    const [genre,setGenre] = useState([]);
+    const [genre,setGenre] = useState('');
     const [gameDeveloper, setGameDeveloper] = useState('')
-    const [platforms, setPlatforms] = useState([])
-    const [players, setPlayers] = useState([])
+    const [platforms, setPlatforms] = useState('')
+    const [players, setPlayers] = useState('')
     const [coverImg, setCoverImg] = useState('')
+    const [backgroundImg, setBackgroundImg] = useState('')
 
     async function createGame(event) {
         event.preventDefault()
@@ -30,7 +31,8 @@ export default function PostGame() {
                 genre: genre,
                 platforms: platforms,
                 players: players,
-                coverImg: coverImg
+                coverImg: coverImg,
+                backgroundImg: backgroundImg
             })
         })
         const result = await response.json()
@@ -92,6 +94,13 @@ export default function PostGame() {
                   <input type="text" 
                   value={coverImg} 
                   onChange={(e) => setCoverImg(e.target.value)} />
+                </label>
+                <label>
+                Background Image:
+                <input
+                type="text"
+                value={backgroundImg}
+                onChange={(e) => setBackgroundImg(e.target.value)} />
                 </label>
                 <br />
                 <button type="submit">Create Game</button>

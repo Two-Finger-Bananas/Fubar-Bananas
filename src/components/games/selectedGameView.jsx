@@ -9,7 +9,7 @@ import UpdateGame from "./UpdateGame";
 import AverageRating from "../reviews/AverageRating";
 
 
-export default function SelectedGame({ setAvgRating, avgRating }) {
+export default function SelectedGame({ setAvgRating, avgRating, setFetch, Fetch }) {
   const navigate = useNavigate()
   const [indivGame, setIndivGame] = useState([]);
   const [newReview, setNewReview] = useState(false)
@@ -165,11 +165,11 @@ export default function SelectedGame({ setAvgRating, avgRating }) {
               avgRating.length ?
             <div id='reviews'>
               <AverageRating game={indivGame} avgRating={avgRating} setAvgRating={setAvgRating} /> 
-              <FetchReviewsByGame avgRating={avgRating} /> 
+              <FetchReviewsByGame avgRating={avgRating} setFetch={setFetch} fetch={fetch} /> 
             </div> :
             <div id='reviews-center'>
             <AverageRating game={indivGame} avgRating={avgRating} setAvgRating={setAvgRating} /> 
-            <FetchReviewsByGame avgRating={avgRating} /> 
+            <FetchReviewsByGame avgRating={avgRating} setFetch={setFetch} fetch={fetch} /> 
             </div>
             }
           </>

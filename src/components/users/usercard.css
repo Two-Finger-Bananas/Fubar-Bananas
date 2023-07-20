@@ -1,0 +1,26 @@
+.card-container {
+    border: 1px solid #000000;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: #313030;
+  }
+
+  .closeButton{
+    cursor: pointer;
+    
+   
+  }
+.closeButton:hover{
+    text-decoration: underline;
+    color:magenta;
+}
+  .nameButton{
+    cursor: pointer;
+  }
+  
+  .nameButton:hover{
+    text-decoration: underline;
+    color:magenta
+  }

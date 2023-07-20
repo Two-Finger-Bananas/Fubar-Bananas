@@ -59,6 +59,7 @@
 
   .page-buttons:hover {
     text-decoration: underline;
+    cursor: pointer;
   }
 
   #active-button {
@@ -97,6 +98,14 @@
     width: 15%;
     height: 20%;
     margin: auto;
+    color:black;
+    animation: text-color-change 5s infinite;
+  }
+
+  @keyframes text-color-change {
+    0% { color: black; text-shadow: -1px -1px 0 lightblue, 1px -1px 0 lightblue, -1px 1px 0 lightblue, 1px 1px 0 lightblue; }
+    50% { color: black; text-shadow: -1px -1px 0 magenta, 1px -1px 0 magenta, -1px 1px 0 magenta, 1px 1px 0 magenta; }
+    100% { color: black; text-shadow: -1px -1px 0 lightblue, 1px -1px 0 lightblue, -1px 1px 0 lightblue, 1px 1px 0 lightblue; }
   }
 
   #score {

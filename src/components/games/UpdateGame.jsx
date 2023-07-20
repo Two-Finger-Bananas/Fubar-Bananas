@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import { useNavigate } from "react-router-dom";
 import { BASE_GAME_URL } from "../../api adapters";
 import {useState} from 'react';
 import { TOKEN } from "../../api adapters";

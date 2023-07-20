@@ -2,10 +2,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { BASE_GAME_URL } from "../../api adapters";
-import selectedReviewPage from './selectedReviewPage'
 import './fetchReviews.css'
 
-export default function FetchReviewsByGame({ avgRating, setFetch, fetch }) {
+export default function FetchReviewsByGame({ setFetch, Fetch }) {
     const [reviews, setReviews] = useState([])
     const navigate = useNavigate()
     const { id } = useParams()
@@ -17,13 +16,14 @@ export default function FetchReviewsByGame({ avgRating, setFetch, fetch }) {
             try {
                 const response = await fetch(`${BASE_GAME_URL}/reviews/${id}`)
                 const data = await response.json()
-                setReviews(data) 
+                setReviews(data)
+                setFetch(data) 
             } catch (error) {
                 console.log(error)
             }  
         }
         fetchReviews()
-    }, [avgRating])
+    }, [Fetch])
         
     return (
         

@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import DeleteGame from "./DeleteGame";
@@ -165,11 +167,11 @@ export default function SelectedGame({ setAvgRating, avgRating, setFetch, Fetch 
               avgRating.length ?
             <div id='reviews'>
               <AverageRating game={indivGame} avgRating={avgRating} setAvgRating={setAvgRating} /> 
-              <FetchReviewsByGame avgRating={avgRating} setFetch={setFetch} fetch={fetch} /> 
+              <FetchReviewsByGame avgRating={avgRating} setFetch={setFetch} Fetch={Fetch} /> 
             </div> :
             <div id='reviews-center'>
             <AverageRating game={indivGame} avgRating={avgRating} setAvgRating={setAvgRating} /> 
-            <FetchReviewsByGame avgRating={avgRating} setFetch={setFetch} fetch={fetch} /> 
+            <FetchReviewsByGame avgRating={avgRating} setFetch={setFetch} Fetch={Fetch} /> 
             </div>
             }
           </>

@@ -9,9 +9,18 @@
 
   .closeButton{
     cursor: pointer;
-    text-decoration: underline;
+    
    
   }
-
+.closeButton:hover{
+    text-decoration: underline;
+    color:magenta;
+}
+  .nameButton{
+    cursor: pointer;
+  }
   
-  
+  .nameButton:hover{
+    text-decoration: underline;
+    color:magenta
+  }

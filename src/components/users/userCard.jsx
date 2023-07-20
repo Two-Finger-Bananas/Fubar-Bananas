@@ -9,7 +9,7 @@ export default function UserCard({ user }) {
     return (
         <div className="card-container">
         {
-            !details ? <h2 onClick={() => { setDetails(true)}}>{user.username}</h2> :
+            !details ? <h2 className="nameButton" onClick={() => { setDetails(true)}}>{user.username}</h2> :
             <div>
             <h1>User Info:</h1>
             <p className="closeButton" onClick={() => {setDetails(false)}}>Close</p>

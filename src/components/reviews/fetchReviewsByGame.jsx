@@ -26,6 +26,7 @@ export default function FetchReviewsByGame({ avgRating }) {
     }, [avgRating])
         
     return (
+        
         <div id="review-cards">
             {
             reviews.length ? reviews.map((review)=>(

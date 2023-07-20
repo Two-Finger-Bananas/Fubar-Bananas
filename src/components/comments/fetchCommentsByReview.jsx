@@ -17,7 +17,7 @@ export default function FetchCommentsByReview({ review }) {
             }  
         }
         fetchComments()
-    }, [comments])
+    }, [review])
     return (
         <div>
             <h2>Comments</h2>

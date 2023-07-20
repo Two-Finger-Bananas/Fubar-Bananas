@@ -44,3 +44,8 @@
 .rating-title {
     margin: 0%;
 }
+
+#reviews-center {
+    display: flex;
+    justify-content: center;
+}

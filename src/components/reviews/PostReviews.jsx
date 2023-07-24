@@ -6,8 +6,6 @@ import { useState } from "react";
 export default function PostReview({ game, setNewReview, setAvgRating }) {
     const [text, setText] = useState('');
     const [rating, setRating] = useState('');
-    // console.log(game)
-    // console.log(setNewReview)
 
     async function createReview(event){
         event.preventDefault()

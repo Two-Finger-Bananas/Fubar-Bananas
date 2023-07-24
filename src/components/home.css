@@ -22,7 +22,7 @@
     text-align: center;
     padding:20px;
     animation: text-color-change 5s infinite;
-    transform: translate(0,150%);
+    transform: translate(0,60%);
   }
 
   @keyframes text-color-change {
@@ -32,11 +32,14 @@
   }
   
   .content h1 {
+    font-size: 50px;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .content h2 {
     font-size: 24px;
     line-height: 1.5;
     margin: 0;
-    
-    
-    
   }
   

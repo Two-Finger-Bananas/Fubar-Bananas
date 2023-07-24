@@ -14,11 +14,11 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
       <Link className="Navbar-link" to="/games">Games</Link>
 
       {
-        is_admin === "true" ? <Link className="Navbar-link" to="/admin">Admin Dashboard</Link> : ""
+        is_admin === "true" && isLoggedIn ? <Link className="Navbar-link" to="/admin">Admin Dashboard</Link> : ""
       }
 
       {
-        is_admin === "false" ? <Link className="Navbar-link" to="/profile">Profile</Link> : ""
+        is_admin === "false" && isLoggedIn ? <Link className="Navbar-link" to="/profile">Profile</Link> : ""
       }
           
       {

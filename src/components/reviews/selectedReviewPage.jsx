@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -31,7 +32,7 @@ export default function SelectedReview({ selectedGameId, Fetch, setFetch }) {
         if (id) {
             fetchSelectedReview()
         }
-    }, [fetch])
+    }, [Fetch])
     return (
         <div id="comments">
             {

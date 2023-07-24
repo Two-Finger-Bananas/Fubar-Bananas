@@ -25,12 +25,11 @@ export default function FetchCommentsByUser({ userId }) {
 
     return (
         <div>
-            <h2>Comments</h2>
             { 
             comments.length ? comments.map((comment)=>(
                 <div key={comment.commentId}>
-                    <p>Text: {comment.text}</p>
-                    <p>Review: {comment.reviewId}</p>  
+                    <h2>Review ID: {comment.reviewId}</h2>
+                    <p>{comment.text}</p>  
                 </div>
             )) : <p>{comments.message}</p>
             }

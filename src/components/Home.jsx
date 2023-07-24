@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import './home.css';
-import { useNavigate } from "react-router-dom";
 import videoSource from '../media/GS-Homepage.mp4';
 import Footer from './Footer';
 

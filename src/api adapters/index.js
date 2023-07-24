@@ -5,15 +5,14 @@
 // export const BASE_REVIEWS_URL ='http://localhost:3000/reviews'
 // export const BASE_COMMENTS_URL ='http://localhost:3000/comments'
 
-export const BASE_USER_URL = 'fubar-gaming-backend.netlify.app/user'
-export const BASE_USERS_URL = 'fubar-gaming-backend.netlify.app/users'
-export const BASE_GAME_URL = 'fubar-gaming-backend.netlify.app/games'
-export const BASE_REVIEWS_URL ='fubar-gaming-backend.netlify.app/reviews'
-export const BASE_COMMENTS_URL ='fubar-gaming-backend.netlify.app/comments'
+export const BASE_USER_URL = 'https://fubar-gaming.netlify.app/user'
+export const BASE_USERS_URL = 'https://fubar-gaming.netlify.app/users'
+export const BASE_GAME_URL = 'https://fubar-gaming.netlify.app/games'
+export const BASE_REVIEWS_URL ='https://fubar-gaming.netlify.app/reviews'
+export const BASE_COMMENTS_URL ='https://fubar-gaming.netlify.app/comments'
 
 
 export const TOKEN = localStorage.getItem('token')
-import jwtDecode from 'jwt-decode'
 export const registerUser = async (username, email, password) => {
     try{
         const response = await fetch(`${BASE_USER_URL}/register`,{
@@ -49,7 +48,6 @@ export const loginUser = async (username, password) => {
             }),
         });
         const result = await response.json();
-        const decodedToken = await jwtDecode(result.token)
         return result;
     }catch(error){
         console.log(error);

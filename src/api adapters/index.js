@@ -5,11 +5,11 @@
 // export const BASE_REVIEWS_URL ='http://localhost:3000/reviews'
 // export const BASE_COMMENTS_URL ='http://localhost:3000/comments'
 
-export const BASE_USER_URL = 'https://fubar-gaming-backend.netlify.app/user'
-export const BASE_USERS_URL = 'https://fubar-gaming-backend.netlify.app/users'
-export const BASE_GAME_URL = 'https://fubar-gaming-backend.netlify.app/games'
-export const BASE_REVIEWS_URL ='https://fubar-gaming-backend.netlify.app/reviews'
-export const BASE_COMMENTS_URL ='https://fubar-gaming-backend.netlify.app/comments'
+export const BASE_USER_URL = 'fubar-gaming-backend.netlify.app/user'
+export const BASE_USERS_URL = 'fubar-gaming-backend.netlify.app/users'
+export const BASE_GAME_URL = 'fubar-gaming-backend.netlify.app/games'
+export const BASE_REVIEWS_URL ='fubar-gaming-backend.netlify.app/reviews'
+export const BASE_COMMENTS_URL ='fubar-gaming-backend.netlify.app/comments'
 
 
 export const TOKEN = localStorage.getItem('token')

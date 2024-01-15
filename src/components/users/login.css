@@ -1,33 +1,62 @@
-.login-form{
-    background-color: rgb(84, 83, 83);
-    width: 25vw;
-    height: 30vh;
-    border-radius: 15px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5) ;
-    border:solid black 5px;
-    transform: translateZ(15px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    animation: glow 4s infinite alternate;
-}
+/* login.css */
 
-@keyframes glow{
-    0% {
-        box-shadow: 0px 0px 20px magenta;
-      }
-      100% {
-        box-shadow: 0px 0px 20px lightblue;
-      }
-}
-
+/* Container styles */
 .login-page-background {
-
-  background-size: cover;
-  color: black;
-  margin: 0;
-  padding: 0;
-  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #4a4a4a;
 }
 
+.login-form {
+  background-color: #5d5d5d;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 320px;
+  text-align: center;
+}
+
+#title-of-login-box {
+  margin-bottom: 20px;
+}
+
+/* Form input styles */
+.box-label {
+  width: calc(100% - 24px); /* Adjusted width to accommodate padding */
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+/* Submit button styles */
+#submit-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #f05d5e;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#submit-button:hover {
+  background-color: #e55455;
+}
+
+/* Register button styles */
+button {
+  background: none;
+  border: none;
+  color: #007bff;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}

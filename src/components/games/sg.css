@@ -1,0 +1,170 @@
+/* SG.css */
+
+#selected-game {
+  margin: 20px auto;
+  max-width: 1200px;
+  padding: 20px;
+  background-color: #383535;
+  border-radius: 10px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5); /* Increased shadow */
+  margin: 7%;
+}
+
+#game-title {
+  text-align: center;
+  margin-bottom: 20px;
+  color: black;
+}
+
+#game-title img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+  margin-bottom: 20px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.page-buttons {
+  margin: 0 10px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #777;
+  transition: color 0.3s ease;
+  background-color: transparent;
+  border: none;
+}
+
+.page-buttons:hover {
+  color: #333;
+  text-decoration: underline;
+}
+
+#details-card {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.details-categories {
+  text-align: center;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+  background-color: #333;
+}
+
+.details-title {
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+  color: #555;
+}
+
+.details-text {
+  font-size: 1.1rem;
+  color: #777;
+}
+
+.Game-Actions {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.Game-Actions button.details-button {
+  padding: 10px 20px;
+  font-size: 1.1rem;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+}
+
+.Game-Actions button.details-button:hover {
+  background-color: #45a049;
+}
+
+/* fetchReviews.css */
+
+#review-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.review-items {
+  display: flex;
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease-in-out;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Enhanced shadow */
+}
+
+.name {
+  margin-bottom: 10px;
+}
+
+.name h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #e33939; /* Updated text color */
+  font-size: smaller;
+}
+
+.text p {
+  font-size: 1rem;
+  color: #777; /* Adjusted text color */
+}
+
+.rating {
+  display: flex;
+  justify-content: space-between;
+  background-color: #292828; /* Darker background */
+  padding: 8px;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+.rating-text {
+  margin: 0;
+  color: #ffac32; /* Updated rating text color */
+  font-weight: bold;
+}
+
+/* AverageRating.css */
+
+#average-rating {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #4d4b4b;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+}
+
+#score {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+#rating {
+  margin: 5px 0;
+  font-size: 2.5rem;
+  color: #ff9800;
+}

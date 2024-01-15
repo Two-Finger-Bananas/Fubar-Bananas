@@ -26,7 +26,7 @@ export default function PostComment({ gameId,reviewId, setFetch }){
                 })
             })
         
-            const result = await response.json()
+            const result = await response.json();
             navigate(`/reviews/${id}`)
             setFetch(true)
             return result

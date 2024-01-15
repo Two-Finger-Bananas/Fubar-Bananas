@@ -35,6 +35,9 @@ export default function PostGame() {
                 backgroundImg: backgroundImg
             })
         })
+        if(!response.ok){
+          throw new Error(`Failed to create game. Status: ${response.status}`)
+        }
         const result = await response.json()
         console.log(result)
         navigate('/games')

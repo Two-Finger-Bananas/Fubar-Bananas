@@ -9,17 +9,21 @@
     margin-top: 10px; 
 }
 
+
+
 .name {
     display: flex;
     flex-direction: column;
     justify-content: center;
     background-color: rgb(55, 55, 55);
-    width: 20%;
+    font-size: smaller;
 }
 
 .text {
     width: 60%;
     margin: auto;
+   
+    
 }
 
 .rating {
@@ -27,7 +31,7 @@
     flex-direction: column;
     justify-content: center;
     /* border: 2px white solid; */
-    width: 15%;
+    
 }
 
 .rating-text {

@@ -5,16 +5,21 @@ import { BASE_REVIEWS_URL } from "../../api adapters";
 import DeleteReview from "./deleteReviews";
 import FetchCommentsByReview from "../comments/fetchCommentsByReview";
 import PostComment from "../comments/postComment";
+import './sr.css'
 
 export default function SelectedReview({ selectedGameId, Fetch, setFetch }) {
     const navigate = useNavigate()
     const [indivReview, setIndivReview] = useState(null);
     const { id } = useParams()
     const username = localStorage.getItem('username')
-    function goBack () {
-        navigate(`/games/${selectedGameId}`)  
-      }
 
+    function goBack() {
+        if (document.referrer.includes('/reviews')) {
+          navigate('/reviews');
+        } else {
+          navigate(`/games/${selectedGameId}`);
+        }
+      }
     function updateReview() {
         navigate(`/reviews/update/${id}`)
     }

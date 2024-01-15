@@ -7,7 +7,7 @@ import { BASE_GAME_URL } from "../../api adapters";
 import PostReview from "../reviews/PostReviews";
 import UpdateGame from "./UpdateGame";
 import AverageRating from "../reviews/AverageRating";
-
+import './sg.css';
 
 export default function SelectedGame({ setAvgRating, avgRating, setFetch, Fetch }) {
   const navigate = useNavigate()
@@ -41,7 +41,7 @@ export default function SelectedGame({ setAvgRating, avgRating, setFetch, Fetch 
     fetchSelectedGame();
   }, []);
 
-  useEffect(() => {
+  /*useEffect(() => {
     if(bodyBackground === null) {
         document.body.style.backgroundImage = 'url(https://res.cloudinary.com/dlpwremao/image/upload/v1689705193/image_ehdeok.jpg)';
         document.body.style.backgroundPosition = 'center';
@@ -49,6 +49,7 @@ export default function SelectedGame({ setAvgRating, avgRating, setFetch, Fetch 
         document.body.style.backgroundAttachment = 'fixed';
     }
   }, [bodyBackground])
+  */
   
   useEffect(() => {
     if(indivGame && indivGame.genre) {

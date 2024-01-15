@@ -6,11 +6,11 @@ import './login.css'
 
 
 
-const Login = (props) => {
-    const setIsLoggedIn = props.setIsLoggedIn;
+const Login = ({ setIsLoggedIn, gameInfo }) => {
+    
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    
+    const [currentImage, setCurrentImage] = useState(0)
     const navigate = useNavigate();
 
     const navToRegister = () => {
@@ -28,12 +28,29 @@ const Login = (props) => {
             localStorage.setItem("token", result.token);
             setIsLoggedIn(true);
 
-            navigate("/");
+            navigate("/games");
         } catch (error){
             console.log(error);
         }
     };
-    const [bodyBackground, setBodyBackgorund] = useState(null)
+
+    useEffect(() => {
+        // Set background image when the component mounts
+        document.body.style.backgroundImage = 'url(https://res.cloudinary.com/dvto5eysb/image/upload/v1689701726/stock-photo-joypad-hands-gaming-concept-computer_z1zzt6.jpg)';
+        document.body.style.backgroundPosition = 'center';
+        document.body.style.backgroundSize = 'cover';
+        document.body.style.backgroundAttachment = 'fixed';
+    
+        // Clean up function to reset background when the component unmounts
+        return () => {
+          document.body.style.backgroundImage = '';
+          document.body.style.backgroundPosition = '';
+          document.body.style.backgroundSize = '';
+          document.body.style.backgroundAttachment = '';
+        };
+      }, []);
+
+    /*const [bodyBackground, setBodyBackgorund] = useState(null)
     useEffect(() => {
         if(bodyBackground === null) {
             document.body.style.backgroundImage = 'url(https://res.cloudinary.com/dvto5eysb/image/upload/v1689701726/stock-photo-joypad-hands-gaming-concept-computer_z1zzt6.jpg)';
@@ -42,8 +59,18 @@ const Login = (props) => {
             document.body.style.backgroundAttachment = 'fixed';
         }
     }, [bodyBackground])
+    /*useEffect(() => {
+        const imageShow = setInterval(() => {
+          setCurrentImage((prevImage) => (prevImage === gameInfo.length - 1 ? 0 : prevImage + 1));
+        }, 5000);
+      
+        return () => clearInterval(imageShow);
+      }, [gameInfo]);*/
+      
     return(
-        
+        <div className="content-wrapper">
+       
+       
         <div className="login-page-background">
         <div className="login-form">
             <div id="title-of-login-box">
@@ -79,6 +106,7 @@ const Login = (props) => {
                 </button>
                 <button onClick={navToRegister}>Need to register?</button>
             </form>
+        </div>
         </div>
         </div>
        

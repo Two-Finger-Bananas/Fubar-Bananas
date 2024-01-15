@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { BASE_USERS_URL } from "../../api adapters";
-import './fetchReviews.css'
+
 
 export default function FetchReviewsByUser({ userId }) {
     const [reviews, setReviews] = useState([])
@@ -26,7 +26,7 @@ export default function FetchReviewsByUser({ userId }) {
     }, [userId])
     return (
         <div id="review-cards">
-            <h2>Reviews</h2>
+            
             
             {
             reviews.length ? reviews.map((review)=>(

@@ -24,13 +24,28 @@ const Register = (props) => {
       localStorage.setItem("token", result.token);
       setIsLoggedIn(true);
 
-      navigate("/");
+      navigate("/games");
     } catch (error) {
       console.log(error);
     }
   };
+  useEffect(() => {
+    // Set background image when the component mounts
+    document.body.style.backgroundImage = 'url(https://res.cloudinary.com/dvto5eysb/image/upload/v1689700760/pexels-alena-darmel-7862491_ajjcwf.jpg)';
+    document.body.style.backgroundPosition = 'center';
+    document.body.style.backgroundSize = 'cover';
+    document.body.style.backgroundAttachment = 'fixed';
 
-  const [bodyBackground, setBodyBackgorund] = useState(null)
+    // Clean up function to reset background when the component unmounts
+    return () => {
+      document.body.style.backgroundImage = '';
+      document.body.style.backgroundPosition = '';
+      document.body.style.backgroundSize = '';
+      document.body.style.backgroundAttachment = '';
+    };
+  }, []);
+
+  /*const [bodyBackground, setBodyBackgorund] = useState(null)
     useEffect(() => {
         if(bodyBackground === null) {
             document.body.style.backgroundImage = 'url(https://res.cloudinary.com/dvto5eysb/image/upload/v1689700760/pexels-alena-darmel-7862491_ajjcwf.jpg)';
@@ -38,11 +53,15 @@ const Register = (props) => {
             document.body.style.backgroundSize = 'cover';
             document.body.style.backgroundAttachment = 'fixed';
         }
-    }, [bodyBackground])
+    }, [bodyBackground])*/
 
   return (
+<div className="registerBody">
+    <div className="register-page-background">
     <div className="register-form">
+      <div id='title-of-register-box'>
       <h2>Register</h2>
+      </div>
       <form onSubmit={handleSubmit}>
         <label>
           <input
@@ -84,6 +103,8 @@ const Register = (props) => {
           <strong>Submit</strong>
         </button>
       </form>
+    </div>
+    </div>
     </div>
   );
 };

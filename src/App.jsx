@@ -1,9 +1,9 @@
-import { useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import Login from './components/users/login';
 import Register from './components/users/register';
 import NavBar from './components/NavBar';
-import Home from './components/Home';
+
 import FetchGames from './components/games/FetchGames';
 import SelectedGame from './components/games/selectedGameView';
 import UpdateGame from './components/games/UpdateGame';
@@ -21,15 +21,25 @@ function App() {
   const [ selectedGameId, setSelectedGameId ] = useState(null)
   const [avgRating, setAvgRating]= useState([])
   const [Fetch, setFetch] = useState(false)
+  const[gameInfo, setGameInfo] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (location.pathname === '/') {
+      navigate('/games');
+    }
+  }, [location.pathname, navigate]);
+
   return (
     <>
             <div className="App">
-              <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+              <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} gameInfo={gameInfo} setSearchQuery={setSearchQuery}/>
               <Routes>
-                <Route path="/" element={<Home />} />
+                
                 <Route path="/register" element={<Register setIsLoggedIn={setIsLoggedIn} />} />
-                <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
-                <Route  path="/games" element={<FetchGames setSelectedGameId={setSelectedGameId} selectedGameId={selectedGameId} />} />
+                <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} gameInfo={gameInfo} />} />
+                <Route  path="/games" element={<FetchGames setSelectedGameId={setSelectedGameId} selectedGameId={selectedGameId}  gameInfo={gameInfo} setGameInfo={setGameInfo} searchQuery={searchQuery} setSearchQuery={setSearchQuery} />} />
                 <Route path="/games/:id" element={<SelectedGame setSelectedGameId={setSelectedGameId} selectedGameId={selectedGameId} avgRating={avgRating} setAvgRating={setAvgRating} setFetch={setFetch} Fetch={Fetch} />} />
                 <Route path="/games/update/:id" element={<UpdateGame />} />
                 <Route path="/games/create" element={<PostGame />} />
@@ -40,6 +50,8 @@ function App() {
                 <Route path="/admin" element={<AdminDashboard />} />
                 <Route path="/profile" element={<Profile />} />
               </Routes>
+              
+             
             </div>
     </>
   );

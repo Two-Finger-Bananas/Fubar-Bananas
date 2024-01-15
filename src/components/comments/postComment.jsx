@@ -46,7 +46,7 @@ export default function PostComment({ gameId,reviewId, setFetch }){
                     value={text}
                     onChange={(e)=> setText(e.target.value)}/> 
                 </label>
-                <button tyoe='submit'> create comment </button>
+                <button type='submit'> Create Comment </button>
                 </form>
                 </div>
     )

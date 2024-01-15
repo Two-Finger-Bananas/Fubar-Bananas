@@ -1,11 +1,18 @@
 
-export const BASE_USER_URL = 'http://localhost:3000/user'
-export const BASE_USERS_URL = 'http://localhost:3000/users'
-export const BASE_GAME_URL = 'http://localhost:3000/games'
-export const BASE_REVIEWS_URL ='http://localhost:3000/reviews'
-export const BASE_COMMENTS_URL ='http://localhost:3000/comments'
+// export const BASE_USER_URL = 'http://localhost:3000/user'
+// export const BASE_USERS_URL = 'http://localhost:3000/users'
+// export const BASE_GAME_URL = 'http://localhost:3000/games'
+// export const BASE_REVIEWS_URL ='http://localhost:3000/reviews'
+// export const BASE_COMMENTS_URL ='http://localhost:3000/comments'
+
+export const BASE_USER_URL = 'https://fubar-gaming.onrender.com/user'
+export const BASE_USERS_URL = 'https://fubar-gaming.onrender.com/users'
+export const BASE_GAME_URL = 'https://fubar-gaming.onrender.com/games'
+export const BASE_REVIEWS_URL ='https://fubar-gaming.onrender.com/reviews'
+export const BASE_COMMENTS_URL ='https://fubar-gaming.onrender.com/comments'
+
+
 export const TOKEN = localStorage.getItem('token')
-import jwtDecode from 'jwt-decode'
 export const registerUser = async (username, email, password) => {
     try{
         const response = await fetch(`${BASE_USER_URL}/register`,{
@@ -41,7 +48,6 @@ export const loginUser = async (username, password) => {
             }),
         });
         const result = await response.json();
-        const decodedToken = await jwtDecode(result.token)
         return result;
     }catch(error){
         console.log(error);

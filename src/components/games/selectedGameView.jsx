@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+
 import { useState, useEffect } from "react";
 import DeleteGame from "./DeleteGame";
 import FetchReviewsByGame from "../reviews/fetchReviewsByGame";
@@ -22,6 +22,7 @@ export default function SelectedGame({ setAvgRating, avgRating, setFetch, Fetch 
   const [genreArr, setGenreArr] = useState([])
   const [platformsArr, setPlatformsArr] = useState([])
   const [playersArr, setPlayersArr] = useState([])
+  const [gameAction, setGameAction] = useState(false)
 
   function goBack () {
     setAvgRating([])
@@ -39,7 +40,7 @@ export default function SelectedGame({ setAvgRating, avgRating, setFetch, Fetch 
       }
     }
     fetchSelectedGame();
-  }, []);
+  }, [indivGame]);
 
   /*useEffect(() => {
     if(bodyBackground === null) {
@@ -48,8 +49,12 @@ export default function SelectedGame({ setAvgRating, avgRating, setFetch, Fetch 
         document.body.style.backgroundSize = 'cover';
         document.body.style.backgroundAttachment = 'fixed';
     }
+
   }, [bodyBackground])
   */
+
+  }, [indivGame])
+
   
   useEffect(() => {
     if(indivGame && indivGame.genre) {
@@ -79,8 +84,8 @@ export default function SelectedGame({ setAvgRating, avgRating, setFetch, Fetch 
             {
               !switchPage ?
                 <>
-                <h2 className='page-buttons' id='active-button' type='button' onClick={() => setSwitchPage(false)} >Details</h2>
-                <h2 className='page-buttons' type='button' onClick={() => setSwitchPage(true)} >Reviews</h2>
+                <h2 className='page-buttons' id='active-button' type='button' onClick={() => {setSwitchPage(false); setGameAction(true)}} >Details</h2>
+                <h2 className='page-buttons' type='button' onClick={() => {setSwitchPage(true); setGameAction(true)}} >Reviews</h2>
                 </>
                 :
                 <>
@@ -139,7 +144,7 @@ export default function SelectedGame({ setAvgRating, avgRating, setFetch, Fetch 
               <>
             {
              !updateGame ? <button onClick={() => setUpdateGame(true)}>Update</button> 
-              : <UpdateGame game={indivGame} setUpdateGame={setUpdateGame} />
+              : <UpdateGame game={indivGame} setUpdateGame={setUpdateGame} setGameAction={setGameAction} />
             }
             
             <DeleteGame id="DeleteGameButton" gameId={id} />
@@ -157,7 +162,7 @@ export default function SelectedGame({ setAvgRating, avgRating, setFetch, Fetch 
               <>
               {
                   !newReview ? <button onClick={() => {setNewReview(true)}}>Create Review</button> :
-                  <PostReview game={indivGame} setNewReview={setNewReview} setAvgRating={setAvgRating} />
+                  <PostReview game={indivGame} setNewReview={setNewReview} setAvgRating={setAvgRating} newReview={newReview} />
               } 
               </>: null
             }
@@ -166,11 +171,11 @@ export default function SelectedGame({ setAvgRating, avgRating, setFetch, Fetch 
               avgRating.length ?
             <div id='reviews'>
               <AverageRating game={indivGame} avgRating={avgRating} setAvgRating={setAvgRating} /> 
-              <FetchReviewsByGame avgRating={avgRating} setFetch={setFetch} fetch={fetch} /> 
+              <FetchReviewsByGame avgRating={avgRating} setFetch={setFetch} Fetch={Fetch} /> 
             </div> :
             <div id='reviews-center'>
             <AverageRating game={indivGame} avgRating={avgRating} setAvgRating={setAvgRating} /> 
-            <FetchReviewsByGame avgRating={avgRating} setFetch={setFetch} fetch={fetch} /> 
+            <FetchReviewsByGame avgRating={avgRating} setFetch={setFetch} Fetch={Fetch} /> 
             </div>
             }
           </>

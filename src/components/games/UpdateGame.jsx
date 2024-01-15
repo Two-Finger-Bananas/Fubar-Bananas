@@ -1,10 +1,9 @@
 /* eslint-disable react/prop-types */
-import { useNavigate } from "react-router-dom";
 import { BASE_GAME_URL } from "../../api adapters";
 import {useState} from 'react';
 import { TOKEN } from "../../api adapters";
 
-export default function UpdateGame({ game, setUpdateGame }) {
+export default function UpdateGame({ game, setUpdateGame, setGameAction }) {
     const [title, setTitle] = useState('');
     const [publishDate, setPublishDate] = useState('');
     const [genre,setGenre] = useState('');
@@ -39,6 +38,7 @@ export default function UpdateGame({ game, setUpdateGame }) {
         })
         const result = await response.json()
         setUpdateGame(false)
+        setGameAction(true)
         return result
         } catch (error) {
             console.log(error)

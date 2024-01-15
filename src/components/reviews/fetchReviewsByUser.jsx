@@ -26,18 +26,18 @@ export default function FetchReviewsByUser({ userId }) {
     }, [userId])
     return (
         <div id="review-cards">
-            
+
             
             {
             reviews.length ? reviews.map((review)=>(
-                <div key={review.reviewId} className="review-items" onClick={() => reviewDetails(review.reviewId)}>
-                    <div className="name">
-                    <h2>{review.username}</h2>
+                <div key={review.reviewId}  onClick={() => reviewDetails(review.reviewId)}>
+                    <div>
+                    <h2>Game ID: {review.gameId}</h2>
                     </div>
-                    <div className="text">
+                    <div>
                     <p>{review.text}</p>
                     </div>
-                    <div className="rating">
+                    <div>
                     <p>Rating</p>
                     <p className="rating-text">{review.rating}</p>
                     </div>

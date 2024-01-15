@@ -1,9 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useEffect } from "react";
 import { BASE_GAME_URL } from "../../api adapters";
 
 export default function AverageRating({ setAvgRating, avgRating, game }){
-    console.log(avgRating)
     useEffect(() =>{
         async function fetchTheReviews(){
             try{

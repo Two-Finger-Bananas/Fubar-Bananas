@@ -6,6 +6,7 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn, setSearchQuery }) => {
   const is_admin = localStorage.getItem("is_admin");
   const [showNav, setShowNav] = useState(true);
 
+
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);
   };
@@ -25,6 +26,23 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn, setSearchQuery }) => {
         style={{ display: showNav ? "block" : "none" }}
       >  was in the return poertion to make navbar pop in and out*/
       return (
+]
+      {
+        is_admin === "true" && isLoggedIn ? <Link className="Navbar-link" to="/admin">Admin Dashboard</Link> : ""
+      }
+
+      {
+        is_admin === "false" && isLoggedIn ? <Link className="Navbar-link" to="/profile">Profile</Link> : ""
+      }
+          
+      {
+        isLoggedIn ? <button id="logout" className="NavBar-link" onClick={() => {setIsLoggedIn(false); localStorage.removeItem("token"); localStorage.removeItem("username"); localStorage.removeItem("userId");
+        localStorage.removeItem('is_admin')}}>Logout</button> : ""
+      }
+
+      {
+        isLoggedIn ? "" :
+
         <>
           <div className="ShowNavButton" aria-label="Toggle Navigation">
             &#9776;

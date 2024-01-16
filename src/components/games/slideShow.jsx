@@ -8,7 +8,7 @@ export default function SlideShow({ gameInfo }) {
   useEffect(() => {
     const imageShow = setInterval(() => {
       setCurrentImage((prevIndex) => {
-        console.log(prevIndex);
+       
         return prevIndex === gameInfo.length - 1 ? 0 : prevIndex + 1;
       });
     }, 5000);

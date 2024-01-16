@@ -32,16 +32,16 @@ export default function FetchGames({
       try {
         const response = await fetch(`${BASE_GAME_URL}`);
         const data = await response.json();
-        console.log(data)
+        
         setGameInfo(data);
-console.log(gameInfo);
+
 
       } catch (error) {
         console.log(error);
       }
     }
     fetchGame();
-  }, [gameInfo]);
+  }, []);
 
   useEffect(() => {
     if (bodyBackground === null) {

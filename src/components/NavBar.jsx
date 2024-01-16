@@ -48,16 +48,7 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn, setSearchQuery }) => {
     
               {isLoggedIn ? (
                 <>
-                  <button
-                    className="SideNavBar-link"
-                    onClick={() => {
-                      setIsLoggedIn(false);
-                      localStorage.clear();
-                    }}
-                  >
-                    Logout
-                  </button>
-                  <div className="SearchBar">
+                 <div className="SearchBar">
                     <label id="theLabel" htmlFor="search-query" aria-label="Search">
                       &#128269;
                     </label>
@@ -68,6 +59,16 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn, setSearchQuery }) => {
                       onChange={handleSearchChange}
                     />
                   </div>
+                  <button
+                    className="SideNavBar-link"
+                    onClick={() => {
+                      setIsLoggedIn(false);
+                      localStorage.clear();
+                    }}
+                  >
+                    Logout
+                  </button>
+                 
                 </>
               ) : (
                 <>

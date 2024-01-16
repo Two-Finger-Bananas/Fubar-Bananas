@@ -3,19 +3,21 @@ import './slideShow.css';
 
 export default function SlideShow({ gameInfo }) {
   const [currentImage, setCurrentImage] = useState(0);
+  
 
   useEffect(() => {
     const imageShow = setInterval(() => {
-      setCurrentImage((prevIndex) =>
-        prevIndex === gameInfo.length - 1 ? 0 : prevIndex + 1
-      );
+      setCurrentImage((prevIndex) => {
+        console.log(prevIndex);
+        return prevIndex === gameInfo.length - 1 ? 0 : prevIndex + 1;
+      });
     }, 5000);
-
+  
     return () => {
       clearInterval(imageShow);
     };
   }, [gameInfo,currentImage]);
-
+  
  
 
   return (

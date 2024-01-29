@@ -40,7 +40,7 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn, setSearchQuery }) => {
                   Admin Dashboard
                 </Link>
               )}
-              {isLoggedIn === "false" && (
+              {isLoggedIn === true && (
                 <Link className="SideNavBar-link" to="/profile">
                   Profile
                 </Link>

@@ -47,3 +47,8 @@
   left: 0;
 }
 
+.SearchBar{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-evenly;
+}
